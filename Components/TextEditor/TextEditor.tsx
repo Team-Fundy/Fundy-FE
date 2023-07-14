@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import 'react-quill/dist/quill.snow.css';
 
 import dynamic from 'next/dynamic';
@@ -20,10 +20,22 @@ const modules = {
         ],
     }
 }
+
+
 const TextEditor = () => {
+
+    const [__html, setContents] = useState<String>();
+    const onChangeText = (content: string) => {
+        setContents(content);
+
+    }
     return (
         <div>
-            <ReactQuill modules={modules} />
+            <ReactQuill onChange={onChangeText} modules={modules} placeholder="내용을 입력하세요." />
+            <div className="ml-2 flex gap-5">
+                <button className="bg-slate-300">업로드</button>
+                <button className="bg-slate-300">취소</button>
+            </div>
         </div>
     );
 };

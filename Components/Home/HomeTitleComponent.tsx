@@ -1,6 +1,6 @@
 export default function HomeTitleComponent() {
     return (
-        <div className="w-96 w-screen bg-red-200">
+        <div className="w-full h-96 bg-red-200">
         </div>
     )
 } 

@@ -13,9 +13,8 @@ export default function App({ Component, pageProps }: AppProps) {
           <Header />
           <Component {...pageProps}></Component>
         </div>
-        <Footer />
       </div>
-
+      <Footer />
     </>
   );
 }

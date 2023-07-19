@@ -3,10 +3,14 @@ import LoginCompoent from "@/Components/Auth/LoginComponent"
 import SignUpComponent from "@/Components/Auth/SignUpComponent"
 import ProjectUploadComponent from "@/Components/Home/ProjectUploadComponent"
 
+
 export default function Home() {
   return (
-    <div>
-      <ProjectUploadComponent />
+    <div className="">
+      <h1> df</h1>
+      <h1> df</h1>
+      <h1> df</h1>
+      <h1> df</h1>
     </div>
   )
 }

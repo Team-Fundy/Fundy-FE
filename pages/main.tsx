@@ -1,6 +1,6 @@
 import HomeTitleComponent from "@/Components/Home/HomeTitleComponent"
 import HotProjectListComponent from "@/Components/Home/HotProjectList/HotProjectListComponent"
-import ProjectListComponent from "@/Components/Home/ProjectListComponent"
+import ProjectListComponent from "@/Components/Home/ProjectList/ProjectListComponent"
 import PopularListComponent from "@/Components/Home/PopularListComponent"
 
 export default function Home() {

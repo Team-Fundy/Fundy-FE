@@ -3,7 +3,7 @@ import LoginCompoent from "@/Components/Auth/LoginComponent"
 import SignUpComponent from "@/Components/Auth/SignUpComponent"
 import HomeTitleComponent from "@/Components/Home/HomeTitleComponent"
 import ProjectUploadComponent from "@/Components/Home/ProjectUploadComponent"
-import HotProjectListComponent from "@/Components/Home/HotProjectListComponent"
+import HotProjectListComponent from "@/Components/Home/HotProjectList/HotProjectListComponent"
 import ProjectListComponent from "@/Components/Home/ProjectListComponent"
 import PopularListComponent from "@/Components/Home/PopularListComponent"
 

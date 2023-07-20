@@ -1,5 +1,5 @@
 import HomeTitleComponent from "@/Components/Home/HomeTitleComponent"
-import HotProjectListComponent from "@/Components/Home/HotProjectListComponent"
+import HotProjectListComponent from "@/Components/Home/HotProjectList/HotProjectListComponent"
 import ProjectListComponent from "@/Components/Home/ProjectListComponent"
 import PopularListComponent from "@/Components/Home/PopularListComponent"
 

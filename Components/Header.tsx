@@ -1,6 +1,6 @@
 export default function Header() {
     return (
-        <header className="w-full h-16 bg-blue-300 flex">
+        <header className="w-full h-16 bg-blue-300 flex justify-between">
             <button>로고</button>
             <div className="">
                 <button>회원가입</button>

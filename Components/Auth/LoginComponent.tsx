@@ -8,25 +8,24 @@ export default function LoginCompoent() {
 
 
     const fetchData = async () => {
-        const response = await fetch('localhost:3333/api/user/login');
+        const response = await fetch('http:/localhost:3333/api/user/login');
         if (!response.ok) {
-            throw new Error('Network response was not ok');
         }
         console.log(response);
         return response.json();
     };
 
     fetchData();
-    // const { data, isLoading, error } = useQuery('data', fetchData);
+    const { data, isLoading, error } = useQuery('data', fetchData);
 
 
-    // if (isLoading) {
-    //     console.log(data);
-    // }
+    if (isLoading) {
+        console.log(data);
+    }
 
-    // if (error) {
-    //     return <div>Error</div>;
-    // }
+    if (error) {
+        return <div>Error</div>;
+    }
 
 
     function onClickLoginBtn() {

@@ -7,7 +7,7 @@ export default function ProjectListComponent() {
             <p className="">프로젝트 리스트 </p>
             <div className="grid gap-x-2 grid-cols-4 place-items-center my-4">
                 {
-                    projectlist.map((item) => <ProjectItem />)
+                    projectlist.map((item, index) => <ProjectItem key={index} />)
                 }
             </div>
         </div>

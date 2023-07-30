@@ -13,7 +13,7 @@ export default function PopularListComponent() {
             <table >
                 {
                     arr.map((item, index) => (
-                        <tr>
+                        <tr key={index}>
                             <td>NAME{index + 1}</td>
                             <td>{item}%</td>
                         </tr>

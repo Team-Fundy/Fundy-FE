@@ -3,9 +3,11 @@ import LoginCompoent from "@/Components/Auth/LoginComponent"
 import SignUpComponent from "@/Components/Auth/SignUpComponent"
 import HomeTitleComponent from "@/Components/Home/HomeTitleComponent"
 import ProjectUploadComponent from "@/Components/Home/ProjectUploadComponent"
-import HotProjectListComponent from "@/Components/Home/HotProjectList/HotProjectListComponent"
-import ProjectListComponent from "@/Components/Home/ProjectList/ProjectListComponent"
-import PopularListComponent from "@/Components/Home/PopularListComponent"
+const HotProjectListComponent = dynamic(() => import("@/Components/Home/HotProjectList/HotProjectListComponent"), { ssr: false });
+const ProjectListComponent = dynamic(() => import("@/Components/Home/ProjectList/ProjectListComponent"), { ssr: false });
+const PopularListComponent = dynamic(() => import("@/Components/Home/PopularListComponent"), { ssr: false });
+
+import dynamic from "next/dynamic"
 
 export default function Home() {
   return (

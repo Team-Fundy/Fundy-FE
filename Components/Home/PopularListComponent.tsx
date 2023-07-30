@@ -11,14 +11,16 @@ export default function PopularListComponent() {
                 <p>전체보기</p>
             </div >
             <table >
-                {
-                    arr.map((item, index) => (
-                        <tr key={index}>
-                            <td>NAME{index + 1}</td>
-                            <td>{item}%</td>
-                        </tr>
-                    ))
-                }
+                <tbody>
+                    {
+                        arr.map((item, index) => (
+                            <tr key={index}>
+                                <td>NAME{index + 1}</td>
+                                <td>{item}%</td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
             </table>
         </div >
 

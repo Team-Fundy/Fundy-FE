@@ -1,4 +1,5 @@
-import SignUpComponent from "@/Components/Auth/SignUpComponent"
+import dynamic from "next/dynamic"
+const SignUpComponent = dynamic(() => import("@/Components/Auth/SignUpComponent"), { ssr: false });
 
 export default function Home() {
     return (

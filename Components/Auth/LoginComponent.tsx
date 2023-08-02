@@ -19,7 +19,6 @@ export default function LoginCompoent() {
         console.log(response);
     }
 
-
     function onClickSignUpBtn() {
 
     }

@@ -7,48 +7,56 @@ export default function SignUpComponent() {
     const [name, setName] = useState("");
     const [division, setDivision] = useState("");
 
-    function onClickSignUpBtn() {
-
+    const onClickSignUpBtn = () => {
+        fetch("/api/user/sign-up", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "email": id,
+                "nickname": name,
+                "password": pw,
+                "profileImage": null,
+            })
+        }).then(response => response.json()).
+            then(response => {
+                console.log(response);
+            });
     }
-
-
-    function onClickExitBtn() {
-
-    }
-
-
-
     return (
         <div>
-            <form className="border-2 border-black w-96">
-                <h1 className="text-center">회원가입 </h1>
-                <table>
+            <h1 className="text-center">회원가입 </h1>
+            <table>
+                <tbody>
                     <tr>
                         <th>
-                            <label>이름</label>
+                            <label>닉네임</label>
                         </th>
                         <td>
-                            <input type="String" onChange={(event) => setName(event.target.value)} />
+                            <input type="String" name="nickname" onChange={(event) => setName(event.target.value)} />
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            <label>소속  </label>
+                            <label>소속   </label>
                         </th>
                         <td>
                             <input type="String" onChange={(event) => setDivision(event.target.value)} />
                         </td>
                     </tr>
-                </table>
-                <br />
+                </tbody>
+            </table>
+            <br />
 
-                <table>
+            <table>
+                <tbody>
                     <tr>
                         <th>
-                            <label>아이디</label>
+                            <label>이메일</label>
                         </th>
                         <td>
-                            <input type="String" onChange={(event) => setId(event.target.value)} />
+                            <input type="String" name="email" onChange={(event) => setId(event.target.value)} />
                         </td>
                     </tr>
                     <tr>
@@ -56,17 +64,13 @@ export default function SignUpComponent() {
                             <label>비밀번호 </label>
                         </th>
                         <td>
-                            <input type="String" onChange={(event) => setPw(event.target.value)} />
+                            <input type="String" name="password" onChange={(event) => setPw(event.target.value)} />
                         </td>
                     </tr>
-                </table>
-
-
-
-
-                <button className="border-2 bg-slate-300" onClick={onClickSignUpBtn}> 회원가입</button>
-                <button className="border-2 bg-slate-300" onClick={onClickExitBtn}>취소</button>
-            </form>
+                </tbody>
+            </table>
+            <button className="border-2 bg-slate-300" onClick={onClickSignUpBtn}> 회원가입</button>
+            <button className="border-2 bg-slate-300" onClick={onClickSignUpBtn}>취소</button>
         </div >
     )
 }

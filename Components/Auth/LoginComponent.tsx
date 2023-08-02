@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
 import { signIn } from "next-auth/react";
-import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function LoginCompoent() {
+
+    const router = useRouter();
 
     const onClickLoginBtn = async (e: any) => {
         e.preventDefault();
@@ -16,11 +17,10 @@ export default function LoginCompoent() {
             password,
             redirect: false
         });
-        console.log(response);
     }
 
     function onClickSignUpBtn() {
-
+        router.push("/auth/signup");
     }
 
     return (

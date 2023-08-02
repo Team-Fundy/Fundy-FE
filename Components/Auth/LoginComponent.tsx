@@ -1,36 +1,24 @@
-import { useState } from "react";
-import { useQuery } from 'react-query';
-
+import { useState, useEffect } from "react";
+import { signIn } from "next-auth/react";
+import axios from "axios";
 
 export default function LoginCompoent() {
-    const [id, setId] = useState("");
-    const [pw, setPw] = useState("");
+
+    const onClickLoginBtn = async (e: any) => {
+        e.preventDefault();
+        // Form 안에서 이메일, 패스워드 가져오기
 
 
-    const fetchData = async () => {
-        const response = await fetch('http:/localhost:3333/api/user/login');
-        if (!response.ok) {
-        }
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const response = await signIn("email-password-credential", {
+            email,
+            password,
+            redirect: false
+        });
         console.log(response);
-        return response.json();
-    };
-
-    fetchData();
-    const { data, isLoading, error } = useQuery('data', fetchData);
-
-
-    if (isLoading) {
-        console.log(data);
     }
 
-    if (error) {
-        return <div>Error</div>;
-    }
-
-
-    function onClickLoginBtn() {
-
-    }
 
     function onClickSignUpBtn() {
 
@@ -38,18 +26,18 @@ export default function LoginCompoent() {
 
     return (
         <div>
-            <form className="border-2 border-black w-96">
+            <form className="border-2 border-black w-96" onSubmit={onClickLoginBtn}>
                 <h1 className="text-center">로그인 </h1>
                 <div>
                     <label>아이디</label>
-                    <input type="String" onChange={(event) => setId(event.target.value)} />
+                    <input type="email" name="email" />
                 </div>
                 <div>
                     <label>비밀번호  </label>
-                    <input type="String" onChange={(event) => setPw(event.target.value)} />
+                    <input type="password" name="password" />
                 </div>
                 <button className="border-2 bg-slate-300" onClick={onClickSignUpBtn}> 회원가입</button>
-                <button className="border-2 bg-slate-300" onClick={onClickLoginBtn}>로그인</button>
+                <button className="border-2 bg-slate-300" type="submit">로그인</button>
             </form>
         </div >
     )

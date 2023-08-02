@@ -1,35 +1,38 @@
-import NextAuth from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
-
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 export default NextAuth({
     providers: [
         CredentialsProvider({
-            // The name to display on the sign in form (e.g. "Sign in with...")
+            // 로그인 폼에 표시될 이름 (예: "이메일로 로그인")
+            id: "email-password-credential",
             name: "Credentials",
-            // The credentials is used to generate a suitable form on the sign in page.
-            // You can specify whatever fields you are expecting to be submitted.
-            // e.g. domain, username, password, 2FA token, etc.
-            // You can pass any HTML attribute to the <input> tag through the object.
+            // 로그인 폼에서 받을 인증 정보 필드들을 지정합니다.
+            // 예: 이메일, 비밀번호, 2단계 인증 토큰 등
+            // <input> 태그에 사용할 HTML 속성들을 지정할 수 있습니다.
             credentials: {
-                email: { label: "Username", type: "text", placeholder: "jsmith" },
-                password: { label: "Password", type: "password" }
+                email: { label: "이메일", type: "email", placeholder: "jsmith" },
+                password: { label: "비밀번호", type: "password" },
             },
             async authorize(credentials, req) {
-                // Add logic here to look up the user from the credentials supplied
-                const user = { id: 1, name: "J Smith", email: "jsmith@example.com" }
+                console.log("*");
 
-                if (user) {
-                    // Any object returned will be saved in `user` property of the JWT
-                    return user
+                const res = await fetch("http://localhost:8080/api/user/login", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        email: credentials?.email,
+                        password: credentials?.password,
+                    }),
+                    headers: { "Content-Type": "application/json" },
+                });
+
+                if (res.ok) {
+                    return credentials;
                 } else {
-                    // If you return null or false then the credentials will be rejected
-                    return null
-                    // You can also Reject this callback with an Error or with a URL:
-                    // throw new Error("error message") // Redirect to error page
-                    // throw "/path/to/redirect"        // Redirect to a URL
+                    // 로그인 실패 시 null을 반환합니다.
+
                 }
-            }
-        })
-    ]
-})
+            },
+        }),
+    ],
+});

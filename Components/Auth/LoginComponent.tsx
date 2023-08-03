@@ -7,8 +7,6 @@ export default function LoginCompoent() {
 
     const onClickLoginBtn = async (e: any) => {
         e.preventDefault();
-        // Form 안에서 이메일, 패스워드 가져오기
-
 
         const email = e.target.email.value;
         const password = e.target.password.value;

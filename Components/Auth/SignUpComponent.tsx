@@ -3,7 +3,56 @@ import { useRouter } from "next/router";
 
 export default function SignUpComponent({ setVisibleCompleteSignup }) {
 
+    const [email, setEmail] = useState("");
+    const [token, setToken] = useState("");
+    const [code, setCode] = useState("");
     const router = useRouter();
+
+    function onClickSendCheckMailBtn() {
+        fetch("/api/user/email/code", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "email": email,
+            })
+        }).then(response => response.json()).then(response => {
+            if (response.success === true) {
+                setToken(response.result.token);
+            }
+            else {
+                switch (response.message) {
+                    case "이메일은 필수 입니다":
+                        break;
+                }
+            }
+        });
+    }
+
+    function onClickCheckCodeBtn() {
+        fetch("http://localhost:8080/api/user/email/verify", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "email": email,
+                "code": code,
+                "token": token,
+            })
+        }).then(response => response.json()).then(response => {
+            if (response.success === true) {
+
+            }
+            else {
+                switch (response.message) {
+                    case "이메일은 필수 입니다":
+                        break;
+                }
+            }
+        });
+    }
 
     const onClickSignUpBtn = async (e: any) => {
         e.preventDefault();
@@ -72,7 +121,16 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
                                 <label>이메일</label>
                             </th>
                             <td>
-                                <input type="email" name="email" />
+                                <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
+                            </td>
+                            <td>
+                                <button onClick={onClickSendCheckMailBtn}>이메일 인증</button>
+                            </td>
+                            <td>
+                                <input type="email" onChange={(e) => setCode(e.target.value)} />
+                            </td>
+                            <td>
+                                <button onClick={onClickCheckCodeBtn}>인증코드 확인</button>
                             </td>
                         </tr>
                         <tr>

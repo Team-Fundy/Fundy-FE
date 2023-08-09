@@ -20,6 +20,7 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
         }).then(response => response.json()).then(response => {
             if (response.success === true) {
                 setToken(response.result.token);
+                console.log(response);
             }
             else {
                 switch (response.message) {
@@ -31,7 +32,7 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
     }
 
     function onClickCheckCodeBtn() {
-        fetch("http://localhost:8080/api/user/email/verify", {
+        fetch("/api/user/email/verify", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -43,7 +44,7 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
             })
         }).then(response => response.json()).then(response => {
             if (response.success === true) {
-
+                console.log("*");
             }
             else {
                 switch (response.message) {
@@ -127,7 +128,7 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
                                 <button onClick={onClickSendCheckMailBtn}>이메일 인증</button>
                             </td>
                             <td>
-                                <input type="email" onChange={(e) => setCode(e.target.value)} />
+                                <input onChange={(e) => setCode(e.target.value)} />
                             </td>
                             <td>
                                 <button onClick={onClickCheckCodeBtn}>인증코드 확인</button>

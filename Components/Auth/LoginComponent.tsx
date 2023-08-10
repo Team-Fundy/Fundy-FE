@@ -21,6 +21,7 @@ export default function LoginCompoent() {
     const onClickNaverBtn = async (e: any) => {
     }
     const onClickGoogleBtn = async (e: any) => {
+        signIn('google');
     }
 
     function onClickSignUpBtn() {
@@ -30,9 +31,9 @@ export default function LoginCompoent() {
     return (
         <div>
             <div className="flex gap-4">
-                <button onClick={onClickKakaoBtn}>카카오 로그인 </button>
-                <button onClick={onClickNaverBtn}>네이버 로그인 </button>
-                <button onClick={onClickGoogleBtn}>구글 로그인 </button>
+                <button className="text-black" onClick={onClickKakaoBtn}>카카오 로그인 </button>
+                <button className="text-black" onClick={onClickNaverBtn}>네이버 로그인 </button>
+                <button className="text-black" onClick={onClickGoogleBtn}>구글 로그인 </button>
             </div>
             <form className="border-2 border-black w-96" onSubmit={onClickLoginBtn}>
                 <h1 className="text-center">로그인 </h1>

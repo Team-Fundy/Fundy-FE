@@ -3,10 +3,41 @@ import { useRouter } from "next/router";
 
 export default function SignUpComponent({ setVisibleCompleteSignup }) {
 
-    const [email, setEmail] = useState("");
-    const [token, setToken] = useState("");
-    const [code, setCode] = useState("");
-    const router = useRouter();
+    const [email, setEmail] = useState<String>("");
+    const [token, setToken] = useState<String>("");
+    const [nickname, setNickName] = useState<string>("");
+    const [code, setCode] = useState<String>("");
+
+    const [useableNickName, setUseableNickName] = useState<Number>(0);
+
+
+    function exist_nicknametext() {
+        if (useableNickName === 0) {                // 초기상태 
+            return <p></p>
+        }
+        if (useableNickName === 1)              // 1일때 가능 
+            return (
+                <p className="text-green-200">사용가능한 닉네임입니다.</p>
+            );
+        else if (useableNickName === 2)         // 2일때 불가능
+            return (
+                <p className="text-red-200">이미 사용중인 닉네임입니다.</p>
+            );
+    }
+    function onClickExistNickNameCheck() {
+        let querystring = new URLSearchParams(nickname).toString();
+        querystring = querystring.slice(0, -1);
+        fetch(`/api/user/check-nickname?nickname=${querystring}`, {
+            method: "GET"
+        }).then(response => response.json()).then(response => {
+            if (response.result.available === true) {
+                setUseableNickName(1);
+            }
+            else {
+                setUseableNickName(2);
+            }
+        });
+    }
 
     function onClickSendCheckMailBtn() {
         fetch("/api/user/email/code", {
@@ -100,7 +131,13 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
                                 <label>닉네임</label>
                             </th>
                             <td>
-                                <input type="String" name="nickname" />
+                                <input type="String" name="nickname" onChange={(e) => setNickName(e.target.value)} />
+                            </td>
+                            <td>
+                                <button className="border-2 border-black" onClick={onClickExistNickNameCheck}>닉네임 중복검사</button>
+                            </td>
+                            <td>
+                                <h1>{exist_nicknametext()}</h1>
                             </td>
                         </tr>
                         <tr>

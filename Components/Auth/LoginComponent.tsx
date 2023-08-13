@@ -15,6 +15,7 @@ export default function LoginCompoent() {
             password,
             redirect: false
         });
+        console.log(response);  
     }
     const onClickKakaoBtn = async (e: any) => {
     }

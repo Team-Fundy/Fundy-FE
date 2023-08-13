@@ -15,6 +15,14 @@ const nextConfig = {
         source: '/api/user/email/code',
         destination: 'http://localhost:8080/api/user/email/code',
       },
+      {
+        source: '/api/',
+        destination: 'http://localhost:8080/api/',
+      },
+      {
+        source: '/api/user/check-nickname',
+        destination: 'http://localhost:8080/api/user/check-nickname',
+      },
     ];
   },
 }

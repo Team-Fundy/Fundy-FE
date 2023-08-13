@@ -8,14 +8,16 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
     const [nickname, setNickName] = useState<string>("");
     const [code, setCode] = useState<String>("");
 
+    const [hasNickNameExistCheck, setHasNickNameExistCheck] = useState<Boolean>(false);
+    const [hasEmailCodeCheck, setHasEmailCodeCheck] = useState<Boolean>(false);
     const [useableNickName, setUseableNickName] = useState<Number>(0);
 
 
     function exist_nicknametext() {
-        if (useableNickName === 0) {                // 초기상태 
+        if (useableNickName === 0 || !hasNickNameExistCheck) {                // 초기상태 
             return <p></p>
         }
-        if (useableNickName === 1)              // 1일때 가능 
+        else if (useableNickName === 1)              // 1일때 가능 
             return (
                 <p className="text-green-200">사용가능한 닉네임입니다.</p>
             );
@@ -24,7 +26,8 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
                 <p className="text-red-200">이미 사용중인 닉네임입니다.</p>
             );
     }
-    function onClickExistNickNameCheck() {
+    function onClickExistNickNameCheck()                // 닉네임 중복검사
+    {
         let querystring = new URLSearchParams(nickname).toString();
         querystring = querystring.slice(0, -1);
         fetch(`/api/user/check-nickname?nickname=${querystring}`, {
@@ -32,6 +35,7 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
         }).then(response => response.json()).then(response => {
             if (response.result.available === true) {
                 setUseableNickName(1);
+                setHasNickNameExistCheck(true);
             }
             else {
                 setUseableNickName(2);
@@ -39,7 +43,8 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
         });
     }
 
-    function onClickSendCheckMailBtn() {
+    function onClickSendCheckMailBtn()              // 인증메일전송버튼 
+    {
         fetch("/api/user/email/code", {
             method: "POST",
             headers: {
@@ -51,6 +56,7 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
         }).then(response => response.json()).then(response => {
             if (response.success === true) {
                 setToken(response.result.token);
+                setHasEmailCodeCheck(false);
                 console.log(response);
             }
             else {
@@ -75,7 +81,7 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
             })
         }).then(response => response.json()).then(response => {
             if (response.success === true) {
-                console.log("*");
+                setHasEmailCodeCheck(true);
             }
             else {
                 switch (response.message) {
@@ -88,6 +94,19 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
 
     const onClickSignUpBtn = async (e: any) => {
         e.preventDefault();
+
+        if (!hasNickNameExistCheck)                         // 닉네임 중복검사안했을 때
+        {
+            alert("닉네임 중복검사를 완료해주세요.")
+            return;
+        }
+        if (!hasEmailCodeCheck)                         // 이메일 인증 성공 못했을때 
+        {
+            alert("이메일 인증 완료해주세요.")
+            return;
+        }
+
+
         fetch("/api/user/sign-up", {
             method: "POST",
             headers: {
@@ -131,7 +150,10 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
                                 <label>닉네임</label>
                             </th>
                             <td>
-                                <input type="String" name="nickname" onChange={(e) => setNickName(e.target.value)} />
+                                <input type="String" name="nickname" onChange={(e) => {
+                                    setNickName(e.target.value);
+                                    setHasNickNameExistCheck(false);
+                                }} />
                             </td>
                             <td>
                                 <button className="border-2 border-black" onClick={onClickExistNickNameCheck}>닉네임 중복검사</button>

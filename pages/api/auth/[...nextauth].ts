@@ -1,7 +1,9 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+import jwt from 'jsonwebtoken';
 import { NextApiHandler } from 'next';
+import axios from 'axios';
 
 export default NextAuth({
     providers: [
@@ -21,8 +23,13 @@ export default NextAuth({
                 password: { label: "비밀번호", type: "password" },
             },
             async authorize(credentials, req) {
-                console.log("*");
-
+                // const res = await axios.post(
+                //     'http://localhost:8080/api/user/login',
+                //     {
+                //         username: credentials?.email,
+                //         password: credentials?.password,
+                //     }
+                // );
                 const res = await fetch("http://localhost:8080/api/user/login", {
                     method: "POST",
                     body: JSON.stringify({
@@ -31,6 +38,19 @@ export default NextAuth({
                     }),
                     headers: { "Content-Type": "application/json" },
                 });
+                // if (res.status === 200) {
+                //     const { access_token, refresh_token } = res.data;
+                //     // You can decode the access_token to get user information if needed
+                //     const decodedToken = jwt.decode(access_token);
+                //     return {
+                //         // Return user object or relevant data
+                //         id: decodedToken.id,
+                //         access_token,
+                //         refresh_token,
+                //     };
+                // } else {
+                //     return null;
+                // }
 
                 if (res.ok) {
                     return credentials;
@@ -39,6 +59,9 @@ export default NextAuth({
 
                 }
             },
+
+            // Add other NextAuth.js options as needed
         }),
+
     ],
 });

@@ -1,5 +1,6 @@
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import { onLogin } from "./Login/Login";
 
 export default function LoginCompoent() {
 
@@ -10,12 +11,7 @@ export default function LoginCompoent() {
 
         const email = e.target.email.value;
         const password = e.target.password.value;
-        const response = await signIn("email-password-credential", {
-            email,
-            password,
-            redirect: false
-        });
-        console.log(response);  
+        const response = onLogin(email, password);
     }
     const onClickKakaoBtn = async (e: any) => {
     }

@@ -5,6 +5,9 @@ import Sidebar from "@/Components/Sidebar"
 //import Footer from '@/Components/footer';
 import { SessionProvider } from "next-auth/react"
 
+import axios from "axios";
+axios.defaults.withCredentials = true;
+
 export default function App({ Component, pageProps: { session, ...pageProps }, }: AppProps) {
   return (
     <>

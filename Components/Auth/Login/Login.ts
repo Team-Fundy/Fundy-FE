@@ -1,9 +1,8 @@
 import axios from "axios";
 
-const JWT_EXPIRRY_TIME = 24 * 3600 * 1000; // 만료 시간 (24시간 밀리 초로 표현)
+const JWT_EXPIRRY_TIME = 2 * 3600 * 1000; // 만료 시간 2시간 
 
 export const onLogin = (email: string, password: string) => {
-
 
     const data = {
         email,
@@ -15,11 +14,11 @@ export const onLogin = (email: string, password: string) => {
 }
 
 const onLoginSuccess = (response: any) => {
-    console.log(response);
-    const { accessToken } = response.data;
+    console.log(response.data.result);
+    const { accessToken } = response.data.result;
 
     axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-
+    console.log(accessToken);
     setTimeout(onSilentRefresh, JWT_EXPIRRY_TIME - 60000);
 }
 
@@ -33,11 +32,22 @@ const onLoginFail = (response: any) => {
 
 }
 
+const onRefreshTokenGetFail = (response: any) => {
+    const status = response.response.status;
+
+}
+
+export const onUserCheck = () => {
+    axios.get('/api/user/info')
+        .then(function check(response: any) {
+            console.log(response);
+        })
+        .catch(onRefreshTokenGetFail);
+}
+
 
 const onSilentRefresh = () => {
-    axios.post('/silent-refresh', data)
+    axios.get('/api/user/reissue')
         .then(onLoginSuccess)
-        .catch(error => {
-            // ... 로그인 실패 처리
-        });
+        .catch(onRefreshTokenGetFail);
 }

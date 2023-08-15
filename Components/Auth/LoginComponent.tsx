@@ -1,6 +1,6 @@
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-import { onLogin } from "./Login/Login";
+import { onLogin, onUserCheck } from "./Login/Login";
 
 export default function LoginCompoent() {
 
@@ -14,6 +14,7 @@ export default function LoginCompoent() {
         const response = onLogin(email, password);
     }
     const onClickKakaoBtn = async (e: any) => {
+        onUserCheck();
     }
     const onClickNaverBtn = async (e: any) => {
     }

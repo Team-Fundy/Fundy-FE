@@ -23,6 +23,10 @@ const nextConfig = {
         source: '/api/user/check-nickname',
         destination: 'http://localhost:8080/api/user/check-nickname',
       },
+      {
+        source: '/api/user/info',
+        destination: 'http://localhost:8080/api/user/info',
+      },
     ];
   },
 }

@@ -1,6 +1,7 @@
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { onLogin, onUserCheck } from "./Login/Login";
+import GoogleLoginButton from "./Login/GoogleLogin";
 
 export default function LoginCompoent() {
 
@@ -19,6 +20,7 @@ export default function LoginCompoent() {
     const onClickNaverBtn = async (e: any) => {
     }
     const onClickGoogleBtn = async (e: any) => {
+        window.open('http://localhost:8080/api/user/oauth2/login/google', 'pop01', 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
     }
 
     function onClickSignUpBtn() {
@@ -30,6 +32,7 @@ export default function LoginCompoent() {
             <div className="flex gap-4">
                 <button className="text-black" onClick={onClickKakaoBtn}>카카오 로그인 </button>
                 <button className="text-black" onClick={onClickNaverBtn}>네이버 로그인 </button>
+                <GoogleLoginButton />
                 <button className="text-black" onClick={onClickGoogleBtn}>구글 로그인 </button>
             </div>
             <form className="border-2 border-black w-96" onSubmit={onClickLoginBtn}>

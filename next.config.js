@@ -29,6 +29,15 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/content",
+        destination: "https://itprogramming119.tistory.com/entry/Next-redirects%EB%A1%9C-%EA%B2%BD%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%B4%EC%84%9C-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0",
+        permanent: false
+      }
+    ]
+  }
 }
 
 module.exports = nextConfig

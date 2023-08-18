@@ -19,7 +19,6 @@ export default function LoginCompoent() {
     const onClickNaverBtn = async (e: any) => {
     }
     const onClickGoogleBtn = async (e: any) => {
-        signIn('google');
     }
 
     function onClickSignUpBtn() {

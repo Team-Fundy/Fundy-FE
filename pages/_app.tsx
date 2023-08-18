@@ -13,7 +13,6 @@ export default function App({ Component, pageProps: { session, ...pageProps }, }
     <>
       <SessionProvider session={session}>
         <div className="w-screen h-screen flex">
-          <Sidebar />
           <div className="w-screen">
             <Header />
             <Component {...pageProps}></Component>

@@ -4,6 +4,7 @@ import Header from "@/Components/Header"
 import Sidebar from "@/Components/Sidebar"
 //import Footer from '@/Components/footer';
 import { SessionProvider } from "next-auth/react"
+import { RecoilRoot } from "recoil"
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -12,12 +13,14 @@ export default function App({ Component, pageProps: { session, ...pageProps }, }
   return (
     <>
       <SessionProvider session={session}>
-        <div className="w-screen h-screen flex">
-          <div className="w-screen">
-            <Header />
-            <Component {...pageProps}></Component>
+        <RecoilRoot>
+          <div className="w-screen h-screen flex">
+            <div className="w-screen">
+              <Header />
+              <Component {...pageProps}></Component>
+            </div>
           </div>
-        </div>
+        </RecoilRoot>
       </SessionProvider>
     </>
   );

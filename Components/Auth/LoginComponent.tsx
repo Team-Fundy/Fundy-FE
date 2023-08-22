@@ -2,11 +2,14 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import { onLogin, onUserCheck } from "./Login/Login";
+import { useRecoilState } from 'recoil'
+import { authPopupState } from "@/recoil/recoilstate"
+
 
 export default function LoginCompoent() {
 
     const router = useRouter();
-    const [popup, setPopup] = useState<Window>();
+    const [popup, setPopup] = useRecoilState(authPopupState);
 
     const onClickLoginBtn = async (e: any) => {
         e.preventDefault();

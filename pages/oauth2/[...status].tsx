@@ -25,7 +25,7 @@ const Post = () => {
                     router.push('/oauth2/authsignup');
                 }
             }
-            
+
         }
     }, [queryParamValue]);
 

@@ -27,6 +27,12 @@ const nextConfig = {
         source: '/api/user/info',
         destination: 'http://localhost:8080/api/user/info',
       },
+      {
+        source: '/api/user/oauth2/login/google',
+        destination: 'http://localhost:8080/api/user/oauth2/login/google',
+      },
+
+
     ];
   },
   async redirects() {

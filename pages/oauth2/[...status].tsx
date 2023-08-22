@@ -11,7 +11,7 @@ const Post = () => {
     const router = useRouter();
     const queryParamValue = router.query;
     useEffect(() => {
-
+        console.log(router);
         if (queryParamValue.status != undefined) {
             if (queryParamValue.status[0] === "success") {
                 setAccess(queryParamValue.access);
@@ -19,15 +19,20 @@ const Post = () => {
                 setGrant(queryParamValue.grant);
                 setFirst(queryParamValue.first);
                 console.log(queryParamValue);
-                router.push("/");
+                alert(queryParamValue.first);
+
+                if (queryParamValue.first === 'false') {
+                    router.push('/oauth2/authsignup');
+                }
             }
+            
         }
     }, [queryParamValue]);
 
     return (
         <div>
-            <button>가나다라마바</button>
-
+            {
+            }
         </div >
     )
 }

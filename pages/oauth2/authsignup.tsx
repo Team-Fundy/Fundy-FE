@@ -1,4 +1,13 @@
 const authsignup = () => {
+
+    function onClickSignUpBtn() {
+        window.close();
+
+    }
+    function onClickExitpBtn() {
+        window.close();
+    }
+
     return (
         <div>
             <p className="align-center">구글 로그인 연동</p>
@@ -7,8 +16,8 @@ const authsignup = () => {
 
             </pre>
             <div className="align-center flex gap-4">
-                <button className="border-2 w-24 bg-slate-300">확인</button>
-                <button className="border-2 w-24 bg-slate-300">취소</button>
+                <button onClick={onClickSignUpBtn} className="border-2 w-24 bg-slate-300">확인</button>
+                <button onClick={onClickExitpBtn} className="border-2 w-24 bg-slate-300">취소</button>
             </div>
         </div >
     )

@@ -1,4 +1,3 @@
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import { onLogin, onUserCheck } from "./Login/Login";
@@ -27,47 +26,6 @@ export default function LoginCompoent() {
         const google_popup = window.open('/api/user/oauth2/login/google', 'pop01', 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
         setPopup(google_popup);
     }
-    // useEffect(() => {
-    //     const currentUrl = window.location.href;
-    //     console.log(currentUrl);
-    //     const searchParams = new URL(currentUrl).searchParams;
-    //     console.log(searchParams);
-
-    //     const code = searchParams.get("code");
-    //     console.log(code);
-
-    //     if (code) {
-    //         window.opener.postMessage({ code }, window.location.origin);
-    //     }
-    // }, []);
-
-    // useEffect(() => {
-    //     if (!popup) {
-    //         return;
-    //     }
-
-    //     const googleAuthListener = (e) => {
-    //         // 동일한 Origin 의 이벤트만 처리하도록 제한
-    //         if (e.origin !== window.location.origin) {
-    //             return;
-    //         }
-    //         const { code } = e.data;
-    //         if (code) {
-    //             console.log(`The popup URL has URL code param = ${code}`);
-    //         }
-    //         popup?.close();
-    //         setPopup(null);
-    //     };
-
-    //     window.addEventListener("message", googleAuthListener, false);
-
-    //     return () => {
-    //         window.removeEventListener("message", googleAuthListener);
-    //         popup?.close();
-    //         setPopup(null);
-    //     };
-    // }, [popup]);
-
     function onClickSignUpBtn() {
         router.push("/auth/signup");
     }

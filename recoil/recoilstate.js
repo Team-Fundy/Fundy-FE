@@ -1,6 +1,7 @@
 import { atom } from 'recoil';
 
-export const authPopupState = atom < Window | undefined > ({
+export const authPopupState = atom({
     key: 'authPopupState',
-    default: undefined,
+    default: null,
+    dangerouslyAllowMutability: true,
 });

@@ -2,13 +2,11 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import { onLogin, onUserCheck } from "./Login/Login";
 import { useRecoilState } from 'recoil'
-import { authPopupState } from "@/recoil/recoilstate"
 
 
 export default function LoginCompoent() {
 
     const router = useRouter();
-    const [popup, setPopup] = useRecoilState(authPopupState);
 
     const onClickLoginBtn = async (e: any) => {
         e.preventDefault();
@@ -24,6 +22,9 @@ export default function LoginCompoent() {
     }
     const onClickGoogleBtn = async (e: any) => {
         const google_popup = window.open('/api/user/oauth2/login/google', 'pop01', 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+        window.parentCallback = () => {
+            router.push("/");
+        }
         setPopup(google_popup);
     }
     function onClickSignUpBtn() {

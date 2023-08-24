@@ -1,6 +1,7 @@
 const authsignup = () => {
 
     function onClickSignUpBtn() {
+        window.opener.parentCallback();
         window.close();
 
     }

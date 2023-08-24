@@ -2,13 +2,13 @@ import { access } from 'fs';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useRecoilValue, useRecoilState } from 'recoil'
-import { authPopupState } from '@/recoil/recoilstate'
+import { accesstokenState, refreshtokenState, loginState } from '@/recoil/recoilstate'
 
 const Post = () => {
-    const [access, setAccess] = useState<String>(null);
-    const [refresh, setRefresh] = useState(null);
     const [grant, setGrant] = useState(null);
-    const [popup, setPopup] = useRecoilState(authPopupState);
+    const [accesstoken, setAccesstoken] = useRecoilState<string>(accesstokenState);
+    const [refreshtoken, setRefreshtoken] = useRecoilState<string>(refreshtokenState);
+    const [onlogin, setOnLogin] = useRecoilState<Boolean>(loginState);
 
     const router = useRouter();
     const queryParamValue = router.query;
@@ -16,11 +16,16 @@ const Post = () => {
     useEffect(() => {
         if (queryParamValue.status != undefined) {
             if (queryParamValue.status[0] === "success") {
-                if (queryParamValue.first === 'false') {
+                if (queryParamValue.first === 'true') {
+                    setAccesstoken(queryParamValue.access);
+                    setRefreshtoken(queryParamValue.refresh);
+                    setOnLogin(true);
                     router.push('/oauth2/authsignup');
                 }
-                else
+                else {
+                    window.opener.parentCallback();
                     window.close();
+                }
             }
         }
     }, [queryParamValue]);

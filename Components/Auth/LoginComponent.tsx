@@ -1,19 +1,21 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
-import { onLogin, onUserCheck } from "./Login/Login";
-import { useRecoilState } from 'recoil'
+import { onEmailLogin, onOauthLogin, onUserCheck } from "./Login/Login";
 
 
 export default function LoginCompoent() {
 
     const router = useRouter();
+    const [grant, setGrant] = useState(null);
+
+
 
     const onClickLoginBtn = async (e: any) => {
         e.preventDefault();
 
         const email = e.target.email.value;
         const password = e.target.password.value;
-        const response = onLogin(email, password);
+        const response = onEmailLogin(email, password);
     }
     const onClickKakaoBtn = async (e: any) => {
         onUserCheck();
@@ -22,10 +24,9 @@ export default function LoginCompoent() {
     }
     const onClickGoogleBtn = async (e: any) => {
         const google_popup = window.open('/api/user/oauth2/login/google', 'pop01', 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
-        window.parentCallback = () => {
-            router.push("/");
+        window.parentCallback = (queryParamValue : any) => {
+            onOauthLogin(queryParamValue);
         }
-        setPopup(google_popup);
     }
     function onClickSignUpBtn() {
         router.push("/auth/signup");

@@ -1,8 +1,18 @@
+import { useRouter } from "next/router";
 import axios from "axios";
+import { useRecoilState } from 'recoil'
+import { accesstokenState, refreshtokenState, loginState } from '@/recoil/recoilstate'
+
 
 const JWT_EXPIRRY_TIME = 2 * 3600 * 1000; // 만료 시간 2시간 
 
-export const onLogin = (email: string, password: string) => {
+const [accesstoken, setAccesstoken] = useRecoilState(accesstokenState);
+const [refreshtoken, setRefreshtoken] = useRecoilState(refreshtokenState);
+const [onlogin, setOnLogin] = useRecoilState(loginState);
+
+const router = useRouter();
+
+export const onEmailLogin = (email: string, password: string) => {
 
     const data = {
         email,
@@ -13,13 +23,22 @@ export const onLogin = (email: string, password: string) => {
         .catch(onLoginFail);
 }
 
+export const onOauthLogin = (queryParamValue: any) => {
+    SuccessLogin(queryParamValue.access, queryParamValue.refresh);
+}
+
 const onLoginSuccess = (response: any) => {
-    console.log(response.data.result);
-    const { accessToken } = response.data.result;
+    SuccessLogin(response.data.result.accessToken, response.data.result.refreshToken);
+}
+
+const SuccessLogin = (accessToken: string, refreshToken: string) => {
+    setAccesstoken(accessToken);
+    setRefreshtoken(refreshToken);
+    setOnLogin(true);
 
     axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-    console.log(accessToken);
     setTimeout(onSilentRefresh, JWT_EXPIRRY_TIME - 60000);
+    router.push("/");
 }
 
 const onLoginFail = (response: any) => {

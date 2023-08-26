@@ -4,6 +4,7 @@ import fundyicon from '../public/home/fundyicon.png'
 import frame from '../public/home/frame.png'
 import { loginState } from '@/recoil/recoilstate'
 import { useRecoilValue } from 'recoil'
+import { onLogout } from './Auth/Login/Logout'
 
 export default function Header() {
 
@@ -25,9 +26,9 @@ export default function Header() {
     const OnLogin = () => {
         return (
             <div className="flex gap-4">
-                <Link href="/">
+                <button onClick = {()=>onLogout()}>
                     <p className="font-['dalmoori']">로그아웃</p>
-                </Link>
+                </button>
                 < Link href="/">
                     <p className="font-['dalmoori']">마이페이지</p>
                 </Link>

@@ -31,6 +31,10 @@ const nextConfig = {
         source: '/api/user/oauth2/login/google',
         destination: 'http://localhost:8080/api/user/oauth2/login/google',
       },
+      {
+        source: '/api/user/logout',
+        destination: 'http://localhost:8080/api/user/logout',
+      },
 
 
     ];

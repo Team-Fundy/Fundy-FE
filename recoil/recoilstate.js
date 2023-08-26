@@ -6,13 +6,13 @@ export const loginState = atom({
     default: false,
     dangerouslyAllowMutability: true,
 });
-export const accesstokenState = atom < String > ({
+export const accesstokenState = atom({
     key: 'accesstokenState',
-    default: null,
+    default: "",
     dangerouslyAllowMutability: true,
 });
-export const refreshtokenState = atom < String > ({
+export const refreshtokenState = atom({
     key: 'refreshtokenState',
-    default: null,
+    default: "",
     dangerouslyAllowMutability: true,
 });

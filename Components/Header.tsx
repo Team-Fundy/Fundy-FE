@@ -3,12 +3,19 @@ import Image from 'next/image'
 import fundyicon from '../public/home/fundyicon.png'
 import frame from '../public/home/frame.png'
 import { loginState } from '@/recoil/recoilstate'
-import { useRecoilValue } from 'recoil'
-import { onLogout } from './Auth/Login/Logout'
+import { useRecoilState } from 'recoil'
+import axios from "axios";
 
 export default function Header() {
 
-    const loginstate = useRecoilValue(loginState);
+    const [loginstate, setLoginState] = useRecoilState(loginState);
+
+    const onLogout = () => {
+        setLoginState(false);
+        axios.post('/api/user/logout')
+            .then()
+            .catch();
+    }
 
     const OnLogoff = () => {
         return (
@@ -26,7 +33,7 @@ export default function Header() {
     const OnLogin = () => {
         return (
             <div className="flex gap-4">
-                <button onClick = {()=>onLogout()}>
+                <button onClick={() => onLogout()}>
                     <p className="font-['dalmoori']">로그아웃</p>
                 </button>
                 < Link href="/">

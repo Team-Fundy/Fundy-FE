@@ -32,6 +32,14 @@ const nextConfig = {
         destination: 'http://localhost:8080/api/user/oauth2/login/google',
       },
       {
+        source: '/api/user/oauth2/login/naver',
+        destination: 'http://localhost:8080/api/user/oauth2/login/naver',
+      },
+      {
+        source: '/api/user/oauth2/login/kakao',
+        destination: 'http://localhost:8080/api/user/oauth2/login/kakao',
+      },
+      {
         source: '/api/user/logout',
         destination: 'http://localhost:8080/api/user/logout',
       },

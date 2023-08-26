@@ -1,45 +1,65 @@
 import { useRouter } from "next/router";
-import { useState, useEffect } from 'react';
-import { onEmailLogin, onOauthLogin, onUserCheck } from "./Login/Login";
-
+import { useState } from 'react';
+import { accesstokenState, refreshtokenState, loginState } from '@/recoil/recoilstate'
+import { useRecoilState } from "recoil";
+import axios from "axios";
 
 export default function LoginCompoent() {
 
     const router = useRouter();
     const [grant, setGrant] = useState(null);
+    const [access, setAccess] = useRecoilState(accesstokenState);
+    const [refresh, setRefresh] = useRecoilState(refreshtokenState);
+    const [loginstate, setLoginState] = useRecoilState(loginState);
 
+    const onLoginSuccess = (acc: string, ref: string, grt: string) => {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${acc}`;
 
+        setAccess(acc);
+       // setGrant(grt);
+        setRefresh(ref);
+        setLoginState(true);
+    }
 
-    const onClickLoginBtn = async (e: any) => {
+    const onClickEmailLoginBtn = async (e: any) => {
         e.preventDefault();
 
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        const response = onEmailLogin(email, password);
+        const data = {
+            email: e.target.email.value,
+            password: e.target.password.value,
+        };
+        axios.post('/api/user/login', data)
+            .then((response) => { onLoginSuccess(response.data.result.access, response.data.result.refresh, response.data.result.grant) })
+            .catch((response: any) => {
+                switch (response.response.status) {
+                    case 401:
+                        alert("아이디 또는 패스워드가 틀렸습니다.");
+                        break;
+                }
+            });
     }
-    const onClickKakaoBtn = async (e: any) => {
-        onUserCheck();
-    }
-    const onClickNaverBtn = async (e: any) => {
-    }
-    const onClickGoogleBtn = async (e: any) => {
-        const google_popup = window.open('/api/user/oauth2/login/google', 'pop01', 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
-        window.parentCallback = (queryParamValue : any) => {
-            onOauthLogin(queryParamValue);
+
+    const onClickOauthLoginBtn = async (event: any) => {
+        window.open(`/api/user/oauth2/login/${event.target.id}`, 'pop01', 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+        window.parentCallback = (queryParamValue: any) => {
+            onLoginSuccess(queryParamValue.access, queryParamValue.refresh, queryParamValue.grant);
+            router.push('/');
         }
     }
+
     function onClickSignUpBtn() {
         router.push("/auth/signup");
     }
 
+
     return (
         <div>
             <div className="flex gap-4">
-                <button className="text-black" onClick={onClickKakaoBtn}>카카오 로그인 </button>
-                <button className="text-black" onClick={onClickNaverBtn}>네이버 로그인 </button>
-                <button className="text-black" onClick={onClickGoogleBtn}>구글 로그인 </button>
+                <button id="kakao" className="text-black" onClick={onClickOauthLoginBtn}>카카오 로그인 </button>
+                <button id="naver" className="text-black" onClick={onClickOauthLoginBtn}>네이버 로그인 </button>
+                <button id="google" className="text-black" onClick={onClickOauthLoginBtn}>구글 로그인 </button>
             </div>
-            <form className="border-2 border-black w-96" onSubmit={onClickLoginBtn}>
+            <form className="border-2 border-black w-96" onSubmit={onClickEmailLoginBtn}>
                 <h1 className="text-center">로그인 </h1>
                 <div>
                     <label>아이디</label>

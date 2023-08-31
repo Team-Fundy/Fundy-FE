@@ -36,7 +36,7 @@ export default function Header() {
                 <button onClick={() => onLogout()}>
                     <p className="font-['dalmoori']">로그아웃</p>
                 </button>
-                < Link href="/">
+                < Link className = "" href="/">
                     <p className="font-['dalmoori']">마이페이지</p>
                 </Link>
             </div>

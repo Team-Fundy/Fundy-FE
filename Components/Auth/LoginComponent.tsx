@@ -16,7 +16,7 @@ export default function LoginCompoent() {
         axios.defaults.headers.common['Authorization'] = `Bearer ${acc}`;
 
         setAccess(acc);
-       // setGrant(grt);
+        // setGrant(grt);
         setRefresh(ref);
         setLoginState(true);
     }

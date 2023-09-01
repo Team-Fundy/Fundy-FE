@@ -8,7 +8,8 @@ import axios from "axios";
 
 export default function Header() {
 
-    const [loginstate, setLoginState] = useRecoilState(loginState);
+    //  const [login, setLoginState] = useRecoilState(loginState);
+    const login = false;
 
     const onLogout = () => {
         setLoginState(false);
@@ -36,7 +37,7 @@ export default function Header() {
                 <button onClick={() => onLogout()}>
                     <p className="font-['dalmoori']">로그아웃</p>
                 </button>
-                < Link className = "" href="/">
+                < Link className="" href="/">
                     <p className="font-['dalmoori']">마이페이지</p>
                 </Link>
             </div>
@@ -53,7 +54,7 @@ export default function Header() {
                     width={300}
                     height="30" />
             </div>
-            {loginstate ? <OnLogin /> : <OnLogoff />}
+            {login ? <OnLogin /> : <OnLogoff />}
         </header >
     )
 }   

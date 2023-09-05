@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import GenreListItem from "./GenreListItem";
 
 export default function GenreList() {
 
     const pageNum = 24;
     const projectlist = [null, null, null, null, null, null, null, null];
+
     const [nowPage, setNowPage] = useState<number>(1);
 
     function Dot(num: number) {

@@ -20,7 +20,7 @@ export default function Header() {
 
     const OnLogoff = () => {
         return (
-            <div className="flex gap-4">
+            <div className="flex gap-8 my-4">
                 <Link href="/auth/login">
                     <p className="font-['dalmoori']">로그인</p>
                 </Link>
@@ -33,28 +33,33 @@ export default function Header() {
 
     const OnLogin = () => {
         return (
-            <div className="flex gap-4">
+            <div className="flex my-4 gap-4">
                 <button onClick={() => onLogout()}>
                     <p className="font-['dalmoori']">로그아웃</p>
                 </button>
                 < Link className="" href="/">
-                    <p className="font-['dalmoori']">마이페이지</p>
+                    <p className="my-4 font-['dalmoori']">마이페이지</p>
+                </Link>
+                < Link className="" href="/">
+                    <p className="font-['dalmoori']">프로젝트 등록하기</p>
                 </Link>
             </div>
         )
     }
     return (
-        <header className="w-full h-16 bg-slate-100 flex justify-between">
-            <Link className="gap-2" href="/">
+        <header className="w-full h-16 bg-slate-100 flex place-content-center gap-96">
+            <Link className="" href="/">
                 <Image src={fundyicon} alt="logo" />
             </Link>
-            <div className="h-12">
-                <Image src={frame}
-                    alt="none"
-                    width={300}
-                    height="30" />
+            <div className='flex gap-16'>
+                <div className="h-12 my-4">
+                    <Image src={frame}
+                        alt="none"
+                        width={300}
+                        height="30" />
+                </div>
+                {login ? <OnLogin /> : <OnLogoff />}
             </div>
-            {login ? <OnLogin /> : <OnLogoff />}
         </header >
     )
 }   

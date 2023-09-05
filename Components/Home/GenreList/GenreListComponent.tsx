@@ -11,7 +11,7 @@ export default function GenreListComponent() {
     const projectlist = [null, null, null, null, null];
     const [openModal, setOpenModal] = useState<boolean>(false);
 
-    const [selectedgenre, setSelectedGenre] = useState<string[]>(['null']);
+    const [selectedgenre, setSelectedGenre] = useState<string[]>([]);
 
     return (
         <div className="bg-gray-200">

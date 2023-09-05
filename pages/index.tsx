@@ -11,7 +11,6 @@ import dotline from "@/public/home/dotline.png"
 
 const BannerComponent = dynamic(() => import("@/Components/Home/Banner/BannerComponent"), { ssr: false });
 const HotProjectListComponent = dynamic(() => import("@/Components/Home/HotProjectList/HotProjectListComponent"), { ssr: false });
-const ProjectListComponent = dynamic(() => import("@/Components/Home/ProjectList/ProjectListComponent"), { ssr: false });
 const DevelopNoteComponent = dynamic(() => import("@/Components/Home/DevelopNote/DevelopNoteComponent"), { ssr: false });
 const NewProjectListComponent = dynamic(() => import("@/Components/Home/NewProject/NewProjectComponent"), { ssr: false });
 const GenreListComponent = dynamic(() => import("@/Components/Home/GenreList/GenreListComponent"), { ssr: false });

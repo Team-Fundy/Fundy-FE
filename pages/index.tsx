@@ -12,6 +12,7 @@ const HotProjectListComponent = dynamic(() => import("@/Components/Home/HotProje
 const ProjectListComponent = dynamic(() => import("@/Components/Home/ProjectList/ProjectListComponent"), { ssr: false });
 const DevelopNoteComponent = dynamic(() => import("@/Components/Home/DevelopNote/DevelopNoteComponent"), { ssr: false });
 const NewProjectListComponent = dynamic(() => import("@/Components/Home/NewProject/NewProjectComponent"), { ssr: false });
+const GenreListComponent = dynamic(() => import("@/Components/Home/GenreList/GenreListComponent"), { ssr: false });
 
 import dynamic from "next/dynamic"
 
@@ -31,6 +32,7 @@ export default function Home() {
       <BannerComponent />
       <NewProjectListComponent />
       <Dotline />
+      <GenreListComponent />
     </div>
   )
 }

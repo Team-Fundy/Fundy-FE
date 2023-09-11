@@ -15,7 +15,7 @@ export default function projectinform() {
     //const detail = "카드 오브 던전 클래식은 당신만의 카드르 모아 다양한 던전에 대항하여 주인공에 얽혀있는 수수께끼를 푸는 전략 캐주얼 판타지 게임입니다. 그리고 모시깽이를 하기위 모시깽이 하고자 하고 이를 위해 모시깽이를 할 것입니다. 그리고 모시깽이들을 위하여 모시깽이도 할 예정입니다. 많관부 가나다라마바사아자차차";
     const detail = "1";
 
-    const [titleimg, setTitleImg] = useState(Temp);
+    const [titleimg, setTitleImg] = useState<Image>(Temp);
     const targetmoney = 0;
     const nowmoney = 0;
 

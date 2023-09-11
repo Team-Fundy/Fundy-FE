@@ -1,7 +1,11 @@
 import { useState } from "react"
 import { useRouter } from "next/router";
 
-export default function SignUpComponent({ setVisibleCompleteSignup }) {
+type SignUpComponentType = {
+    setVisibleCompleteSignup: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export default function SignUpComponent({ setVisibleCompleteSignup }: SignUpComponentType) {
 
     const [email, setEmail] = useState<String>("");
     const [token, setToken] = useState<String>("");
@@ -92,7 +96,7 @@ export default function SignUpComponent({ setVisibleCompleteSignup }) {
         });
     }
 
-    const onClickSignUpBtn = async (e: any) => {
+    const onClickSignUpBtn = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!hasNickNameExistCheck)                         // 닉네임 중복검사안했을 때

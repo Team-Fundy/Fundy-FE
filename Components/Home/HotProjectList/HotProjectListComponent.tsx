@@ -1,7 +1,7 @@
 import hoticon from "@/public/home/icon/hoticon.png"
 import entirebtn from "@/public/home/button/entirebutton.png"
 import Image from "next/image";
-import Hotbar from "./hotbar";
+import Hotbar from "./Hotbar";
 import HotProjectListbar from "./HotProjectListbar";
 
 /* <button className="w-24 border-2 border-black bg-white font-['dalmoori'] text-sm">

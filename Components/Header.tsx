@@ -12,7 +12,7 @@ export default function Header() {
     const login = false;
 
     const onLogout = () => {
-        setLoginState(false);
+        // setLoginState(false);
         axios.post('/api/user/logout')
             .then()
             .catch();

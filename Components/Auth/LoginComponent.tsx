@@ -4,10 +4,16 @@ import { accesstokenState, refreshtokenState, loginState } from '@/recoil/recoil
 import { useRecoilState } from "recoil";
 import axios from "axios";
 
+type queryParamValueType = {
+    access: string,
+    refresh: string,
+    grant: string,
+}
+
 export default function LoginCompoent() {
 
     const router = useRouter();
-    const [grant, setGrant] = useState(null);
+    // const [grant, setGrant] = useState<string | null>(null);
     const [access, setAccess] = useRecoilState(accesstokenState);
     const [refresh, setRefresh] = useRecoilState(refreshtokenState);
     const [loginstate, setLoginState] = useRecoilState(loginState);
@@ -21,7 +27,7 @@ export default function LoginCompoent() {
         setLoginState(true);
     }
 
-    const onClickEmailLoginBtn = async (e: any) => {
+    const onClickEmailLoginBtn = async (e: React.FormEvent) => {
         e.preventDefault();
 
         const data = {
@@ -29,7 +35,7 @@ export default function LoginCompoent() {
             password: e.target.password.value,
         };
         axios.post('/api/user/login', data)
-            .then((response) => { onLoginSuccess(response.data.result.access, response.data.result.refresh, response.data.result.grant) })
+            .then((response: any) => { onLoginSuccess(response.data.result.access, response.data.result.refresh, response.data.result.grant) })
             .catch((response: any) => {
                 switch (response.response.status) {
                     case 401:
@@ -39,9 +45,9 @@ export default function LoginCompoent() {
             });
     }
 
-    const onClickOauthLoginBtn = async (event: any) => {
+    const onClickOauthLoginBtn = async (event: React.MouseEvent) => {
         window.open(`/api/user/oauth2/login/${event.target.id}`, 'pop01', 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
-        window.parentCallback = (queryParamValue: any) => {
+        window.parentCallback = (queryParamValue: queryParamValueType) => {
             onLoginSuccess(queryParamValue.access, queryParamValue.refresh, queryParamValue.grant);
             router.push('/');
         }

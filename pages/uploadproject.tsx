@@ -2,9 +2,28 @@ import TextEditor from "@/Components/TextEditor/TextEditor"
 import { useState } from "react"
 import axios from "axios";
 
+type rewardtype = {
+    name: string,
+    image: string,
+    description: string,
+    minimumPrice: number,
+}
+type datatype = {
+    request: {
+        name: string,
+        mainImages: string,
+        genres: string,
+        startDateTime: string,
+        endDateTime: string,
+        devNoteUploadCycle: number,
+        devNoteUploadDay: string,
+        rewards: rewardtype,
+    }
+}
+
 export default function Uploadproject() {
 
-    const [data, setData] = useState({
+    const [data, setData] = useState<datatype>({
         request: {
             name: "",
             mainImages: "",
@@ -21,14 +40,13 @@ export default function Uploadproject() {
                 minimumPrice: 1000
             }
         },
-        descriptionFile: ""
     });
     const [dayofweekarr, setDayofWeekarr] = useState(Array.from({ length: 7 }, () => false));
     const [rewardNum, setRewardNum] = useState<Number>(0);
-    const [contents, setContents] = useState<String>();
+    const [contents, setContents] = useState<String>("");
 
 
-    const changeData = (e: any) => {
+    const changeData = (e: React.ChangeEvent) => {
         setData({
             ...data,
             [e.target.name]: e.target.value,
@@ -42,9 +60,9 @@ export default function Uploadproject() {
         })
     }
 
-    const onClickUploadbtn = (event: any) => {
+    const onClickUploadbtn = (event: React.FormEvent) => {
         event.preventDefault();
-        axios.post('/api/project', data)
+        axios.post('/api/project', { ...data, descriptionFile: contents })
             .then()
             .catch();
     }
@@ -53,20 +71,22 @@ export default function Uploadproject() {
         <div className="bg-slate-100">
             <form onSubmit={onClickUploadbtn}>
                 <div>
-                    <label htmlFor="title">제목 </label>
+                    <label htmlFor="name">제목 </label>
                     <input name="name" placeholder="제목" onChange={changeData} />
                 </div>
                 <div>
-                    <label htmlFor="title">펀딩 시작일</label>
-                    <input id="startday" placeholder="" onChange={changeData} />
-                    <label htmlFor="title">펀딩 끝나는날짜</label>
-                    <input id="endday" placeholder="" onChange={changeData} />
+                    <label htmlFor="genres">장르</label>
+                    <input name="genres" placeholder="" onChange={changeData} />
+                    <label htmlFor="startDateTime">펀딩 시작일</label>
+                    <input name="startDateTime" placeholder="" onChange={changeData} />
+                    <label htmlFor="endDateTime">펀딩 끝나는날짜</label>
+                    <input name="endDateTime" placeholder="" onChange={changeData} />
                 </div>
                 <div className="flex gap-4">
-                    <label htmlFor="title">개발 노트 올리는 주기</label>
-                    <input id="endday" type="string" placeholder="" onChange={changeData} />
-                    <label htmlFor="title">개발 노트 올리는 요일</label>
-                    <button id="value" className="bg-slate-300 px-4 rounded-md" onClick={() => onClickDevelopNoteUploadDaybtn("SUNDAY")}>일</button>
+                    <label htmlFor="devNoteUploadCycle">개발 노트 올리는 주기</label>
+                    <input name="devNoteUploadCycle" type="string" placeholder="" onChange={changeData} />
+                    <label>개발 노트 올리는 요일</label>
+                    <button className="bg-slate-300 px-4 rounded-md" onClick={() => onClickDevelopNoteUploadDaybtn("SUNDAY")}>일</button>
                     <button className="bg-slate-300 px-4 rounded-md" onClick={() => onClickDevelopNoteUploadDaybtn("MONDAY")}>월</button>
                     <button className="bg-slate-300 px-4 rounded-md" onClick={() => onClickDevelopNoteUploadDaybtn("TUESDAY")}>화</button>
                     <button className="bg-slate-300 px-4 rounded-md" onClick={() => onClickDevelopNoteUploadDaybtn("WEDNESDAY")}>수</button>

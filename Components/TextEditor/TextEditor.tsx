@@ -22,7 +22,7 @@ const modules = {
 }
 
 
-const TextEditor = (setContents: any) => {
+const TextEditor = (setContents: React.Dispatch<React.SetStateAction<string>>) => {
 
     const onChangeText = (content: string) => {
         setContents(content);
@@ -31,11 +31,11 @@ const TextEditor = (setContents: any) => {
     return (
         <div>
             <ReactQuill onChange={onChangeText} modules={modules} placeholder="내용을 입력하세요." className="h-96" />
-        
+
         </div>
     );
-};
-export default TextEditor;
+    };
+    export default TextEditor;
 
 
 

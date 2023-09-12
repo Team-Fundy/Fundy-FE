@@ -11,7 +11,7 @@ import HotProjectListbar from "./HotProjectListbar";
 export default function HotProjectListComponent() {
     const projectlist = [null, null, null, null, null];
     return (
-        <div className="bg-gray-200">
+        <div className="bg-gray-200 w-4/5">
             <div className="h-24 flex justify-between">
                 <div className="flex place-items-center">
                     <Image src={hoticon} alt="none" className="h-12 " />
@@ -21,7 +21,7 @@ export default function HotProjectListComponent() {
                     <Image src={entirebtn} alt="전체보기" />
                 </button>
             </div>
-            <div className="my-16">
+            <div className="my-4">
                 <Hotbar />
             </div>
             <div className="h-12">

@@ -22,10 +22,10 @@ export default function Header() {
         return (
             <div className="flex gap-8 my-4">
                 <Link href="/auth/login">
-                    <p className="font-['dalmoori']">로그인</p>
+                    <p className="text-black font-['dalmoori']">로그인</p>
                 </Link>
                 < Link href="/auth/login">
-                    <p className="font-['dalmoori']">회원가입</p>
+                    <p className="text-black font-['dalmoori']">회원가입</p>
                 </Link>
             </div>
         )
@@ -35,12 +35,12 @@ export default function Header() {
         return (
             <div className="flex my-4 gap-4">
                 <button onClick={() => onLogout()}>
-                    <p className="font-['dalmoori']">로그아웃</p>
+                    <p className="text-black font-['dalmoori']">로그아웃</p>
                 </button>
-                < Link className="" href="/">
+                < Link className="text-black" href="/">
                     <p className="my-4 font-['dalmoori']">마이페이지</p>
                 </Link>
-                < Link className="" href="/">
+                < Link className="text-black" href="/">
                     <p className="font-['dalmoori']">프로젝트 등록하기</p>
                 </Link>
             </div>

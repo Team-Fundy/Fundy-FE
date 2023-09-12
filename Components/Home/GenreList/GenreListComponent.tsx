@@ -20,10 +20,16 @@ export default function GenreListComponent() {
                     <Image src={hoticon} alt="none" className="h-12 " />
                     <p className="my-3 bold font-['dalmoori']">장르별 프로젝트 </p>
                 </div>
-                <div className="gap-4">
-                    <button onClick={() => setOpenModal(!openModal)}>
-                        <Image className="bg-white" src={gerenBtn} alt="장르" />
-                    </button>
+                <div className="gap-4 flex">
+                    <div className="my-8">
+                        <div className="flex justify-between">
+                            <button></button>
+                            <button onClick={() => setOpenModal(!openModal)}>
+                                <Image className="bg-white" src={gerenBtn} alt="장르" />
+                            </button>
+                        </div>
+                        {openModal ? <GenreSelectListModal selectedGenre={selectedgenre} setSelectedGenre={setSelectedGenre} /> : null}
+                    </div>
                     <button>
                         <Image src={entirebtn} alt=" 전체보기" />
                     </button>
@@ -32,9 +38,6 @@ export default function GenreListComponent() {
             <div className="my-16">
             </div>
             <GenreList />
-            <div className="h-12">
-                {openModal ? <GenreSelectListModal selectedGenre={selectedgenre} setSelectedGenre={setSelectedGenre} /> : null}
-            </div>
         </div >
     )
 }

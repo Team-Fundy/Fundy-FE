@@ -1,6 +1,8 @@
+import { useRef } from "react";
+
 type GenreSelectListModalType = {
-    selectedGenre: Array<string> | undefined;
-    setSelectedGenre: React.Dispatch<React.SetStateAction<Array<string>>> | undefined;
+    selectedGenre: Array<string>;
+    setSelectedGenre: React.Dispatch<React.SetStateAction<Array<string>>>;
 }
 
 export default function GenreSelectListModal({ selectedGenre, setSelectedGenre }: GenreSelectListModalType) {
@@ -22,8 +24,8 @@ export default function GenreSelectListModal({ selectedGenre, setSelectedGenre }
         console.log(event.target.className)
     }
     return (
-        <div className="bg-white shadow-md text-center">
-            <p className="py-8 font-bold">카테고리</p>
+        <div className="bg-white shadow-md text-center px-16 py-4 relative z-50">
+            <p className="py-4 font-bold">카테고리</p>
             <div className="flex gap-4 place-content-center">
                 {selectedGenre.map((item: string) => (
                     <div className="flex bg-violet-500 gap-2 rounded-full px-4 text-white">

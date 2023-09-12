@@ -16,7 +16,9 @@ export default function DevelopNoteComponent() {
                     <Image src={entirebtn} alt="전체보기" />
                 </button>
             </div>
-            <DevelopNoteDaybar />
+            <div className="my-4">
+                <DevelopNoteDaybar />
+            </div>
             <DevelopNoteList />
             <div className="h-16"></div>
         </div >

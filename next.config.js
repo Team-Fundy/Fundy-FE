@@ -43,8 +43,10 @@ const nextConfig = {
         source: '/api/user/logout',
         destination: 'http://localhost:8080/api/user/logout',
       },
-
-
+      {
+        source: '/api/user/creator',
+        destination: 'http://localhost:8080/api/user/creator',
+      },
     ];
   },
   async redirects() {

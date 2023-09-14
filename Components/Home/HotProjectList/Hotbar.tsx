@@ -23,6 +23,12 @@ export default function Hotbar() {
             <Image src={hoticon2} alt="" />
             <Image src={hoticon2} alt="" />
             <Image src={hoticon2} alt="" />
+            <Image src={hoticon2} alt="" />
+            <Image src={hoticon2} alt="" />
+            <Image src={hoticon2} alt="" />
+            <Image src={hoticon2} alt="" />
+            <Image src={hoticon2} alt="" />
+            <Image src={hoticon2} alt="" />
         </div>
     )
 }

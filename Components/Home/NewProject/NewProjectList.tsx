@@ -27,7 +27,7 @@ export default function NewProjectList() {
             <div className="grid grid-cols-4 my-4 gap-4">
                 {
                     projectlist.map((item, index) => (
-                        <NewProjectItem />
+                        <NewProjectItem key={index} />
                     ))
                 }
             </div>

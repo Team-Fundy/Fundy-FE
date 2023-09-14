@@ -28,7 +28,7 @@ export default function GenreList() {
             <div className="grid grid-cols-4 my-4 gap-4">
                 {
                     projectlist.map((item, index) => (
-                        <GenreListItem />
+                        <GenreListItem key={index} />
                     ))
                 }
             </div>

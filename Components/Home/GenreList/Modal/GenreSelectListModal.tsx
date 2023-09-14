@@ -15,7 +15,6 @@ export default function GenreSelectListModal({ selectedGenre, setSelectedGenre }
         if (selectedGenre.filter((element: string) => element === item).length > 0) {
             setSelectedGenre(selectedGenre.filter((it: string) => it !== item));
             event.target.className = "text-slate-300";
-
         }
         else {
             setSelectedGenre((its: Array<string>) => [...its, item]);
@@ -23,6 +22,11 @@ export default function GenreSelectListModal({ selectedGenre, setSelectedGenre }
         }
         console.log(event.target.className)
     }
+    function onClickGenreRemoveBtn(item: string, event: any) {
+        event.target.parentElement.querySelector('p').className = event.target.className = "text-slate-300";
+        setSelectedGenre(selectedGenre.filter((it: string) => it !== item));
+    }
+
     return (
         <div className="bg-white shadow-md text-center px-16 py-4 relative z-50">
             <p className="py-4 font-bold">카테고리</p>
@@ -30,22 +34,23 @@ export default function GenreSelectListModal({ selectedGenre, setSelectedGenre }
                 {selectedGenre.map((item: string) => (
                     <div className="flex bg-violet-500 gap-2 rounded-full px-4 text-white">
                         <p className="">{item}</p>
-                        <button onClick={() => onClickGenreSelectBtn(item, null)}>X</button>
+                        <button onClick={(event: React.MouseEvent) => onClickGenreRemoveBtn(item, event)}>X</button>
                     </div>))}
             </div>
             <div className="flex place-content-center gap-16 my-8">
                 <div id="cataogry">
-                    {genreCategory.map((item, index) => (<div><button className="text-slate-300" onClick={(e: React.MouseEvent) => onClickGenreSelectBtn(item, e)}>{item}</button></div>))}
+                    {genreCategory.map((item, index) => (<div><button className="text-slate-300" name={item} onClick={(e: React.MouseEvent) => onClickGenreSelectBtn(item, e)}>{item}</button></div>))}
                 </div>
                 <div className="border-l-2 w-2 h-80"></div>
                 <div id="view">
-                    {person_view.map((item, index) => (<div><button className="text-slate-300" onClick={(e: React.MouseEvent) => onClickGenreSelectBtn(item, e)}>{item}</button></div>))}
+                    {person_view.map((item, index) => (<div><button className="text-slate-300" name={item} onClick={(e: React.MouseEvent) => onClickGenreSelectBtn(item, e)}>{item}</button></div>))}
                 </div>
                 <div className="border-l-2 w-2 h-80"></div>
                 <div id="mood">
-                    {mood.map((item, index) => (<div><button className="text-slate-300" onClick={(e: React.MouseEvent) => onClickGenreSelectBtn(item, e)}>{item}</button></div>))}
+                    {mood.map((item, index) => (<div><button className="text-slate-300" name={item} onClick={(e: React.MouseEvent) => onClickGenreSelectBtn(item, e)}>{item}</button></div>))}
                 </div>
             </div>
         </div>
     );
 }
+

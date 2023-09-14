@@ -7,7 +7,7 @@ export default function DevelopNoteList() {
         <div className="flex my-4 gap-4">
             {
                 projectlist.map((item, index) => (
-                    <DevelopNoteItem />
+                    <DevelopNoteItem key={index} />
                 ))
             }
         </div>

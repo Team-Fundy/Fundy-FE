@@ -10,7 +10,7 @@ export default function HotProjectListComponent() {
 
     return (
         <div className="bg-gray-200">
-            <div className="h-24 flex justify-evenly">
+            <div className="h-24 flex justify-around">
                 <div className="flex place-items-center">
                     <Image src={hoticon} alt="none" className="h-12 " />
                     <p className="my-3 bold font-['dalmoori']">핫 프로젝트 리스트 </p>

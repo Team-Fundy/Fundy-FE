@@ -3,10 +3,14 @@ import entirebtn from "@/public/home/button/entirebutton.png"
 import Image from "next/image";
 import DevelopNoteDaybar from "./DevelopNoteDaybar";
 import DevelopNoteList from "./DevelopNoteList";
+import { useState } from "react";
 
 export default function DevelopNoteComponent() {
+
+    const [selectedDay, setSelectedDay] = useState<string>("null");
+
     return (
-        <div className="bg-gray-200 w-4/5 content-center">
+        <div className="bg-gray-200 content-center">
             <div className="w-full h-24 flex justify-between">
                 <div className="w-full flex place-items-center">
                     <Image src={hoticon} alt="none" className="h-12 " />
@@ -17,7 +21,7 @@ export default function DevelopNoteComponent() {
                 </button>
             </div>
             <div className="my-4">
-                <DevelopNoteDaybar />
+                <DevelopNoteDaybar selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
             </div>
             <DevelopNoteList />
             <div className="h-16"></div>

@@ -13,7 +13,7 @@ export type HotProjectItemDataType = {
 
 export default function HotProjectListbar() {
     const projectlist = [null, null, null, null, null];
-    const [spotlightedProject, setSportlightedProject] = useState<Number>(1);
+    const [spotlightedProject, setSportlightedProject] = useState<number>(1);
     const [projectClassName, setProejctClassName] = useState<Array<string>>([]);
     const [itemdatas, setItemdatas] = useState<Array<HotProjectItemDataType>>([{ percentage: 10324, money: 164084, name: "TURN DUNGEON", nickname: "도미닉", genre: "ROGLIKE" }]);
 
@@ -23,6 +23,13 @@ export default function HotProjectListbar() {
             setProejctClassName(arr);
         }
     }, [spotlightedProject]);
+
+    useEffect(() => {
+        const spotlight = setInterval(() => {
+            setSportlightedProject(spotlightedProject => spotlightedProject === projectlist.length ? 1 : spotlightedProject + 1);
+        }, 5000);
+        return () => clearInterval(spotlight);
+    }, []);
 
     return (
         <div className="w-full bg-gray-200">

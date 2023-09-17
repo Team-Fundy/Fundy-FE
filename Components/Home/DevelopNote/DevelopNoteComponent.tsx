@@ -11,7 +11,7 @@ export default function DevelopNoteComponent() {
 
     return (
         <div className="bg-gray-200 content-center">
-            <div className="w-full h-24 flex justify-between">
+            <div className="h-24 flex justify-around">
                 <div className="w-full flex place-items-center">
                     <Image src={hoticon} alt="none" className="h-12 " />
                     <p className="my-3 bold font-['dalmoori']">개발노트 </p>

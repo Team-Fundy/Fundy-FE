@@ -97,6 +97,9 @@ export default function projectinform() {
                 </div >
 
             </div >
+            <div className="border-t-8 w-full h-24 border-slate-200 flex gap-48 place-content-center">
+                <button>개발노트</button>
+            </div>
             <div className="border-8 w-full h-24 border-slate-200 flex gap-48 place-content-center">
                 <button>소개</button>
                 <button>예산</button>
@@ -104,6 +107,10 @@ export default function projectinform() {
                 <button>팀소개</button>
                 <button>문의 및 정책</button>
             </div>
-        </div>
+            <div className="w-full h-96 flex">
+                <div className="w-full h-full"></div>
+                <div className="w-2/5 h-96 border-2 border-black"></div>
+            </div>
+        </div >
     )
 }

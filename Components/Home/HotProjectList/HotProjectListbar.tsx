@@ -33,7 +33,7 @@ export default function HotProjectListbar() {
 
     return (
         <div className="w-full bg-gray-200">
-            <div className="flex gap-4">
+            <div className="flex gap-4 overflow-hidden">
                 {
                     projectlist.map((item, index) => <HotProjectItem classname={projectClassName[index]} key={index} projectimg={tempimage} itemdata={itemdatas[0]} />)
                 }

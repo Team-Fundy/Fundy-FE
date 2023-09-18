@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import fundyicon from '../public/home/fundyicon.png'
+import fundyicon from '../public/header/fundyicon.png'
+import searchbtn from '../public/header/searchbtn.png'
 import frame from '../public/home/frame.png'
 import { loginState } from '@/recoil/recoilstate'
 import { useRecoilState } from 'recoil'
@@ -47,15 +48,27 @@ export default function Header() {
         )
     }
     return (
-        <header className="w-full h-16 bg-slate-100 flex place-content-center gap-96">
-            <Link className="" href="/">
-                <Image src={fundyicon} alt="logo" />
-            </Link>
+        <header className="w-full h-16 bg-slate-100 flex justify-around">
+            <div className="flex gap-24">
+                <Link className="" href="/">
+                    <Image src={fundyicon} alt="logo" />
+                </Link>
+                <div className="font-['dalmoori'] flex gap-12 my-auto">
+                    <Link href="/">
+                        <p>장르</p>
+                    </Link>
+                    <Link href="/">
+                        <p>인기</p>
+                    </Link>
+                    <Link href="/">
+                        <p>신규</p>
+                    </Link>
+                </div>
+            </div>
             <div className='flex gap-16'>
                 <div className="h-12 my-4">
-                    <Image src={frame}
+                    <Image src={searchbtn}
                         alt="none"
-                        width={300}
                         height="30" />
                 </div>
                 {login ? <OnLogin /> : <OnLogoff />}

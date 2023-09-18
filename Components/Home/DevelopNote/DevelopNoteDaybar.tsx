@@ -13,13 +13,15 @@ export default function DevelopNoteDaybar({ selectedDay, setSelectedDay }: Devel
     const [dayclassName, setDayClassName] = useState<Array<string>>([]);
 
     useEffect(() => {
+        if (!dayclassName)
+            return;
         let arr;
         if (selectedDay !== "null")
             arr = Array.from({ length: 7 }, (item, index) => dayoftheweek[index] === selectedDay ? "w-full h-full object-cover brightness-100" : "w-full h-full object-cover brightness-75")
         else
             arr = Array.from({ length: 7 }, () => "w-full h-full object-cover brightness-100")
         setDayClassName(arr);
-    }, [dayclassName]);
+    }, [selectedDay]);
 
     function onClickDayBtn(item: string) {
         if (selectedDay === item)

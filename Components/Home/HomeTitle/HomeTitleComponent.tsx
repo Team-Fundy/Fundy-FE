@@ -19,7 +19,7 @@ export default function HomeTitleComponent() {
     }
     return (
         <div className="w-full">
-            <Image src={hometitleImage} alt="" />
+            <Image src={hometitleImage} alt="" priority />
 
 
 

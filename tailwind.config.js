@@ -7,6 +7,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+
+      keyframes: {
+        intro: {
+          from: { transform: "rotateY(0deg) scale(2.0)" },
+          to: { transform: "rotateY(360deg) scale(1.0)" },
+        },
+      },
+      animation: {
+        intro: "intro 2s ease-in-out",
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

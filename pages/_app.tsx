@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import Header from "@/Components/Header"
+import Header from "@/Components/Header/Header"
 import Sidebar from "@/Components/Sidebar"
 //import Footer from '@/Components/footer';
 import { RecoilRoot } from "recoil"

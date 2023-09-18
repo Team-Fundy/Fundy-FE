@@ -1,16 +1,19 @@
+import axios from "axios";
 import Link from 'next/link'
 import Image from 'next/image'
-import fundyicon from '../public/header/fundyicon.png'
-import searchbtn from '../public/header/searchbtn.png'
-import frame from '../public/home/frame.png'
+import { useState } from 'react'
+
+import fundyicon from '../../public/header/fundyicon.png'
+import searchbtn from '../../public/header/searchbtn.png'
 import { loginState } from '@/recoil/recoilstate'
+import SearchComponent from "./Searchcomponent"
 import { useRecoilState } from 'recoil'
-import axios from "axios";
 
 export default function Header() {
 
-    //  const [login, setLoginState] = useRecoilState(loginState);
+    //const [login, setLoginState] = useRecoilState(loginState);
     const login = false;
+    const [openSearch, setOpenSearch] = useState<boolean>(false);
 
     const onLogout = () => {
         // setLoginState(false);
@@ -48,31 +51,34 @@ export default function Header() {
         )
     }
     return (
-        <header className="w-full h-16 bg-slate-100 flex justify-around">
-            <div className="flex gap-24">
-                <Link className="" href="/">
-                    <Image src={fundyicon} alt="logo" />
-                </Link>
-                <div className="font-['dalmoori'] flex gap-12 my-auto">
-                    <Link href="/">
-                        <p>장르</p>
+        <header>
+            <div className="w-full h-16 bg-white flex justify-around">
+                <div className="flex gap-24">
+                    <Link className="" href="/">
+                        <Image src={fundyicon} alt="logo" />
                     </Link>
-                    <Link href="/">
-                        <p>인기</p>
-                    </Link>
-                    <Link href="/">
-                        <p>신규</p>
-                    </Link>
+                    <div className="font-['dalmoori'] flex gap-12 my-auto">
+                        <Link href="/">
+                            <p>장르</p>
+                        </Link>
+                        <Link href="/">
+                            <p>인기</p>
+                        </Link>
+                        <Link href="/">
+                            <p>신규</p>
+                        </Link>
+                    </div>
+                </div>
+                <div className='flex gap-16'>
+                    <button onClick={() => setOpenSearch(!openSearch)} className="h-12 my-1">
+                        <Image src={searchbtn}
+                            alt="none"
+                            height="35" />
+                    </button>
+                    {login ? <OnLogin /> : <OnLogoff />}
                 </div>
             </div>
-            <div className='flex gap-16'>
-                <div className="h-12 my-4">
-                    <Image src={searchbtn}
-                        alt="none"
-                        height="30" />
-                </div>
-                {login ? <OnLogin /> : <OnLogoff />}
-            </div>
+            {openSearch ? <SearchComponent /> : null}
         </header >
     )
 }   

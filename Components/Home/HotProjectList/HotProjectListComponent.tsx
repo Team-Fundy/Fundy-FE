@@ -22,12 +22,9 @@ export default function HotProjectListComponent() {
             <div className="my-4">
                 <Hotbar />
             </div>
-            <div className="h-12">
-            </div>
             <HotProjectListbar />
             <div className="h-12">
             </div>
-
         </div >
     )
 }

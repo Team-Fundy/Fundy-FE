@@ -32,10 +32,10 @@ export default function HotProjectListbar() {
     }, []);
 
     return (
-        <div className="z-0 w-full bg-gray-200">
-            <div className="flex gap-4 overflow-hidden">
+        <div className="w-full bg-gray-200">
+            <div className="flex gap-4 overflow-hidden  pt-16">
                 {
-                    projectlist.map((item, index) => <HotProjectItem classname={projectClassName[index]} key={index} projectimg={tempimage} itemdata={itemdatas[0]} />)
+                    projectlist.map((item, index) => <HotProjectItem key={index} highlight={spotlightedProject === index + 1 ? true : false} projectimg={tempimage} itemdata={itemdatas[0]} rank={index} />)
                 }
             </div>
         </div >

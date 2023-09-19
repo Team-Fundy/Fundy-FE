@@ -22,6 +22,7 @@ export default function HotProjectItem({ projectimg, itemdata, rank, highlight }
             setClassName("brightness-100");
         else
             setClassName("brightness-75");
+
     }, [highlight]);
     //   return "brightness-100" : "brightness-75";
     return (
@@ -29,7 +30,7 @@ export default function HotProjectItem({ projectimg, itemdata, rank, highlight }
             <Link href="/projectinform" >
                 <div className="relative z-0">
                     <Image src={board} alt="" width="500" height="300" />
-                    <div className="absolute bottom-10 left-8 z-10">
+                    <div className="absolute bottom-10 left-8 z-10 py-8">
                         <Image src={projectimg} alt="" width="300" height="200" />
                         <div className="flex gap-5  my-2">
                             <p className="text-2xl font-bold texts-violet-600">{itemdata.percentage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}% 달성</p>

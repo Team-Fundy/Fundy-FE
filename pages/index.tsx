@@ -20,7 +20,7 @@ import dynamic from "next/dynamic"
 export default function Home() {
 
   function Dotline() {
-    return <Image className="my-4 place-content-center" alt="" src={dotline} style={{ width: "auto", height: "auto" }} />
+    return <Image className="my-4 place-content-center" alt="" src={dotline} />
 
   }
 

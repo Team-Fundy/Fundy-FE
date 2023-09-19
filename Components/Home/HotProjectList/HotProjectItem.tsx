@@ -16,10 +16,10 @@ export default function HotProjectItem({ classname, projectimg, itemdata }: HotP
             <Link href="/projectinform" >
                 <div className="relative z-0">
                     <Image src={board} alt="" width="500" height="300" />
-                    <div className="absolute bottom-10 left-8">
+                    <div className="absolute bottom-10 left-8 z-10">
                         <Image src={projectimg} alt="" width="300" height="200" />
                         <div className="flex gap-5  my-2">
-                            <p className="text-2xl font-bold text-violet-600">{itemdata.percentage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}% 달성</p>
+                            <p className="text-2xl font-bold texts-violet-600">{itemdata.percentage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}% 달성</p>
                             <p className="text-2xl font-bold text-violet-600">{itemdata.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</p>
                         </div>
                         <p className="font-['dalmoori'] text-xl">{itemdata.name}</p>

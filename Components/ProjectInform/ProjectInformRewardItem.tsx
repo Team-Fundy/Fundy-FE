@@ -21,7 +21,7 @@ export default function ProjectInformRewardItem({ rewardtitle, rewardimg, projec
         )
     }
     return (
-        <div className="border-8 border-gray-200 w-[46rem]">
+        <div className="border-8 border-gray-200 w-[46rem] h-fit py-4 my-4">
             <div className="mx-auto">
                 <div className="flex gap-4 py-8 px-16">
                     <Image src={rewardimg} alt="" className="w-32 h-32 border-4 border-gray-400" />

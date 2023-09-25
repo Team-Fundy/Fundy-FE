@@ -9,7 +9,7 @@ type ProjectInformTeamCardType = {
 
 export default function ProjectInformTeamCard({ teamname, projectimg, projectdetail }: ProjectInformTeamCardType) {
     return (
-        <div className="border-8 border-gray-200 w-[46rem]">
+        <div className="border-8 border-gray-200 w-[46rem] h-fit py-4 mb-4">
             <div className="flex gap-4 py-8 mx-auto px-16">
                 <Image src={projectimg} alt="" className="w-32 h-32 border-4 border-gray-400" />
                 <div>

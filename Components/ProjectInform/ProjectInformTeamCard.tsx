@@ -2,21 +2,21 @@ import Image, { StaticImageData } from "next/image"
 import messageicon from "@/public/projectinform/messageicon.png"
 
 type ProjectInformTeamCardType = {
-    projectname: string,
+    teamname: string,
     projectimg: StaticImageData,
     projectdetail: string,
 }
 
-export default function ProjectInformTeamCard({ projectname, projectimg, projectdetail }: ProjectInformTeamCardType) {
+export default function ProjectInformTeamCard({ teamname, projectimg, projectdetail }: ProjectInformTeamCardType) {
     return (
-        <div className="border-8 border-gray-200 w-fit">
+        <div className="border-8 border-gray-200 w-[46rem]">
             <div className="flex gap-4 py-8 mx-auto px-16">
                 <Image src={projectimg} alt="" className="w-32 h-32 border-4 border-gray-400" />
                 <div>
-                    <p className="font-bold text-2xl py-4">{projectname}</p>
+                    <p className="font-bold text-2xl py-4">{teamname}</p>
                     <p className="text-purple-500">4명의 핀더가 관심을 가지고 있습니다.</p>
                 </div>
-                <button className="font-['dalmoori'] text-white bg-purple-600 px-12 h-12 my-4 py-auto ml-16">팔로우하기 +</button>
+                <button className="font-['dalmoori'] text-white bg-purple-600 px-12 h-12 my-4 py-auto ml-12 text-sm">팔로우하기 +</button>
             </div>
             <p className="mx-12 px-12 w-96">{projectdetail}</p>
 

@@ -5,9 +5,14 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+
   theme: {
+
     extend: {
 
+      width: {
+        abc: '32rem',
+      },
       keyframes: {
         intro: {
           from: { transform: "rotateY(0deg) scale(2.0)" },

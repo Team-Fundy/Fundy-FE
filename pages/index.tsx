@@ -1,10 +1,4 @@
-import TextEditor from "../Components/TextEditor/TextEditor"
-import LoginCompoent from "@/Components/Auth/LoginComponent"
-import SignUpComponent from "@/Components/Auth/SignUpComponent"
 import HomeTitleComponent from "@/Components/Home/HomeTitle/HomeTitleComponent"
-import ProjectUploadComponent from "@/Components/Home/ProjectUploadComponent"
-import GenreSelectListModal from "@/Components/Home/GenreList/Modal/GenreSelectListModal"
-
 
 import Image from "next/image"
 import dotline from "@/public/home/dotline.png"

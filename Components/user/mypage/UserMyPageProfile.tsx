@@ -5,7 +5,7 @@ import Image from "next/image"
 
 export default function UserMyPageProfile() {
     let followingcreator = 2;
-    let likedproject = 2;
+    let likedproject = 4;
 
     function onClickEditBtn() {
 

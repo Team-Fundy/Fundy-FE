@@ -7,7 +7,7 @@ type UserMyPageUpbartype = {
 export default function UserMyPageUpbar({ setOption }: UserMyPageUpbartype) {
 
     return (
-        <div className="flex font-semibold font-sm gap-8 w-[70rem] h-16 bg-white pl-24">
+        <div className="flex font-semibold font-sm gap-8 w-[74rem] h-16 bg-white pl-16">
             <button onClick={() => setOption(1)}>좋아요 표시한 프로젝트</button>
             <button onClick={() => setOption(2)}>최근에 본 프로젝트</button>
             <button onClick={() => setOption(3)}>팔로우 한 크리에이터</button>

@@ -1,5 +1,6 @@
 import UserMyPageProfile from "@/Components/user/mypage/UserMyPageProfile";
 import UserMyPageUpbar from "@/Components/user/mypage/userMyPageUpbar";
+import UserMyPageContentBoard from "@/Components/user/mypage/UserMyPageContentBoard";
 import { useState } from "react";
 
 
@@ -9,7 +10,10 @@ export default function Usermypage() {
     return (<div>
         <div className="flex justify-center gap-4 my-6">
             <UserMyPageProfile />
-            <UserMyPageUpbar setOption={setSelectedOption} />
+            <div>
+                <UserMyPageUpbar setOption={setSelectedOption} />
+                <UserMyPageContentBoard selectedoption={selectedOption} />
+            </div>
         </div>
     </div>);
 }

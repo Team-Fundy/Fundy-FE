@@ -13,6 +13,9 @@ module.exports = {
       width: {
         abc: '32rem',
       },
+      colors: {
+        'white-op5': 'rgba(255, 255, 255, 0)',
+      },
       keyframes: {
         intro: {
           from: { transform: "rotateY(0deg) scale(2.0)" },

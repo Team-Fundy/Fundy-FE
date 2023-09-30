@@ -5,17 +5,20 @@ import { useState } from "react";
 import Image from "next/image";
 
 
+export async function getServerSideProps() {
+    return { props: { layout: "creatorpage", } };
+}
+
 export default function Creatormypage() {
     const [selectedOption, setSelectedOption] = useState<number>(1);
-
+     
     return (
         <div className="relative z-1">
-            <Image src={tempbg} alt="" className="h-[26rem]" />
+            <Image src={tempbg} alt="" className="h-[26rem] relative z-0 -top-16" />
 
             <div className="flex justify-center gap-4 my-6">
-                <div className="relative z-2 -top-48">
-                    <CreatorMyPageProfile />
-                </div>
+
+                <CreatorMyPageProfile />
                 <CreatorMyPageContentBoard />
             </div>
         </div>);

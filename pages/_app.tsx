@@ -8,13 +8,28 @@ import { RecoilRoot } from "recoil"
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
+
+function getHeaderMode(page: string) {
+  switch (page) {
+    case "creatorpage":
+      return "Opacity0";
+      break;
+    default:
+      return "Normal"
+
+  }
+}
+
+
 export default function App({ Component, pageProps: { session, ...pageProps }, }: AppProps) {
+
+  const headerMode = getHeaderMode(pageProps.layout);
   return (
     <>
       <RecoilRoot>
         <div className="w-screen h-screen flex">
           <div className="w-screen">
-            <Header />
+            <Header mode={headerMode} />
             <Component {...pageProps}></Component>
           </div>
         </div>

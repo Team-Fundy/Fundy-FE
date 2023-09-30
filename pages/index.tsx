@@ -11,6 +11,8 @@ const GenreListComponent = dynamic(() => import("@/Components/Home/GenreList/Gen
 
 import dynamic from "next/dynamic"
 
+
+
 export default function Home() {
 
   function Dotline() {

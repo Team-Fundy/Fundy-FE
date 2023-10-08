@@ -1,7 +1,12 @@
 import { useRouter } from "next/router";
-import { useState } from 'react';
+import loginbackgroundimg from "@/public/login/loginbackground.png"
+import navericon from "@/public/login/navericon.png"
+import googleicon from "@/public/login/googleicon.png"
+import tempbg from "@/public/login/loginbg.png"
+
 import { accesstokenState, refreshtokenState, loginState } from '@/recoil/recoilstate'
 import { useRecoilState } from "recoil";
+import Image from "next/image";
 import axios from "axios";
 
 type queryParamValueType = {
@@ -59,25 +64,34 @@ export default function LoginCompoent() {
 
 
     return (
-        <div>
-            <div className="flex gap-4">
-                <button id="kakao" className="text-black" onClick={onClickOauthLoginBtn}>카카오 로그인 </button>
-                <button id="naver" className="text-black" onClick={onClickOauthLoginBtn}>네이버 로그인 </button>
-                <button id="google" className="text-black" onClick={onClickOauthLoginBtn}>구글 로그인 </button>
-            </div>
-            <form className="border-2 border-black w-96" onSubmit={onClickEmailLoginBtn}>
-                <h1 className="text-center">로그인 </h1>
-                <div>
-                    <label>아이디</label>
-                    <input type="email" name="email" />
+        <div className="flex">
+            <div className="relative z-0">
+                <Image className="" src={loginbackgroundimg} alt="" />
+                <div className="absolute z-2 top-16 left-[7.5rem]">
+                    <div className="grid grid-rows-4 gap-4">
+                        <h1 className="text-center font-semibold text-2xl my-2 text-[#685BFE]">로그인 </h1>
+                        <button id="google" className="text-black" onClick={onClickOauthLoginBtn}><div className="w-96 py-4 bg-white rounded-full flex gap-2 justify-center"><Image src={googleicon} alt="" /><p>Sign in with Google</p></div> </button>
+                        <button id="kakao" className="text-black" onClick={onClickOauthLoginBtn}><div className="w-96 py-4 bg-white rounded-full flex gap-2 justify-center"><Image src={navericon} alt="" /><p>Sign in with KaKao</p></div> </button>
+                        <button id="naver" className="text-black" onClick={onClickOauthLoginBtn}><div className="w-96 py-4 bg-white rounded-full flex gap-2 justify-center"><Image src={navericon} alt="" /><p>Sign in with Naver</p></div> </button>
+                    </div>
+                    <form className="my-4" onSubmit={onClickEmailLoginBtn}>
+                        <div className="grid gap-2">
+                            <label className="text-xl text-black">Email</label>
+                            <input className="border-b-2 border-black bg-inherit pb-2" type=" email" name="email" placeholder="이메일 입력" />
+                            <label className="text-xl text-black">Password</label>
+                            <input className="border-b-2 border-black bg-inherit pb-2" type="password" name="password" placeholder="비밀번호 입력" />
+                        </div>
+                        <div className="flex gap-4 my-2 text-gray-500">
+                            <button className="" onClick={onClickSignUpBtn}> 회원가입</button>
+                            <div className="border-l-2 border-gray-400 h-4 mt-1"></div>
+                            <button className="" onClick={onClickSignUpBtn}> 아이디 찾기</button>
+                            <div className="border-l-2 border-gray-400 h-4 mt-1"></div>
+                            <button className="" onClick={onClickSignUpBtn}> 비밀번호 찾기</button>
+                        </div>
+                        <button className="border-2 bg-[#685BFE] w-96 rounded-lg py-4 my-8 font-semibold text-white text-xl" type="submit">로그인</button>
+                    </form>
                 </div>
-                <div>
-                    <label>비밀번호  </label>
-                    <input type="password" name="password" />
-                </div>
-                <button className="border-2 bg-slate-300" onClick={onClickSignUpBtn}> 회원가입</button>
-                <button className="border-2 bg-slate-300" type="submit">로그인</button>
-            </form>
-        </div >
+            </div >
+        </div>
     )
 }

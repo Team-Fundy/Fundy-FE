@@ -1,6 +1,5 @@
 import devnotebg from "@/public/developnote/devnotebg.png"
 import directionbtn from "@/public/home/button/directionbutton.png"
-import temp from "@/public/home/temp/image 18 (1).png"
 import Image from "next/image"
 import { useState } from "react"
 import DevNoteItem from "@/Components/DevNote/DevNoteItem"
@@ -28,6 +27,7 @@ export default function DevelopNote() {
         <div className="relative z-1 w-full h-full">
             <Image src={devnotebg} alt="" className="bg-cover relative z-0 -top-16 w-screen h-screen" />
             <div className="absolute z-2">
+                <DevNoteList />
             </div >
             <div className="relative z-5 bottom-72">
                 <div className="flex justify-around">

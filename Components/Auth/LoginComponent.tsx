@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import loginbackgroundimg from "@/public/login/loginbackground.png"
 import navericon from "@/public/login/navericon.png"
 import googleicon from "@/public/login/googleicon.png"
-import tempbg from "@/public/login/loginbg.png"
 
 import { accesstokenState, refreshtokenState, loginState } from '@/recoil/recoilstate'
 import { useRecoilState } from "recoil";
@@ -62,9 +61,8 @@ export default function LoginCompoent() {
         router.push("/auth/signup");
     }
 
-
     return (
-        <div className="flex">
+        <div className="flex w-fit h-fit mx-auto my-28">
             <div className="relative z-0">
                 <Image className="" src={loginbackgroundimg} alt="" />
                 <div className="absolute z-2 top-16 left-[7.5rem]">

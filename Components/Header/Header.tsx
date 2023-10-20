@@ -79,6 +79,9 @@ export default function Header({ mode }: Headertype) {
             </div>
         )
     }
+
+    
+
     return (
         <header>
             <div className={`w-full h-16 ${bgColor} ${textcolor} flex justify-around relative z-10 `}>

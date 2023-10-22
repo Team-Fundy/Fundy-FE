@@ -17,7 +17,7 @@ export default function NewProjectList() {
         }
         return (
             <button onClick={() => setNowPage(num.num)}>
-                <div className="w-4 h-4 bg-white rounded-full"></div>
+                <div className="w-4 h-4 bg-slate-300 rounded-full"></div>
             </button>
         );
     }
@@ -37,6 +37,7 @@ export default function NewProjectList() {
                 <Dot num={3} />
                 <Dot num={4} />
                 <Dot num={5} />
+                <Dot num={6} />
             </div>
         </div>
     );

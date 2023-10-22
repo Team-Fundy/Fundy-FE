@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-import hoticon from "@/public/home/icon/hoticon.png"
+import genreIcon from "@/public/home/icon/genreIcon.png"
 import entirebtn from "@/public/home/button/entirebutton.png"
 import gerenBtn from "@/public/home/button/gernebutton.png"
 import GenreSelectListModal from "./Modal/GenreSelectListModal";
@@ -17,7 +17,7 @@ export default function GenreListComponent() {
         <div className="bg-gray-200">
             <div className="h-24 flex justify-between">
                 <div className="flex place-items-center">
-                    <Image src={hoticon} alt="none" className="h-12 " />
+                    <Image src={genreIcon} alt="none" className="h-12 " />
                     <p className="my-3 bold font-['dalmoori']">장르별 프로젝트 </p>
                 </div>
                 <div className="gap-4 flex">

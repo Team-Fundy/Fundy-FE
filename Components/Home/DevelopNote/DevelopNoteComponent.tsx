@@ -1,4 +1,4 @@
-import hoticon from "@/public/home/icon/hoticon.png"
+import developicon from "@/public/home/icon/developIcon.png"
 import entirebtn from "@/public/home/button/entirebutton.png"
 import Image from "next/image";
 import DevelopNoteDaybar from "./DevelopNoteDaybar";
@@ -10,10 +10,10 @@ export default function DevelopNoteComponent() {
     const [selectedDay, setSelectedDay] = useState<string>("null");
 
     return (
-        <div className="bg-gray-200 content-center">
+        <div className="bg-gray-200 w-4/5">
             <div className="h-24 flex justify-around">
                 <div className="w-full flex place-items-center">
-                    <Image src={hoticon} alt="none" className="h-12 " />
+                    <Image src={developicon} alt="none" className="h-12 " />
                     <p className="my-3 bold font-['dalmoori']">개발노트 </p>
                 </div>
                 <button>

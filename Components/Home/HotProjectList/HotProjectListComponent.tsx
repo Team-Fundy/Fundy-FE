@@ -1,4 +1,4 @@
-import hoticon from "@/public/home/icon/hoticon.png"
+import hoticon from "@/public/home/icon/hotprojectIcon.png"
 import entirebtn from "@/public/home/button/entirebutton.png"
 import Hotbar from "./Hotbar";
 import HotProjectListbar from "./HotProjectListbar";
@@ -9,8 +9,8 @@ export default function HotProjectListComponent() {
 
 
     return (
-        <div className="bg-gray-200">
-            <div className="h-24 flex justify-around">
+        <div className="bg-gray-200 w-4/5">
+            <div className="h-24 flex justify-between">
                 <div className="flex place-items-center">
                     <Image src={hoticon} alt="none" className="h-12 " />
                     <p className="my-3 bold font-['dalmoori']">핫 프로젝트 리스트 </p>

@@ -14,6 +14,7 @@ module.exports = {
         abc: '32rem',
       },
       colors: {
+        'purpleblue': '#685BFE',
         'white-op5': 'rgba(255, 255, 255, 0)',
       },
       keyframes: {

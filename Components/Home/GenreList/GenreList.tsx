@@ -18,7 +18,7 @@ export default function GenreList() {
         }
         return (
             <button onClick={() => setNowPage(num.num)}>
-                <div className="w-4 h-4 bg-white rounded-full"></div>
+                <div className="w-4 h-4 bg-slate-300 rounded-full"></div>
             </button>
         );
     }

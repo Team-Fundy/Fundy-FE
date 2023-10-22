@@ -16,7 +16,7 @@ import dynamic from "next/dynamic"
 export default function Home() {
 
   function Dotline() {
-    return <Image className="my-4 place-content-center" alt="" src={dotline} />
+    return <div className="w-full h-2 bg-slate-100"></div>
 
   }
 

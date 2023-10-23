@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { useRouter } from "next/router";
+import loginbackgroundimg from "@/public/login/loginbackground.png"
+import Image from "next/image";
 
 type SignUpComponentType = {
     setVisibleCompleteSignup: React.Dispatch<React.SetStateAction<boolean>>
@@ -144,72 +145,33 @@ export default function SignUpComponent({ setVisibleCompleteSignup }: SignUpComp
             });
     }
     return (
-        <div>
-            <form onSubmit={onClickSignUpBtn}>
-                <h1 className="text-center">회원가입 </h1>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>
-                                <label>닉네임</label>
-                            </th>
-                            <td>
-                                <input type="String" name="nickname" onChange={(e) => {
-                                    setNickName(e.target.value);
-                                    setHasNickNameExistCheck(false);
-                                }} />
-                            </td>
-                            <td>
-                                <button className="border-2 border-black" onClick={onClickExistNickNameCheck}>닉네임 중복검사</button>
-                            </td>
-                            <td>
-                                <h1>{exist_nicknametext()}</h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label>소속 </label>
-                            </th>
-                            <td>
-                                <input type="String" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br />
-
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>
-                                <label>이메일</label>
-                            </th>
-                            <td>
-                                <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
-                            </td>
-                            <td>
-                                <button onClick={onClickSendCheckMailBtn}>이메일 인증</button>
-                            </td>
-                            <td>
-                                <input onChange={(e) => setCode(e.target.value)} />
-                            </td>
-                            <td>
-                                <button onClick={onClickCheckCodeBtn}>인증코드 확인</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label>비밀번호 </label>
-                            </th>
-                            <td>
-                                <input type="String" name="password" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button className="border-2 bg-slate-300" type="submit"> 회원가입</button>
-                <button className="border-2 bg-slate-300" onClick={onClickSignUpBtn}>취소</button>
-            </form>
-        </div >
+        <div className="w-screen h-screen">
+            <div className="relative z-0 w-fit mx-auto my-auto">
+                <Image src={loginbackgroundimg} className="w-[41rem] h-[57rem]" alt="" />
+                <div className="absolute h-2 z-2 top-12 left-[7.5rem]">
+                    <h1 className="text-center font-semibold text-2xl my-4 text-[#685BFE]">이메일 간편 가입 </h1>
+                    <form className="my-20" onSubmit={onClickSignUpBtn}>
+                        <div className="grid gap-2">
+                            <label className="text-xl text-black">Email</label>
+                            <div>
+                                <input className="border-b-2 w-72 border-black bg-inherit pb-2" type=" email" name="email" placeholder="이메일 입력" />
+                                <button className="ml-2 bg-purpleblue text-white px-6 h-10 rounded-md text-bold" onClick={onClickSendCheckMailBtn}>인증하기</button>
+                            </div>
+                            <label className="text-xl text-black">Nickname</label>
+                            <input className="border-b-2 border-black bg-inherit pb-2  mb-4" type="password" name="password" placeholder="이름 입력" />
+                            <label className="text-xl text-black">Password</label>
+                            <input className="border-b-2 border-black bg-inherit pb-2" type="password" name="password" placeholder="비밀번호 입력" />
+                            <input className="border-b-2 border-black bg-inherit pb-2 my-4" type="password" name="password" placeholder="비밀번호 재확인" />
+                        </div>
+                        <div className="flex gap-2 mt-4">
+                            <input type="checkbox" className="w-6 h-6 mt-1" />
+                            <p className="font-semibold text-2xl">전체 동의</p>
+                        </div>
+                        <p className="ml-6 text-[0.6rem] w-[22rem] py-2">문장 사용하는 때 지칭하는 결과물에 분야에서 같은 채움 프로젝트 로렘 공간만 지칭하는 사용할 때로 최종 출판이나 용어로도 때 용어로도 최종 글로도 지칭하는 사용할 로렘...</p>
+                        <button className="border-2 bg-[#685BFE] w-96 rounded-lg py-3 my-4 font-semibold text-white text-xl" type="submit" onClick={onClickSignUpBtn}>완료</button>
+                    </form>
+                </div>
+            </div >
+        </div>
     )
 }

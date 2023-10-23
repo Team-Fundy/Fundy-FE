@@ -64,8 +64,8 @@ export default function LoginCompoent() {
     return (
         <div className="flex w-fit h-fit mx-auto my-28">
             <div className="relative z-0">
-                <Image className="" src={loginbackgroundimg} alt="" />
-                <div className="absolute z-2 top-16 left-[7.5rem]">
+                <Image src={loginbackgroundimg} alt="" />
+                <div className="absolute h-2 z-2 top-16 left-[7.5rem]">
                     <div className="grid grid-rows-4 gap-4">
                         <h1 className="text-center font-semibold text-2xl my-2 text-[#685BFE]">로그인 </h1>
                         <button id="google" className="text-black" onClick={onClickOauthLoginBtn}><div className="w-96 py-4 bg-white rounded-full flex gap-2 justify-center"><Image src={googleicon} alt="" /><p>Sign in with Google</p></div> </button>
@@ -79,7 +79,7 @@ export default function LoginCompoent() {
                             <label className="text-xl text-black">Password</label>
                             <input className="border-b-2 border-black bg-inherit pb-2" type="password" name="password" placeholder="비밀번호 입력" />
                         </div>
-                        <div className="flex gap-4 my-2 text-gray-500">
+                        <div className="flex gap-5 my-2 text-gray-500">
                             <button className="" onClick={onClickSignUpBtn}> 회원가입</button>
                             <div className="border-l-2 border-gray-400 h-4 mt-1"></div>
                             <button className="" onClick={onClickSignUpBtn}> 아이디 찾기</button>
@@ -90,6 +90,6 @@ export default function LoginCompoent() {
                     </form>
                 </div>
             </div >
-        </div>
+        </div >
     )
 }

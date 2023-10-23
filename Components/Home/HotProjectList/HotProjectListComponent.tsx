@@ -13,7 +13,7 @@ export default function HotProjectListComponent() {
             <div className="">
                 <div className="h-24 w-3/5 mx-auto">
                     <div className="flex justify-between">
-                        <div className="flex gap-4">
+                        <div className="flex my-4 gap-4">
                             <Image src={hoticon} alt="none" className="h-12" />
                             <p className="my-3 font-bold text-2xl">핫 프로젝트 리스트 </p>
                         </div>

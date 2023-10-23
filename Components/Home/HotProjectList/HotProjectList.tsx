@@ -17,7 +17,7 @@ export default function HotProjectList() {
     const projectlist = [null, null, null, null, null];
     const [spotlightedProject, setSportlightedProject] = useState<number>(1);
     const [projectClassName, setProejctClassName] = useState<Array<string>>([]);
-    const [itemdatas, setItemdatas] = useState<Array<HotProjectItemDataType>>([{ percentage: 10324, money: 164084, name: "TURN DUNGEON", nickname: "도미닉", genre: "RPG" }]);
+    const [itemdatas, setItemdatas] = useState<Array<HotProjectItemDataType>>([{ percentage: 10324, money: 164084, name: "TURN DUNGEON", nickname: "도미닉", genre: "ROGLIKE" }]);
 
     useEffect(() => {
         if (projectlist.length > 0) {
@@ -34,7 +34,7 @@ export default function HotProjectList() {
     }, []);
 
     return (
-        <div className="w-fit bg-slate-50">
+        <div className="w-full bg-slate-50">
             <div className="flex gap-4 overflow-hidden  pt-16">
                 {
                     projectlist.map((item, index) => (index === 0 ? <HotProjectItem key={index} highlight={spotlightedProject === index + 1 ? true : false} projectimg={tempimage} itemdata={itemdatas[0]} rank={index} /> : <HotProjectItem key={index} highlight={spotlightedProject === index + 1 ? true : false} projectimg={tempimage2} itemdata={itemdatas[0]} rank={index} />))

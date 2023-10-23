@@ -29,7 +29,7 @@ export default function HotProjectItem({ projectimg, itemdata, rank, highlight }
             <Link href="/projectinform" >
                 <div className="relative z-0">
                     <Image src={board} alt="" className="w-[28.5rem] h-[30.5rem]" />
-                    <div className="relative bottom-[28rem] z-10 py-8">
+                    <div className="relative h-2 bottom-[28rem] z-10 py-8">
                         <Image src={projectimg} alt="" className="w-[24rem] h-[15rem]" />
                         <div className="flex gap-5 my-2">
                             <p className="text-2xl font-bold text-orange-600">{itemdata.percentage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}% 달성</p>
@@ -39,12 +39,10 @@ export default function HotProjectItem({ projectimg, itemdata, rank, highlight }
                         <p className="px-2 text-xs font-bold bg-slate-200 w-fit text-gray-400 my-2 mx-2">{itemdata.genre}</p>
                         <p className="text-xs my-2 text-gray-400">주식회사 준오즈</p>
                     </div>
-
-                    {highlight === true ? <div className="relative bottom-[62rem] left-40 z-50">
+                    {highlight === true ? <div className="relative bottom-[62rem] h-2 left-40 z-50">
                         <p className=" font-['dalmoori'] text-[3.5rem] drop-shadow-xl"># {rank + 1}</p>
                         <div className="border-t-2 w-16 h-4 border-slate-400"></div>
                     </div> : null}
-
                 </div>
             </Link >
         </div >

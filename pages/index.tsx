@@ -24,9 +24,8 @@ export default function Home() {
     <div className="bg-slate-200 grid place-items-center">
       <HomeTitleComponent />
       <HotProjectListComponent />
-      <Dotline />
       <DevelopNoteComponent />
-      <BannerComponent />
+      <Dotline />
       <NewProjectListComponent />
       <Dotline />
       <GenreListComponent />

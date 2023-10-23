@@ -7,7 +7,7 @@ export default function NewProjectListComponent() {
     const projectlist = [null, null, null, null, null];
     return (
         <div className="bg-white w-full place-item-center py-12">
-            <div className="w-fit mx-auto">
+            <div className="w-3/5 mx-auto">
                 <div className="h-18 flex justify-between mb-2">
                     <div className="flex gap-4">
                         <Image src={newprojecticon} alt="none" className="h-12 my-2" />

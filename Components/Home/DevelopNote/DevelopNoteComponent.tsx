@@ -22,10 +22,10 @@ export default function DevelopNoteComponent() {
                         <Image src={entirebtn} alt="전체보기" />
                     </button>
                 </div>
-                <div className="my-4">
-                    <DevelopNoteDaybar selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
+                <DevelopNoteDaybar selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
+                <div className="mt-12">
+                    <DevelopNoteList />
                 </div>
-                <DevelopNoteList />
                 <div className="h-16"></div>
             </div >
         </div>

@@ -21,7 +21,7 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-slate-200">
+    <div className="bg-white">
       <HomeTitleComponent />
       <HotProjectListComponent />
       <DevelopNoteComponent />

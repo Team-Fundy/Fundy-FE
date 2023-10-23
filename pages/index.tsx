@@ -21,7 +21,7 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-slate-200 grid place-items-center">
+    <div className="bg-slate-200">
       <HomeTitleComponent />
       <HotProjectListComponent />
       <DevelopNoteComponent />

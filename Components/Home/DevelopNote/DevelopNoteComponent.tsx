@@ -8,9 +8,18 @@ import { useState } from "react";
 export default function DevelopNoteComponent() {
 
     const [selectedDay, setSelectedDay] = useState<string>("일");
+    const [selectedNum, setSelectedNum] = useState<number>(0);
+    function onClickMoveBtn(event: any) {
+        const btnId = event.target.id;
+        if (btnId === "left") {
+            setSelectedNum((num: number) => num === 0 ? num = 0 : num -= 1);
+        }
+        else
+            setSelectedNum((num: number) => num += 1);
+    }
 
     return (
-        <div className="w-full bg-white">
+        <div className="w-full bg-white relative z-0">
             <div className="w-3/5 mx-auto">
                 <div className="h-24 flex justify-between my-12">
                     <div className="w-full flex gap-4 my-6">
@@ -28,6 +37,18 @@ export default function DevelopNoteComponent() {
                 </div>
                 <div className="h-16"></div>
             </div >
-        </div>
+            <div className="w-screen h-2 relative z-2 bottom-[38rem]">
+                <div className="flex justify-between ">
+                    {selectedNum ?
+                        <button id="left" className="w-12 h-[21rem] bg-black opacity-75" onClick={onClickMoveBtn}>
+                            <p className="font-['dalmoori'] text-white font-3xl">&lt;</p>
+                        </button> : <div></div>
+                    }
+                    <button id="right" className="w-12 h-[21rem] bg-black opacity-75" onClick={onClickMoveBtn}>
+                        <p className="font-['dalmoori'] text-white font-3xl">&gt;</p>
+                    </button>
+                </div>
+            </div>
+        </div >
     )
 }

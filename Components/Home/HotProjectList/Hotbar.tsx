@@ -4,17 +4,7 @@ import Image from "next/image";
 export default function Hotbar() {
     const projectlist = [null, null, null, null, null, null, null, null];
     return (
-        <div className="flex gap-4 z-0">
-            <Image src={hoticon2} alt="" />
-            <Image src={hoticon2} alt="" />
-            <Image src={hoticon2} alt="" />
-            <Image src={hoticon2} alt="" />
-            <Image src={hoticon2} alt="" />
-            <Image src={hoticon2} alt="" />
-            <Image src={hoticon2} alt="" />
-            <Image src={hoticon2} alt="" />
-            <Image src={hoticon2} alt="" />
-            <Image src={hoticon2} alt="" />
+        <div className="flex gap-16 z-0">
             <Image src={hoticon2} alt="" />
             <Image src={hoticon2} alt="" />
             <Image src={hoticon2} alt="" />

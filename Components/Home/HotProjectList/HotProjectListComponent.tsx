@@ -1,7 +1,7 @@
 import hoticon from "@/public/home/icon/hotprojectIcon.png"
 import entirebtn from "@/public/home/button/entirebutton.png"
 import Hotbar from "./Hotbar";
-import HotProjectListbar from "./HotProjectListbar";
+import HotProjectList from "./HotProjectList";
 
 import Image from "next/image";
 
@@ -25,7 +25,7 @@ export default function HotProjectListComponent() {
                 <div className="ml-12">
                     <Hotbar />
                 </div>
-                <HotProjectListbar />
+                <HotProjectList />
                 <div className="h-12">
                 </div>
             </div >

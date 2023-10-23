@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 
-import { HotProjectItemDataType } from "./HotProjectListbar"
+import { HotProjectItemDataType } from "./HotProjectList"
 import board from "@/public/home/board1.png"
 
 type HotProjectItemType = {
@@ -15,34 +15,33 @@ type HotProjectItemType = {
 
 export default function HotProjectItem({ projectimg, itemdata, rank, highlight }: HotProjectItemType) {
 
-    const [classname, setClassName] = useState<string>("brightness-100")
+    const [classname, setClassName] = useState<string>("brightness-100 w-fit h-fit")
 
     useEffect(() => {
         if (highlight)
-            setClassName("brightness-100");
+            setClassName("brightness-100 w-fit h-fit");
         else
-            setClassName("brightness-75");
+            setClassName("brightness-75 w-fit h-fit");
 
     }, [highlight]);
-    //   return "brightness-100" : "brightness-75";
     return (
         <div className={classname}>
             <Link href="/projectinform" >
                 <div className="relative z-0">
-                    <Image src={board} alt="" width="500" height="300" />
-                    <div className="absolute bottom-10 left-8 z-10 py-8">
-                        <Image src={projectimg} alt="" width="300" height="200" />
-                        <div className="flex gap-5  my-2">
-                            <p className="text-2xl font-bold texts-violet-600">{itemdata.percentage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}% 달성</p>
-                            <p className="text-2xl font-bold text-violet-600">{itemdata.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</p>
+                    <Image src={board} alt="" className="w-[28.5rem] h-[30.5rem]" />
+                    <div className="relative bottom-[28rem] z-10 py-8">
+                        <Image src={projectimg} alt="" className="w-[24rem] h-[15rem]" />
+                        <div className="flex gap-5 my-2">
+                            <p className="text-2xl font-bold text-orange-600">{itemdata.percentage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}% 달성</p>
+                            <p className="text-md font-semibold text-black">{itemdata.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</p>
                         </div>
-                        <p className="font-['dalmoori'] text-xl">{itemdata.name}</p>
-                        <p className="font-['dalmoori'] text-lg">{itemdata.genre}</p>
-                        <p className="font-['dalmoori'] text-base">{itemdata.nickname}</p>
+                        <p className="font-bold text-xl">{itemdata.name}</p>
+                        <p className="px-2 text-xs font-bold bg-slate-200 w-fit text-gray-400 my-2 mx-2">{itemdata.genre}</p>
+                        <p className="text-xs my-2 text-gray-400">주식회사 준오즈</p>
                     </div>
 
-                    {highlight === true ? <div className="absolute -top-6 left-40 z-50">
-                        <p className=" font-['dalmoori'] font-bold text-4xl  drop-shadow-xl"># {rank + 1}</p>
+                    {highlight === true ? <div className="relative bottom-[62rem] left-40 z-50">
+                        <p className=" font-['dalmoori'] text-[3.5rem] drop-shadow-xl"># {rank + 1}</p>
                         <div className="border-t-2 w-16 h-4 border-slate-400"></div>
                     </div> : null}
 

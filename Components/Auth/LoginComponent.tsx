@@ -72,7 +72,7 @@ export default function LoginCompoent() {
                         <button id="kakao" className="text-black" onClick={onClickOauthLoginBtn}><div className="w-96 py-4 bg-white rounded-full flex gap-2 justify-center"><Image src={navericon} alt="" /><p>Sign in with KaKao</p></div> </button>
                         <button id="naver" className="text-black" onClick={onClickOauthLoginBtn}><div className="w-96 py-4 bg-white rounded-full flex gap-2 justify-center"><Image src={navericon} alt="" /><p>Sign in with Naver</p></div> </button>
                     </div>
-                    <form className="my-4" onSubmit={onClickEmailLoginBtn}>
+                    <form className="my-4">
                         <div className="grid gap-2">
                             <label className="text-xl text-black">Email</label>
                             <input className="border-b-2 border-black bg-inherit pb-2" type=" email" name="email" placeholder="이메일 입력" />

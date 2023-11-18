@@ -15,22 +15,19 @@ type HotProjectItemType = {
 
 export default function HotProjectItem({ projectimg, itemdata, rank, highlight }: HotProjectItemType) {
 
-    const [classname, setClassName] = useState<string>("brightness-100 w-fit h-fit")
+    const [classname, setClassName] = useState<string>("brightness-100 w-fit h-fit flex-none")
 
     useEffect(() => {
-        if (highlight)
-            setClassName("brightness-100 w-fit h-fit");
-        else
-            setClassName("brightness-75 w-fit h-fit");
+
 
     }, [highlight]);
     return (
         <div className={classname}>
             <Link href="/projectinform" >
-                <div className="relative z-0">
-                    <Image src={board} alt="" className="w-[28.5rem] h-[30.5rem]" />
-                    <div className="relative h-2 bottom-[28rem] z-10 py-8">
-                        <Image src={projectimg} alt="" className="w-[24rem] h-[15rem]" />
+                <div className="w-[20rem] h-[22rem] relative z-0">
+                    <Image src={board} alt="" className="w-full h-full" />
+                    <div className="absolute top-8 left-6">
+                        <Image src={projectimg} alt="" className="w-[17rem] h-[10rem]" />
                         <div className="flex gap-5 my-2">
                             <p className="text-2xl font-bold text-orange-600">{itemdata.percentage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}% 달성</p>
                             <p className="text-md font-semibold text-black">{itemdata.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</p>

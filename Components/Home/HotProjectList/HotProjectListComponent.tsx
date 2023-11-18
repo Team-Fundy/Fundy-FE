@@ -7,7 +7,6 @@ import Image from "next/image";
 
 export default function HotProjectListComponent() {
 
-
     return (
         <div className="w-full bg-slate-50">
             <div className="">

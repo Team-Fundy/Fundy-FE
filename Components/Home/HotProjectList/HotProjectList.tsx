@@ -13,6 +13,9 @@ export type HotProjectItemDataType = {
     genre: string,
 }
 
+
+
+
 export default function HotProjectList() {
     const projectlist = [null, null, null, null, null];
     const [spotlightedProject, setSportlightedProject] = useState<number>(1);
@@ -34,8 +37,8 @@ export default function HotProjectList() {
     }, []);
 
     return (
-        <div className="w-full bg-slate-50">
-            <div className="flex gap-4 overflow-hidden  pt-16">
+        <div className="w-screen bg-slate-50">
+            <div className="flex gap-8 overflow-hidden pt-16 justify-center">
                 {
                     projectlist.map((item, index) => (index === 0 ? <HotProjectItem key={index} highlight={spotlightedProject === index + 1 ? true : false} projectimg={tempimage} itemdata={itemdatas[0]} rank={index} /> : <HotProjectItem key={index} highlight={spotlightedProject === index + 1 ? true : false} projectimg={tempimage2} itemdata={itemdatas[0]} rank={index} />))
                 }

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState, useEffect, use } from "react"
 
 import { HotProjectItemDataType } from "./HotProjectList"
 import board from "@/public/home/board1.png"
@@ -21,10 +21,14 @@ type HotProjectItemType = {
 
 export default function HotProjectItem({ projectimg, itemdata, rank, highlight }: HotProjectItemType) {
 
-    const [classname, setClassName] = useState<string>("brightness-100 w-fit h-fit flex-none")
+    const [classname, setClassName] = useState<string>("w-fit h-fit flex-none")
     const [isLiked, setIsLiked] = useState<boolean>(true);
     const [isPromtion, setIsPromtion] = useState<boolean>(true);
     const [isDeadline, setIsDeadline] = useState<boolean>(true);
+
+    useEffect(()=>{
+        highlight? setClassName("w-fit h-fit flex-none scale-105" ) : setClassName("w-fit h-fit flex-none scale-100" )
+    },[highlight])
 
     return (
         <div className={classname}>
@@ -52,9 +56,9 @@ export default function HotProjectItem({ projectimg, itemdata, rank, highlight }
                         </button>
                         </div>
                     </div>
-                    {highlight === true ? <div className="relative bottom-[62rem] h-2 left-40 z-50">
-                        <p className=" font-['dalmoori'] text-[3.5rem] drop-shadow-xl"># {rank + 1}</p>
-                        <div className="border-t-2 w-16 h-4 border-slate-400"></div>
+                    {highlight === true ? <div className="absolute left-36 -top-10 w-16 text-center h-2 z-50">
+                        <p className=" font-['dalmoori'] text-[2rem] font-semibold drop-shadow-xl"># {rank + 1}</p>
+                        <div className="border-t-2 ml-2 w-12 h-4 border-slate-400"></div>
                     </div> : null}
                 </div>
             </Link >

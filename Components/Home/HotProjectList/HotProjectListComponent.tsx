@@ -21,7 +21,7 @@ export default function HotProjectListComponent() {
                         </button>
                     </div>
                 </div>
-                <div className="ml-12">
+                <div className="w-screen overflow-hidden">
                     <Hotbar />
                 </div>
                 <HotProjectList />

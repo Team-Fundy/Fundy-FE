@@ -7,9 +7,7 @@ module.exports = {
   ],
 
   theme: {
-
     extend: {
-
       width: {
         abc: '32rem',
       },
@@ -22,9 +20,18 @@ module.exports = {
           from: { transform: "rotateY(0deg) scale(2.0)" },
           to: { transform: "rotateY(360deg) scale(1.0)" },
         },
+        leftTransition: {
+          '0%': {
+            transform: 'translateX(0%) ',
+          },
+          '100%': {
+            transform: 'translateX(-26%)',
+          },
+        },
       },
       animation: {
-        intro: "intro 2s ease-in-out",
+        intro: "intro 4s ease-in-out",
+        leftTransition: "leftTransition 9s linear infinite",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -34,4 +41,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

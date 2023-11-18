@@ -22,15 +22,10 @@ type HotProjectItemType = {
 export default function HotProjectItem({ projectimg, itemdata, rank, highlight }: HotProjectItemType) {
 
     const [classname, setClassName] = useState<string>("brightness-100 w-fit h-fit flex-none")
-    const [liked, setLiked] = useState<boolean>(true);
+    const [isLiked, setIsLiked] = useState<boolean>(true);
     const [isPromtion, setIsPromtion] = useState<boolean>(true);
     const [isDeadline, setIsDeadline] = useState<boolean>(true);
 
-    
-    useEffect(() => {
-
-
-    }, [highlight]);
     return (
         <div className={classname}>
             <Link href="/projectinform" >
@@ -52,7 +47,9 @@ export default function HotProjectItem({ projectimg, itemdata, rank, highlight }
                         <p className="px-2 text-xs font-bold bg-slate-200 w-fit text-gray-400 my-2">{itemdata.genre}</p>
                         <div className ="flex justify-between">
                         <p className="text-xs my-2 text-gray-400">주식회사 준오즈</p>
-                        <Image className ="w-8 h-8" src={liked? likeimage : unlikeimage } alt ="" />
+                        <button onClick ={()=>setIsLiked((isliked)=>!isliked)}>
+                            <Image id ="liked-btn" className ="w-8 h-8" src={isLiked? likeimage : unlikeimage } alt ="" />
+                        </button>
                         </div>
                     </div>
                     {highlight === true ? <div className="relative bottom-[62rem] h-2 left-40 z-50">

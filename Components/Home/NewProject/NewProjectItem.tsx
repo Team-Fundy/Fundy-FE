@@ -13,18 +13,18 @@ export default function NewProjectItem() {
     return (
         <div>
             <button className="overflow-hidden my-4">
-                <Image className="" src={tempimage} alt="" width="265" height="172" />
+                <Image className="" src={tempimage} alt="" width="212" height="137" />
                 <div className="flex gap-2 my-2">
-                    {option.map((item: string) => <p className="bg-slate-200 text-slate-500 px-4 rounded">{item}</p>)}
+                    {option.map((item: string) => <p className="bg-slate-200 text-[0.5rem] text-slate-500 px-4 rounded">{item}</p>)}
                 </div>
-                <p className="my-2 text-xl font-bold text-left">{title}</p>
-                <p className="w-[17rem] text-sm text-left slate-150">{content}</p>
-                <div className="flex mt-2">
-                    <p className="text-purpleblue font-bold text-lg">{percent}% 달성</p>
-                    <div className="ml-2 w-2 h-[5px] border-l-2 border-slate-400 my-1"></div>
-                    <p className="text-slate-400 text-lg">{saveMoney}원</p>
+                <p className="my-2 text-md font-bold text-left">{title}</p>
+                <p className="w-[13rem] text-[0.6rem] text-left slate-150">{content}</p>
+                <div className="flex gap-2 mt-2">
+                    <p className="text-purpleblue font-bold text-md">{percent}% 달성</p>
+                    <p className ="text-gray-400 font-semibold text-md mb-2">|</p>
+                    <p className="text-slate-400 text-md">{saveMoney}원</p>
                 </div>
-                <div className="h-2 w-64 bg-slate-300 my-2">
+                <div className="h-2 w-48 bg-slate-300 my-2">
                     <div className="h-2 bg-purpleblue" style={{ width: "60%" }}></div>
                 </div>
             </button>

@@ -32,7 +32,7 @@ export default function GenreList() {
                     ))
                 }
             </div>
-            <div className="place-content-center flex gap-2 my-8 ">
+            <div className="place-content-center flex gap-4 my-8 ">
                 <Dot num={1} />
                 <Dot num={2} />
                 <Dot num={3} />

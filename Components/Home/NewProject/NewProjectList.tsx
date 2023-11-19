@@ -31,7 +31,7 @@ export default function NewProjectList() {
                     ))
                 }
             </div>
-            <div className="place-content-center flex gap-2 ">
+            <div className="place-content-center flex gap-4 ">
                 <Dot num={1} />
                 <Dot num={2} />
                 <Dot num={3} />

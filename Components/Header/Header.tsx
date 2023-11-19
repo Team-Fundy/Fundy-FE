@@ -5,9 +5,9 @@ import { useState, useEffect, use } from 'react'
 
 import fundyicon from '../../public/header/fundyicon.png'
 import searchbtn from '../../public/header/searchbtn.png'
-import { loginState } from '@/recoil/recoilstate'
-import SearchComponent from "./Searchcomponent"
-import { useRecoilState } from 'recoil'
+import SearchComponent from "./SearchComponent";
+//import { useRecoilState } from 'recoil'
+//import { loginState } from '@/recoil/recoilstate'
 
 
 type Headertype = {
@@ -53,12 +53,12 @@ export default function Header({ mode }: Headertype) {
 
     const OnLogoff = () => {
         return (
-            <div className="flex gap-8 my-4">
+            <div className="flex gap-8 my-4 text-sm font-bold">
                 <Link href="/auth/login">
-                    <p className="font-['dalmoori']">로그인</p>
+                    <p className="">로그인</p>
                 </Link>
                 < Link href="/auth/login">
-                    <p className="font-['dalmoori']">회원가입</p>
+                    <p className="">회원가입</p>
                 </Link>
             </div>
         )
@@ -68,13 +68,13 @@ export default function Header({ mode }: Headertype) {
         return (
             <div className="flex my-4 gap-4 text-white">
                 <button onClick={() => onLogout()}>
-                    <p className="font-['dalmoori']">로그아웃</p>
+                    <p>로그아웃</p>
                 </button>
                 < Link className="" href="/">
-                    <p className="my-4 font-['dalmoori']">마이페이지</p>
+                    <p className="my-4">마이페이지</p>
                 </Link>
                 < Link className="" href="/">
-                    <p className="font-['dalmoori']">프로젝트 등록하기</p>
+                    <p >프로젝트 등록하기</p>
                 </Link>
             </div>
         )
@@ -84,34 +84,37 @@ export default function Header({ mode }: Headertype) {
 
     return (
         <header>
-            <div className={`w-full h-16 ${bgColor} ${textcolor} flex justify-around relative z-10 `}>
-                <div className="flex gap-24 opacity-100">
-                    <Link className="" href="/">
-                        <Image src={fundyicon} alt="logo" className={`${imgColor}`} />
-                    </Link>
-                    <div className="font-['dalmoori'] flex gap-12 my-auto">
-                        <Link href="/">
-                            <p>장르</p>
+            <div className={`w-full h-14 ${bgColor} ${textcolor} relative z-10 `}>
+                <div className ="flex w-3/5 justify-between mx-auto">
+                    <div className="flex gap-24 opacity-100">
+                        <Link className="my-auto" href="/">
+                            <Image src={fundyicon} alt="logo" className={`w-20 h-8 ${imgColor}`} />
                         </Link>
-                        <Link href="/">
-                            <p>인기</p>
-                        </Link>
-                        <Link href="/">
-                            <p>신규</p>
-                        </Link>
-                    </div>
-                </div>
-                <div className='flex gap-16'>
-                    <button onClick={() => setOpenSearch(!openSearch)} className="h-12 my-1">
-                        <Image src={searchbtn}
+                        <div className="font-bold  text-sm flex gap-10 my-auto">
+                         <Link href="/">
+                                <p>장르</p>
+                          </Link>
+                          <Link href="/">
+                              <p>인기</p>
+                          </Link>
+                          <Link href="/">
+                              <p>신규</p>
+                          </Link>
+                          
+                     </div>
+                  </div>
+                  <div className='flex gap-16'>
+                       <button onClick={() => setOpenSearch(!openSearch)} className="h-12 my-1">
+                         <Image src={searchbtn}
                             className={`${imgColor}`}
                             alt="none"
                             height="35" />
-                    </button>
-                    {login ? <OnLogin /> : <OnLogoff />}
-                </div>
+                        </button>
+                        {login ? <OnLogin /> : <OnLogoff />}
+                  </div>
+              </div>
+              {openSearch ? <SearchComponent /> : null}
             </div>
-            {openSearch ? <SearchComponent /> : null}
         </header >
     )
 }   

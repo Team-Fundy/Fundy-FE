@@ -92,15 +92,17 @@ export default function Header({ mode }: Headertype) {
                         </Link>
                         <div className="font-bold  text-sm flex gap-10 my-auto">
                          <Link href="/">
-                                <p>장르</p>
+                                <p>펀딩</p>
                           </Link>
                           <Link href="/">
-                              <p>인기</p>
+                              <p>프로모션</p>
                           </Link>
                           <Link href="/">
-                              <p>신규</p>
+                              <p>펀디이야기</p>
                           </Link>
-                          
+                          <Link href="/">
+                              <p>문의사항</p>
+                          </Link>
                      </div>
                   </div>
                   <div className='flex gap-16'>

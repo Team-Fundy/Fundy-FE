@@ -3,7 +3,7 @@ import { atom } from 'recoil';
 
 export const loginState = atom({
     key: 'loginState',
-    default: false,
+    default: true,
     dangerouslyAllowMutability: true,
 });
 export const accesstokenState = atom({

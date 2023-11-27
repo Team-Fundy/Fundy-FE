@@ -1,9 +1,10 @@
 import axios from "axios";
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useEffect, use } from 'react'
+import { useState, useEffect } from 'react'
 
-import fundyicon from '../../public/header/fundyicon.png'
+import fundyColorIcon from '../../public/header/fundycoloricon.png'
+import fundyWhiteIcon from '../../public/header/fundywhiteicon.png'
 import searchbtn from '../../public/header/searchbtn.png'
 import SearchComponent from "./SearchComponent";
 //import { useRecoilState } from 'recoil'
@@ -57,8 +58,10 @@ export default function Header({ mode }: Headertype) {
                 <Link href="/auth/login">
                     <p className="">로그인</p>
                 </Link>
-                < Link href="/auth/login">
-                    <p className="">회원가입</p>
+                < Link href="/auth/login" className ="w-28 h-8 text-center text-md text-white bg-purple-600 rounded-sm">
+                        <p className ="my-auto">
+                        프로젝트 만들기
+                        </p>
                 </Link>
             </div>
         )
@@ -87,8 +90,9 @@ export default function Header({ mode }: Headertype) {
             <div className={`w-full h-14 ${bgColor} ${textcolor} relative z-10 `}>
                 <div className ="flex w-3/5 justify-between mx-auto">
                     <div className="flex gap-24 opacity-100">
-                        <Link className="my-auto" href="/">
-                            <Image src={fundyicon} alt="logo" className={`w-20 h-8 ${imgColor}`} />
+                        <Link className="my-auto flex gap-2" href="/">
+                            <Image src={fundyColorIcon} alt="logo" className={`w-10 h-12 ${imgColor}`} />
+                            <p className ="font-['dalmoori'] text-xl my-auto">FUNDY</p>
                         </Link>
                         <div className="font-bold  text-sm flex gap-10 my-auto">
                          <Link href="/">
@@ -105,7 +109,7 @@ export default function Header({ mode }: Headertype) {
                           </Link>
                      </div>
                   </div>
-                  <div className='flex gap-16'>
+                  <div className='flex gap-4'>
                        <button onClick={() => setOpenSearch(!openSearch)} className="h-12 my-1">
                          <Image src={searchbtn}
                             className={`${imgColor}`}

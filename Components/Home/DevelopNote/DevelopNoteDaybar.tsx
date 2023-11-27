@@ -1,5 +1,5 @@
-import unClickdayboard from "@/public/home/button/developnotedaybutton.png"
-import onClickdayboard from "@/public/home/button/developnotedaybutton2.png"
+import unClickdayboard from "@/public/home/button/crossShapeWhiteButton.png"
+import onClickdayboard from "@/public/home/button/crossShapeWhitePurple.png"
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
@@ -20,11 +20,11 @@ export default function DevelopNoteDaybar({ selectedDay, setSelectedDay }: Devel
             setSelectedDay(item);
     }
     return (
-        <div className="w-full bg-white flex gap-24">
+        <div className="w-full bg-white flex justify-between">
             {dayoftheweek.map((item, index) => (
-                <button onClick={() => onClickDayBtn(item)} className="relative" key={index}>
-                    <Image src={selectedDay === item ? onClickdayboard : unClickdayboard} alt="" className="w-28 h-12" />
-                    <p className={`absolute bottom-4 inset-x-6  text-start leading-4  ${selectedDay === item ? `text-white` : `text-slate-150`}`}>
+                <button onClick={() => onClickDayBtn(item)} className="w-20 relative" key={index}>
+                    <Image src={selectedDay === item ? onClickdayboard : unClickdayboard} alt="" className="w-20 h-12" />
+                    <p className={`absolute bottom-4 left-8 text-lg font-semibold leading-4   ${selectedDay === item ? `text-white` : `text-slate-400`}`}>
                         {item}
                     </p>
                 </button>

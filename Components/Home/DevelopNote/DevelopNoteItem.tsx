@@ -9,7 +9,7 @@ export default function DevelopNoteItem() {
     return (
         <div className ="relative z-0">
  
-            <button className="w-52 relative z-2">
+            <button className="w-52 relative z-2 hover:-translate-y-[10%] hover:animate-upTransition ">
                 <Image src={board} alt="" className="w-52 object-cover" />
                 <Image src={tempimg} alt="" className="absolute z-1 bottom-[6.5rem] left-[4.3rem] w-20 h-28 border-1 border-white" />
                 <div className="absolute bottom-[1.5rem] left-[1.5rem]">

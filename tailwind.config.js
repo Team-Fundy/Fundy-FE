@@ -28,15 +28,33 @@ module.exports = {
             transform: 'translateX(-26%)',
           },
         },
+        upTransition: {
+          from: {
+            transform: 'translateY(0%) ',
+          },
+          to: {
+            transform: 'translateY(-10%)',
+          },
+        },
+        downTransition: {
+          '0%': {
+            transform: 'translateY(-10%) ',
+          },
+          '100%': {
+            transform: 'translateY(0%)',
+          },
+        },
       },
       animation: {
         intro: "intro 4s ease-in-out",
         leftTransition: "leftTransition 9s linear infinite",
+        upTransition: "upTransition 0.3s  ease-in-out ",
+
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-radial': 'radial-gradient(var(—tw-gradient-stops))',
         'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          'conic-gradient(from 180deg at 50% 50%, var(—tw-gradient-stops))',
       },
     },
   },

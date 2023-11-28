@@ -59,31 +59,23 @@ export default function Header({ mode }: Headertype) {
 
     const OnLogoff = () => {
         return (
-            <div className="flex gap-8 my-4 text-sm font-bold">
                 <Link className = "my-auto" href="/auth/login">
                     <p className="">로그인</p>
                 </Link>
-                < Link href="/auth/login" className ={`w-28 h-fit my-auto py-1 text-center text-md ${isDarkMode ?'text-[#685BFE] bg-white' :'text-white bg-[#685BFE]'} rounded-sm`}>
-                        프로젝트 만들기
-                </Link>
-            </div>
         )
     }
 
     const OnLogin = () => {
         return (
-            <div className="flex my-4 gap-4 text-white">
+            <div className ="flex gap-4">
                 <button className ="my-auto w-8 h-8" onClick={() => onLogout()}>
                     <Image src={isDarkMode? whitealarmicon : blackalarmicon } alt="alarm"/>
                 </button>
-                <button className ="my-auto w-8 h-8" onClick={() => onLogout()}>
-                 <Image src={isDarkMode ? whitemypageicon :blackmypageicon} alt="mypage"/>
+                 <button className ="my-auto w-8 h-8" onClick={() => onLogout()}>
+                    <Image src={isDarkMode ? whitemypageicon :blackmypageicon} alt="mypage"/>
                 </button>
-                < Link href="/auth/login" className ={`w-28 h-fit my-auto py-1 text-center text-md ${isDarkMode ?'text-[#685BFE] bg-white' :'text-white bg-[#685BFE]'} rounded-sm`}>
-                        프로젝트 만들기
-                </Link>
             </div>
-        )
+            ) 
     }
 
     
@@ -119,7 +111,12 @@ export default function Header({ mode }: Headertype) {
                             alt="none"
                         />
                         </button>
+                    <div className="flex gap-4 my-4 text-sm font-bold">
                         {login ? <OnLogin /> : <OnLogoff />}
+                        < Link href="/auth/login" className ={`w-fit h-fit my-auto py-2 px-4 mx-2 text-center text-sm ${isDarkMode ?'text-[#685BFE] bg-white' :'text-white bg-[#685BFE]'} rounded-sm`}>
+                            프로젝트 만들기
+                        </Link>
+                    </div>
                   </div>
               </div>
               {openSearch ? <SearchComponent /> : null}

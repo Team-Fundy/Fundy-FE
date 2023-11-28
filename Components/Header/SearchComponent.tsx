@@ -1,4 +1,4 @@
-import searchimage from "@/public/header/searchbtn.png"
+import searchimage from "@/public/header/graySearchIcon.png"
 import Image from "next/image"
 
 export default function SearchComponent() {

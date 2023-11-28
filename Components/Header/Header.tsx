@@ -82,7 +82,7 @@ export default function Header({ mode }: Headertype) {
 
     return (
         <header>
-            <div className={`w-full h-14 ${bgColor} ${textcolor} relative z-10 `}>
+            <div className={`w-full h-full ${bgColor} ${textcolor} relative z-10 `}>
                 <div className ="flex w-3/5 justify-between mx-auto">
                     <div className="flex gap-24 opacity-100">
                         <Link className="my-auto flex gap-2" href="/">

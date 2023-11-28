@@ -22,24 +22,20 @@ export default function Header({ mode }: Headertype) {
     const [openSearch, setOpenSearch] = useState<boolean>(false);
     const [textcolor, setTextcolor] = useState<string>("text-black");
     const [bgColor, setBgColor] = useState<string>("bg-white");
-    const [imgColor, setImgColor] = useState<string>("");
 
     useEffect(() => {
         switch (mode) {
             case "Opacity0":
                 setTextcolor("text-white");
                 setBgColor("");
-                setImgColor("invert grayscale brightness-200 saturate-200");
                 break;
             case "Normal":
                 setTextcolor("text-black");
                 setBgColor("bg-white");
-                setImgColor("ifilter-none");
                 break;
             case "Dark":
                 setTextcolor("text-white");
                 setBgColor("bg-black");
-                setImgColor("invert grayscale brightness-200 saturate-200");
                 break;
         }
     }, [mode]);
@@ -55,13 +51,11 @@ export default function Header({ mode }: Headertype) {
     const OnLogoff = () => {
         return (
             <div className="flex gap-8 my-4 text-sm font-bold">
-                <Link href="/auth/login">
+                <Link className = "my-auto" href="/auth/login">
                     <p className="">로그인</p>
                 </Link>
-                < Link href="/auth/login" className ="w-28 h-8 text-center text-md text-white bg-purple-600 rounded-sm">
-                        <p className ="my-auto">
+                < Link href="/auth/login" className ="w-28 h-fit my-auto py-1 text-center text-md text-white bg-[#685BFE] rounded-sm">
                         프로젝트 만들기
-                        </p>
                 </Link>
             </div>
         )
@@ -91,7 +85,7 @@ export default function Header({ mode }: Headertype) {
                 <div className ="flex w-3/5 justify-between mx-auto">
                     <div className="flex gap-24 opacity-100">
                         <Link className="my-auto flex gap-2" href="/">
-                            <Image src={fundyColorIcon} alt="logo" className={`w-10 h-12 ${imgColor}`} />
+                            <Image src={fundyColorIcon} alt="logo" className={`w-10 h-12`} />
                             <p className ="font-['dalmoori'] text-xl my-auto">FUNDY</p>
                         </Link>
                         <div className="font-bold  text-sm flex gap-10 my-auto">
@@ -112,9 +106,9 @@ export default function Header({ mode }: Headertype) {
                   <div className='flex gap-4'>
                        <button onClick={() => setOpenSearch(!openSearch)} className="h-12 my-1">
                          <Image src={searchbtn}
-                            className={`${imgColor}`}
+                            className="w-8 h-8 my-auto"
                             alt="none"
-                            height="35" />
+                        />
                         </button>
                         {login ? <OnLogin /> : <OnLogoff />}
                   </div>

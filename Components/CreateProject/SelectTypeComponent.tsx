@@ -1,7 +1,8 @@
 import Image from "next/image";
 import promtionBtn from "@/public/createproject/promotionbtn.png"
 import fundingBtn from "@/public/createproject/fundingbtn.png"
-
+import leftdirBtn from "@/public/createproject/leftdirbtn.png"
+import Link from "next/link";
 
 export default function SelectProjectTypeComponent()
 {
@@ -19,9 +20,10 @@ export default function SelectProjectTypeComponent()
                 </button>
             </div>
             <div className ="flex justify-between">
-                <button>
-                    &lt; 뒤로가기
-                 </button>
+                <Link href ="/" className ="flex gap-1">
+                    <Image src={leftdirBtn} alt ="leftButton" className ="w-3 h-3 my-auto"/>
+                    <p className ="my-auto text-gray-500 text-sm">뒤로가기</p>
+                 </Link>
                 <button className ="w-44 h-10 bg-white">
                     다음으로 
                 </button>

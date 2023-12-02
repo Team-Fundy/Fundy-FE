@@ -27,12 +27,10 @@ export default function App({ Component, pageProps: { session, ...pageProps }, }
   return (
     <>
       <RecoilRoot>
-        <div className="w-screen h-screen flex">
-          <div className="w-screen">
+          <div className="w-screen h-screen bg-[#ECEDF0]">
             <Header mode={headerMode} />
             <Component {...pageProps}></Component>
           </div>
-        </div>
       </RecoilRoot>
     </>
   );

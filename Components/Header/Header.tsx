@@ -68,10 +68,10 @@ export default function Header({ mode }: Headertype) {
     const OnLogin = () => {
         return (
             <div className ="flex gap-4">
-                <button className ="my-auto w-8 h-8" onClick={() => onLogout()}>
+                <button className ="my-auto w-6 h-6" onClick={() => onLogout()}>
                     <Image src={isDarkMode? whitealarmicon : blackalarmicon } alt="alarm"/>
                 </button>
-                 <button className ="my-auto w-8 h-8" onClick={() => onLogout()}>
+                 <button className ="my-auto w-6 h-6" onClick={() => onLogout()}>
                     <Image src={isDarkMode ? whitemypageicon :blackmypageicon} alt="mypage"/>
                 </button>
             </div>
@@ -82,14 +82,14 @@ export default function Header({ mode }: Headertype) {
 
     return (
         <header>
-            <div className={`w-full h-full ${bgColor} ${textcolor} relative z-10 `}>
+            <div className={`w-screen h-12 ${bgColor} ${textcolor} relative z-10 `}>
                 <div className ="flex w-3/5 justify-between mx-auto">
-                    <div className="flex gap-24 opacity-100">
+                    <div className="flex gap-20 opacity-100">
                         <Link className="my-auto flex gap-2" href="/">
-                            <Image src={isDarkMode ? fundyWhiteIcon : fundyColorIcon} alt="logo" className={`w-10 h-12`} />
+                            <Image src={isDarkMode ? fundyWhiteIcon : fundyColorIcon} alt="logo" className={`w-10 h-10`} />
                             <p className ="font-['dalmoori'] text-xl my-auto">FUNDY</p>
                         </Link>
-                        <div className="font-bold  text-sm flex gap-10 my-auto">
+                        <div className="font-bold text-[0.8rem] flex gap-6 my-auto">
                          <Link href="/">
                                 <p>펀딩</p>
                           </Link>
@@ -105,13 +105,13 @@ export default function Header({ mode }: Headertype) {
                      </div>
                   </div>
                   <div className='flex gap-4'>
-                       <button onClick={() => setOpenSearch(!openSearch)} className="h-12 my-1">
+                       <button onClick={() => setOpenSearch(!openSearch)} className="h-12">
                          <Image src={isDarkMode? whiteSearchIcon: graySearchIcon}
-                            className="w-8 h-8 my-auto mt-2"
+                            className="w-6 h-6 my-auto"
                             alt="none"
                         />
                         </button>
-                    <div className="flex gap-4 my-4 text-sm font-bold">
+                    <div className="flex gap-4 text-sm font-bold">
                         {login ? <OnLogin /> : <OnLogoff />}
                         < Link href="/auth/login" className ={`w-fit h-fit my-auto py-2 px-4 mx-2 text-center text-sm ${isDarkMode ?'text-[#685BFE] bg-white' :'text-white bg-[#685BFE]'} rounded-sm`}>
                             프로젝트 만들기

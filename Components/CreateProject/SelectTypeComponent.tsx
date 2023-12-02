@@ -1,23 +1,30 @@
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+
 import promtionBtn from "@/public/createproject/promotionbtn.png"
 import fundingBtn from "@/public/createproject/fundingbtn.png"
 import leftdirBtn from "@/public/createproject/leftdirbtn.png"
-import Link from "next/link";
+import checkedIcon from "@/public/createproject/checkedicon.png"
+
 
 export default function SelectProjectTypeComponent()
 {
-
+    const [selectedProjectType,setSelectedProjectType] = useState<string>("null")
 
     return (
         <div className = "w-3/5 mx-auto my-8">
             <p className ="text-lg font-semibold my-2">프로젝트 선택하기</p>
-            <div className ="flex gap-8 my-6">
-                <button>
+            <div className ="flex gap-8 my-6 relative">
+                <button onClick ={()=>setSelectedProjectType("promotion")}>
                     <Image src={promtionBtn} alt= "promtionButton"/>
                 </button>
-                <button>
+                <button onClick ={()=>setSelectedProjectType("funding")}>
                     <Image src={fundingBtn} alt= "fundingButton"/>
                 </button>
+                {selectedProjectType !== "null" 
+                     ? <Image className ={`absolute w-4 h-4 top-5 ${selectedProjectType === "promotion" ? "left-5" :  "right-[23.7rem]"} `} src={checkedIcon} alt="checkIcon"/> 
+                     : null}
             </div>
             <div className ="flex justify-between">
                 <Link href ="/" className ="flex gap-1">

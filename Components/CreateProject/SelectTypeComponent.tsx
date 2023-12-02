@@ -16,15 +16,14 @@ export default function SelectProjectTypeComponent()
         <div className = "w-3/5 mx-auto my-8">
             <p className ="text-lg font-semibold my-2">프로젝트 선택하기</p>
             <div className ="flex gap-8 my-6 relative">
-                <button onClick ={()=>setSelectedProjectType("promotion")}>
-                    <Image src={promtionBtn} alt= "promtionButton"/>
+                <button className ="hover:scale-105" onClick ={()=>setSelectedProjectType("promotion")}>
+                    <Image src={promtionBtn} alt= "promtionButton" />
+                    { selectedProjectType === "promotion"  ? <Image className ={`absolute w-4 h-4 top-5 left-5`} src={checkedIcon} alt="checkIcon"/> : null}
                 </button>
-                <button onClick ={()=>setSelectedProjectType("funding")}>
-                    <Image src={fundingBtn} alt= "fundingButton"/>
+                <button  className ="hover:scale-105" onClick ={()=>setSelectedProjectType("funding")}>
+                    <Image src={fundingBtn} alt= "fundingButton" />
+                    { selectedProjectType === "funding"  ? <Image className ={`absolute w-4 h-4 top-5 right-[23.7rem]`} src={checkedIcon} alt="checkIcon"/>  :null}
                 </button>
-                {selectedProjectType !== "null" 
-                     ? <Image className ={`absolute w-4 h-4 top-5 ${selectedProjectType === "promotion" ? "left-5" :  "right-[23.7rem]"} `} src={checkedIcon} alt="checkIcon"/> 
-                     : null}
             </div>
             <div className ="flex justify-between">
                 <Link href ="/" className ="flex gap-1">

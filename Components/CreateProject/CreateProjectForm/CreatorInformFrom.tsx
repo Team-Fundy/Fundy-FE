@@ -1,14 +1,57 @@
+import { ChangeEvent, useState } from "react"
+
 
 export default function CreatorInformFrom()
 {
+    const [creatorName, setCreatorName] = useState<string>("");
+
+    function getInputBorderColor(str : string, lengthLimit : number)
+    {
+        if (str.length > 0 && str.length <= lengthLimit)
+        {
+            return "border-gray-500"
+        } else {
+            return "border-red-600"
+        } 
+    }
+
+    function getInputStringLength(str : string)
+    {
+        return str.length.toString();
+    }
+
+    function getInputLimitStringColor(str : string, lengthLimit : number)
+    {
+        if (str.length > lengthLimit)
+        {
+            return "text-red-600";;
+        } else {
+        return "text-gray-500";
+        }
+    }
+
     return (
         <div>
-            <h1>펀디에 어서오세요.</h1>
-            <p>펀딩에 필요한 정보들을 작성해주세요.</p>
+            <h1 className = "font-bold text-3xl">펀디에 어서오세요.</h1>
+            <p className = "text-sm">펀딩에 필요한 정보들을 작성해주세요.</p>
 
-            <h2>크리에이터 이름</h2>
-            <p>크리에이터 혹은 크리에티 팀의 이름을 작성해주세요.</p>
-            <input placeholder="40자 이내의 이름을 작성해주세요."/>
+            <div className ="w-96 my-14">
+                <div className ="flex h-fit gap-1">
+                    <h2 className ="font-semibold text-lg my-2">크리에이터 이름</h2>
+                    <p className ="my-auto text-xl text-red-500">*</p>
+                </div>
+                <p className ="my-2">크리에이터 혹은 크리에티 팀의 이름을 작성해주세요.</p>
+                <input 
+                    className={`rounded-sm w-96 h-12 border-[0.1rem] ${getInputBorderColor(creatorName,40)}`}
+                    placeholder="     40자 이내의 이름을 작성해주세요."
+                    onChange={(event)=>setCreatorName(event.target.value)}/>
+                <div className ="flex justify-between">
+                    { creatorName.length === 0
+                       ? <p className="my-2 text-sm text-gray-600 text-red-600 font-medium">필수 항목 입니다.</p>
+                       : <p></p> }
+                    <p className={`my-2 text-sm ${getInputLimitStringColor(creatorName,40)} `}>{getInputStringLength(creatorName)}/40자</p>
+                </div>
+            </div>
 
             <br/>
 

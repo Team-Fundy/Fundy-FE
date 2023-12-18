@@ -7,7 +7,7 @@ export default function CreateProjectFormComponent()
 {
 
     return (
-        <div>
+        <div className ="mx-16 my-24">
             <CreatorInformFrom/>
         </div>
     )

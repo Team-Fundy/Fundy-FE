@@ -5,7 +5,7 @@ import CreateProjectSidebar from "@/Components/CreateProject/CreateProjectSideba
 
 export default function CreateProject() {
   return (
-    <div className ="flex"> 
+    <div className ="flex bg-slate-100"> 
         <CreateProjectSidebar/>
         <CreateProjectFormComponent/>
     </div>

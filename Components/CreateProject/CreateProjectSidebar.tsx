@@ -7,11 +7,8 @@ export default function CreateProjectSidebar()
     const name = "땡땡땡"
     const position = 1;
 
-
-    
-
     return (
-        <div className ="w-fit h-fit bg-black">
+        <div className ="w-fit h-fit bg-black relative">
             <div className ="grid w-full h-60">
                 <div className = "w-fit h-fit mx-auto my-auto align-middle">
                     <Image 
@@ -26,6 +23,7 @@ export default function CreateProjectSidebar()
                 </div>
             </div>
             <Image src ={sidebarBackgroundImage} alt="background"/>
+            <button className="absolute bottom-0 left-16 bg-gray-100 w-48 h-12">올리기</button>
         </div>
     )
 }

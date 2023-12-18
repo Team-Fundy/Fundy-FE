@@ -1,11 +1,14 @@
-import { ChangeEvent, useState } from "react"
-
+import { useState } from "react"
+import Image from "next/image";
+import warningIconfrom from "@/public/createproject/waringIcon.png"
 
 export default function CreatorInformFrom()
 {
     const [creatorName, setCreatorName] = useState<string>("");
     const [creatorIntroduce, setCreatorIntroduce] = useState<string>("");
     const [agentName, setAgentName] = useState<string>("");
+    const [isIdentityVerification, setIsIdentityVerification] = useState<boolean>(false);
+
 
     function getInputBorderColor(str : string, lengthLimit : number)
     {
@@ -109,11 +112,27 @@ export default function CreatorInformFrom()
 
             <br/>
 
-            <h2>본인 인증</h2>
-            <p>대표자 본인 명의의 휴대폰 번호로 인증해주세요.</p>
-            <div className ="flex">
-                <input placeholder="본인 인증을 완료해주세요"/>
-                <button>인증하기</button>
+
+            <div className ="w-96 my-14">
+                <div className ="flex h-fit gap-1">
+                    <h2 className ="font-semibold text-lg my-2">본인 인증</h2>
+                    <p className ="my-auto text-xl text-red-500">*</p>
+                </div>
+                <p className ="my-2 text-gray-600">대표자 본인 명의의 휴대폰 번호로 인증해주세요.</p>
+                <div 
+                    className={`rounded-sm w-96 h-12 border-[0.1rem] bg-white ${isIdentityVerification ?  "border-gray-500" : "border-red-600"} text-start flex justify-between`}
+                 >
+                    <div className ="flex">
+                        <Image src={warningIconfrom} alt="warningIcon" className ="w-5 h-5 my-auto mx-2"/>
+                        <p className ="my-auto text-slate-400 text-sm font-light">본인 인증을 완료해 주세요.</p>
+                    </div>
+                    <button className ="w-fit h-fit mx-2 rounded-md px-6 py-1 my-auto border-2 border-slate-550 text-slate-400 text-sm">
+                        인증하기
+                    </button>
+                </div>
+                    { isIdentityVerification === false
+                       ? <p className="my-2 text-sm text-gray-600 text-red-600 font-medium">필수 항목 입니다.</p>
+                       : <p></p> }
             </div>
 
             <br/>

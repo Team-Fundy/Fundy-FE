@@ -8,6 +8,7 @@ export default function CreatorInformFrom()
     const [creatorIntroduce, setCreatorIntroduce] = useState<string>("");
     const [agentName, setAgentName] = useState<string>("");
     const [isIdentityVerification, setIsIdentityVerification] = useState<boolean>(false);
+    const [account, setAccount ] = useState<string>("");
 
 
     function getInputBorderColor(str : string, lengthLimit : number)
@@ -137,10 +138,23 @@ export default function CreatorInformFrom()
 
             <br/>
 
-            <h2>입금 계좌</h2>
-            <p>대표자 본인 명의의 입금 계좌를 입력하세요.</p>
-            <input placeholder="본인 인증을 완료해 주세요."/>
-
+            <div className ="w-96 my-14">
+                <div className ="flex h-fit gap-1">
+                    <h2 className ="font-semibold text-lg my-2">입금 계좌</h2>
+                    <p className ="my-auto text-xl text-red-500">*</p>
+                </div>
+                <p className ="my-2 text-gray-600">대표자 본인 명의의 입금 계좌를 입력하세요.</p>
+                <input 
+                    className={`rounded-sm w-96 h-12 border-[0.1rem] ${getInputBorderColor(account,40)} text-start`}
+                    placeholder="   입금 계좌를 입력하세요."
+                    onChange={(event)=>setAccount(event.target.value)}/>
+                <div className ="flex justify-between">
+                    { account.length === 0
+                       ? <p className="my-2 text-sm text-gray-600 text-red-600 font-medium">필수 항목 입니다.</p>
+                       : <p></p> }
+                </div>
+            </div>
+            
             <br/>
 
             <h2>세금 계산서 발행</h2>

@@ -5,6 +5,7 @@ export default function CreatorInformFrom()
 {
     const [creatorName, setCreatorName] = useState<string>("");
     const [creatorIntroduce, setCreatorIntroduce] = useState<string>("");
+    const [agentName, setAgentName] = useState<string>("");
 
     function getInputBorderColor(str : string, lengthLimit : number)
     {
@@ -90,15 +91,21 @@ export default function CreatorInformFrom()
 
             <br/>
 
-            <h2>대표자 명</h2>
-            <p>크리에이터 혹은 크리에티 팀의 대표자 이름을 작성해주세요.</p>
-            <input placeholder="대표자 명을 작성해주세요."/>
 
-            <br/>
-
-            <h2>대표자 명</h2>
-            <p>크리에이터 혹은 크리에티 팀의 대표자 이름을 작성해주세요.</p>
-            <input placeholder="대표자 명을 작성해주세요."/>
+            <div className ="w-96 my-14">
+                <div className ="flex h-fit gap-1">
+                    <h2 className ="font-semibold text-lg my-2">대표자 명</h2>
+                    <p className ="my-auto text-xl text-red-500">*</p>
+                </div>
+                <p className ="my-2 text-gray-600">크리에이터 혹은 크리에티 팀의 대표자 이름을 작성해주세요.</p>
+                <input 
+                    className={`rounded-sm w-96 h-12 border-[0.1rem] ${getInputBorderColor(agentName,20)} text-start`}
+                    placeholder="   대표자 명을 작성해주세요."
+                    onChange={(event)=>setAgentName(event.target.value)}/>
+                    { agentName.length === 0
+                       ? <p className="my-2 text-sm text-gray-600 text-red-600 font-medium">필수 항목 입니다.</p>
+                       : <p></p> }
+            </div>
 
             <br/>
 

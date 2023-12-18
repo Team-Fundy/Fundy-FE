@@ -38,7 +38,7 @@ export default function CreatorInformFrom()
     }
 
     return (
-        <div>
+        <div className ="w-screen h-fit bg-gray-200">
             <h1 className = "font-bold text-3xl">펀디에 어서오세요.</h1>
             <p className = "text-sm">펀딩에 필요한 정보들을 작성해주세요.</p>
 
@@ -62,18 +62,28 @@ export default function CreatorInformFrom()
 
             <br/>
 
-            <h2>크리에이터 프로필</h2>
-            <p>크리에이터 혹은 크리에티 팀의 프로필을 작성해주세요.</p>
+            <h2 className ="font-semibold text-lg my-2">크리에이터 프로필</h2>
+            <p className ="my-2 text-gray-600">크리에이터 혹은 크리에티 팀의 프로필을 작성해주세요.</p>
             <div className ="flex gap-2">
-                <input type="file"></input>
-                <div className ="border-2">
-                    <div>
-                        <label>파일형식 :</label>
-                        <p>jpg 또는 png</p>
-                    </div>
-                    <div>
-                        <label>사이즈 :</label>
-                        <p>최대 (가로 512px, 세로 512px 이하)</p>
+                <input type="file">
+
+                </input>
+                <div className ="px-6 py-6 border-2 border-gray-200 bg-white ">
+                    <div className ="flex">
+                        <Image
+                            src={warningIconfrom} 
+                            alt ="warningIcon" 
+                            className = "w-5 h-5 my-1 mx-2"/>
+                        <div>
+                            <div className ="flex gap-1">
+                                <label className ="text-gray-300">파일형식 :</label>
+                                <p className ="text-gray-500"> jpg 또는 png</p>
+                            </div>
+                            <div className ="flex gap-1">
+                                <label  className ="text-gray-300">사이즈 :</label>
+                                <p className ="text-gray-500"> 최대 (가로 512px, 세로 512px 이하)</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

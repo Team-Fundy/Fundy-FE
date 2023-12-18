@@ -45,8 +45,8 @@ export default function CreatorInformFrom()
 
     return (
         <div className ="w-screen h-fit bg-gray-200">
-            <h1 className = "font-bold text-3xl">펀디에 어서오세요.</h1>
-            <p className = "text-sm">펀딩에 필요한 정보들을 작성해주세요.</p>
+            <h1 className = "my-3 font-bold text-5xl">펀디에 어서오세요.</h1>
+            <p>펀딩에 필요한 정보들을 작성해주세요.</p>
 
             <div className ="w-96 my-14">
                 <div className ="flex h-fit gap-1">

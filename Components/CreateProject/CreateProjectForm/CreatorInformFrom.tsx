@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Image from "next/image";
 import warningIconfrom from "@/public/createproject/waringIcon.png"
+import imageUploadButton from "@/public/createproject/imageUploadBtn.png"
 
 export default function CreatorInformFrom()
 {
@@ -37,6 +38,11 @@ export default function CreatorInformFrom()
         }
     }
 
+    function onClickSetCreatorProfileImageButton()
+    {
+
+    }
+
     return (
         <div className ="w-screen h-fit bg-gray-200">
             <h1 className = "font-bold text-3xl">펀디에 어서오세요.</h1>
@@ -65,10 +71,12 @@ export default function CreatorInformFrom()
             <h2 className ="font-semibold text-lg my-2">크리에이터 프로필</h2>
             <p className ="my-2 text-gray-600">크리에이터 혹은 크리에티 팀의 프로필을 작성해주세요.</p>
             <div className ="flex gap-2">
-                <input type="file">
-
-                </input>
-                <div className ="px-6 py-6 border-2 border-gray-200 bg-white ">
+                <button
+                    className ="bg-white px-20 py-16" 
+                    onClick={onClickSetCreatorProfileImageButton}>
+                    <Image src={imageUploadButton} alt="nll"/>
+                </button>
+                <div className ="w-fit h-fit px-6 py-6 border-2 border-gray-200 bg-white ">
                     <div className ="flex">
                         <Image
                             src={warningIconfrom} 

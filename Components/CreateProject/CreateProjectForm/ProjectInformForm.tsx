@@ -17,6 +17,7 @@ export default function ProjectInformForm()
     const [isIdentityVerification, setIsIdentityVerification] = useState<boolean>(false);
     const [account, setAccount] = useState<string>("");
     const [taxbill, setTaxbill] = useState<string>("");
+    const [profileImage, setprofileImage] = useState<string | null>(null);
 
 
     function getInputBorderColor(str : string, lengthLimit : number)
@@ -45,8 +46,17 @@ export default function ProjectInformForm()
     }
 
     function onClickSetCreatorProfileImageButton()
-    {
-
+    {  
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/gif, image/jpeg,image/png,image/jpg';
+            
+            fileInput.onchange = (e) => {
+                setprofileImage(URL.createObjectURL(e.target.files[0]));
+                console.log(URL.createObjectURL(e.target.files[0]))
+                console.log(URL.createObjectURL(e.target.files[0]));
+            };
+            fileInput.click();
     }
 
     return (
@@ -70,8 +80,6 @@ export default function ProjectInformForm()
                     :  <ProjectCategory selectedGenre= {selectedGenre} setSelectedGenre= {setSelectedGenre} setIsOpenSelectGenreOption ={setIsOpenSelectGenreOption}/>
                 }
             </div>
-            
-
             <hr/>
             <br/>
 
@@ -117,9 +125,10 @@ export default function ProjectInformForm()
             <p className ="my-2 text-gray-600">펀더들이 한눈 프로젝트의 느낌을 알 수 있도록 메인 이미지를 업로드 해주세요.</p>
             <div className ="flex gap-2">
                 <button
+                    
                     className ="bg-white px-20 py-16" 
                     onClick={onClickSetCreatorProfileImageButton}>
-                    <Image src={imageUploadButton} alt="nll"/>
+                    <Image src={profileImage != null? profileImage : imageUploadButton} alt="nll" width ={120} height={170}/>
                 </button>
                 <div className ="w-fit h-fit px-6 py-6 border-2 border-gray-200 bg-white ">
                     <div className ="flex">

@@ -53,11 +53,14 @@ export default function UploadImageList({imageList, setImageList} :UploadImageLi
         <div>
             {
                 imageList.length > 0 ? 
-                    null 
+                    imageList.map((item,index)=>(
+                        <UploadItem key = {index} name={item.name} file ={item.file} onClickDelete ={(file : string)=>(setImageList(imageList.filter((item)=> item.file!==file)))} />
+                    ))
                     : null
             }
         </div>
-        <UploadItem name='null.jpg' file ="null" onClickDelete ={(file : string)=>(setImageList(imageList.filter((item)=> item.file!==file)))} />
+
+        
     </div>
     )
 }

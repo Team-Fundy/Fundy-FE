@@ -14,14 +14,13 @@ type UploadImageType ={
 
 export default function UploadItem({name, file, onClickDelete} : UploadImageType)
 {
-    file =trashIcon;
     return (
-        <div className ="bg-white rounded-sm py-4 border-2 border-gray-400 flex justify-between rounded-lg">
+        <div className ="bg-white rounded-sm py-4 border-2 border-gray-200 flex justify-between rounded-lg my-4">
             <div className ="flex ml-1">
                 <Image src={threeDotIcon} alt="threedot"/>
-                <Image src={file} alt="fileimg" className="w-6 h-8" width={20} height={15}/> 
+                <Image src={file} alt="fileimg" className="w-8 h-10" width={20} height={15}/> 
                 <Image src={ModufyIcon} alt="ModufyIcon"/>
-                <p className ="my-auto ml-1">{name}</p>
+                <p className ="my-auto ml-1 overflow-hidden text-elipsis">{name}</p>
             </div>
             <div className ="flex gap-2 mr-2">
                 <button className ="border-2 border-gray-200 bg-white flex px-4 w-fit h-fit py-1 rounded-md">

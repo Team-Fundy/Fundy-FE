@@ -2,15 +2,16 @@ import { useState,useEffect, use } from "react"
 import Image from "next/image";
 
 import ProjectCategory from "./ProjectCategory";
+import UploadImageList from "./UploadImageList";
 
 import warningIconfrom from "@/public/createproject/waringIcon.png"
 import imageUploadButton from "@/public/createproject/imageUploadBtn.png"
-import videoUploadButton from "@/public/createproject/videoUploadBtn.png"
 
 export default function ProjectInformForm()
 {
     const [isOpenSelectGenreOption,setIsOpenSelectGenreOption]= useState<boolean>(false);
     const [selectedGenre,setSelectedGenre]= useState<Array<string>>([]);
+    const [imageList,setImageList]= useState<Array<string>>([]);
     const [creatorName, setCreatorName] = useState<string>("");
     const [creatorIntroduce, setCreatorIntroduce] = useState<string>("");
     const [agentName, setAgentName] = useState<string>("");
@@ -153,22 +154,7 @@ export default function ProjectInformForm()
             <br/>
             <hr/>
             <br/>
-                        
-            <h2 className ="font-semibold text-lg my-2">작품 설명 이미지&영상</h2>
-            <p className ="my-2 text-gray-600">펀더들이 한눈 프로젝트의 느낌을 알 수 있도록 메인 이미지를 업로드 해주세요.</p>
-            <div className ="flex gap-2">
-                <button
-                    className ="bg-white px-24 py-16  hover:scale-105" 
-                    onClick={onClickSetCreatorProfileImageButton}>
-                    <Image src={imageUploadButton} alt="nll"/>
-                </button>
-
-                <button
-                    className ="bg-white px-12 py-16  hover:scale-105" 
-                    onClick={onClickSetCreatorProfileImageButton}>
-                    <Image src={videoUploadButton} alt="nll"/>
-                </button>
-            </div>
+            <UploadImageList imageList ={imageList} setImageList = {setImageList}/>
         </div>
     )
 }

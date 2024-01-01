@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import CreatorInformFrom from "./CreateProjectForm/CreatorInformFrom"
-import ProjectInformForm from "./CreateProjectForm/ProjectInformForm"
+import ProjectInformForm from "./CreateProjectForm/ProjectionInformForm/ProjectInformForm"
 
 export default function CreateProjectFormComponent()
 {

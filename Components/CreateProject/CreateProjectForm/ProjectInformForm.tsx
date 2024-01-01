@@ -1,11 +1,16 @@
-import { useState } from "react"
+import { useState,useEffect, use } from "react"
 import Image from "next/image";
+
+import ProjectCategory from "./ProjectCategory";
+
 import warningIconfrom from "@/public/createproject/waringIcon.png"
 import imageUploadButton from "@/public/createproject/imageUploadBtn.png"
 import videoUploadButton from "@/public/createproject/videoUploadBtn.png"
 
 export default function ProjectInformForm()
 {
+    const [isOpenSelectGenreOption,setIsOpenSelectGenreOption]= useState<boolean>(false);
+    const [selectedGenre,setSelectedGenre]= useState<Array<string>>([]);
     const [creatorName, setCreatorName] = useState<string>("");
     const [creatorIntroduce, setCreatorIntroduce] = useState<string>("");
     const [agentName, setAgentName] = useState<string>("");
@@ -54,13 +59,18 @@ export default function ProjectInformForm()
                     <h2 className ="font-semibold text-lg my-2">카테고리</h2>
                 </div>
                 <p className ="my-2 text-gray-600">게임 프로젝트의 게임 카테고리를 설정해주세요. <br/> 지금 설정했어도 이후에 바꿀 수 있어요</p>
-                <select 
-                    className={`rounded-sm w-96 h-12 border-[0.1rem] ${getInputBorderColor(creatorName,40)} text-start`}
-                    placeholder="카테고리 선택"
-                    onChange={(event)=>setCreatorName(event.target.value)}>
-                        <option>카테고리 선택</option>
-                </select>
+                {
+                    !isOpenSelectGenreOption ? 
+                <button className ="w-96 h-12 bg-white border-2 border-slate-200 flex justify-between">
+                    <p className ={`mx-4 my-auto overflow-hidden text-ellipsis ${selectedGenre.length > 0 ? 'text-slate-600':'text-slate-200'}`}>
+                        {selectedGenre.length > 0 ?selectedGenre.join(', ') : '장르를 선택해주세요'}
+                    </p>
+                    <p className ='mx-2 my-auto' onClick ={()=>setIsOpenSelectGenreOption(true)}>내리기</p>
+                </button>
+                    :  <ProjectCategory selectedGenre= {selectedGenre} setSelectedGenre= {setSelectedGenre} setIsOpenSelectGenreOption ={setIsOpenSelectGenreOption}/>
+                }
             </div>
+            
 
             <hr/>
             <br/>

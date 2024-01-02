@@ -6,9 +6,10 @@ import videoUploadButton from "@/public/createproject/videoUploadBtn.png"
 import UploadItem from "./UploadItem";
 
 
-type UploadImageType ={
+type UploadImageType = {
     name : string,
-    file : string
+    file?: string,
+    type : 'Video' | 'Image'
 }
 
 type UploadImageList = {
@@ -21,6 +22,7 @@ type UploadImageList = {
 export default function UploadImageList({imageList, setImageList} :UploadImageList ){
     
     const [isVideoInputModalOpen, setIsVideoInputModalOpen] = useState(false);
+    const [videoLink,setVidoeLink] = useState(""); 
 
     function onClickAddImageBtn()
     {
@@ -29,14 +31,16 @@ export default function UploadImageList({imageList, setImageList} :UploadImageLi
         fileInput.accept = 'image/gif, image/jpeg,image/png,image/jpg';
         
         fileInput.onchange = (e) => {
-            setImageList((item)=> [...item,{file : URL.createObjectURL(e.target.files[0]), name : e.target.files[0].name} ]);
+            setImageList((item)=> [...item,{file : URL.createObjectURL(e.target.files[0]), name : e.target.files[0].name , type : "Image"}]);
         };
         fileInput.click();
     }
 
-    function onClickAddVideoBtn()
+    function onClickEnterVideoBtn(event : InputEvent)
     {
-        setIsVideoInputModalOpen(true);
+        console.log(event)
+        setImageList((item)=> [...item,{name : videoLink  , type : "Image"}]);
+        setIsVideoInputModalOpen(false);
     }
 
     return (
@@ -49,10 +53,9 @@ export default function UploadImageList({imageList, setImageList} :UploadImageLi
                 onClick={onClickAddImageBtn}>
                 <Image src={imageUploadButton} alt="nll"/>
             </button>
-
             <button
                 className ="bg-white px-12 py-16  hover:scale-105" 
-                onClick={onClickAddVideoBtn}>
+                onClick={()=>setIsVideoInputModalOpen(true)}>
                 <Image src={videoUploadButton} alt="nll"/>
             </button>
         </div>
@@ -60,7 +63,11 @@ export default function UploadImageList({imageList, setImageList} :UploadImageLi
             {
                 imageList.length > 0 ? 
                     imageList.map((item,index)=>(
-                        <UploadItem key = {index} name={item.name} file ={item.file} onClickDelete ={(file : string)=>(setImageList(imageList.filter((item)=> item.file!==file)))} />
+                        <UploadItem key = {index}
+                                    name={item.name}
+                                    file ={item.file} 
+                                    onClickDelete ={(file : string)=>(setImageList(imageList.filter((item)=> item.file!==file)))} 
+                                    type ={item.type}/>
                     ))
                     : null
             }
@@ -69,9 +76,9 @@ export default function UploadImageList({imageList, setImageList} :UploadImageLi
             isVideoInputModalOpen ?
         <div className ="fixed left-1/2 bottom-1/2 w-72 h-36 white z-50 bg-white border-2 border-slate-300 ">
             <p className ="my-3 mx-auto w-fit font-semibold">동영상 UML 링크를 입력해주세요 </p>
-            <input className ="border-2 w-60 mx-auto my-1 border-slate-200 ml-6"/>
+            <input className ="border-2 w-60 mx-auto my-1 border-slate-200 ml-6" onChange={(e)=>setVidoeLink(e.target.value)}/>
             <div className ="mx-auto w-fit flex gap-6 my-2">
-                <button className ="border-[0.1rem] border-black px-2" onClick ={()=>setIsVideoInputModalOpen(false)}>확인</button>
+                <button className ="border-[0.1rem] border-black px-2" onClick ={(e)=>onClickEnterVideoBtn(e)}>확인</button>
                 <button className ="border-[0.1rem] border-black px-2" onClick ={()=>setIsVideoInputModalOpen(false)}>취소</button>
             </div>
         </div>

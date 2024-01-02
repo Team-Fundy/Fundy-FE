@@ -8,17 +8,18 @@ import ModufyIcon from"@/public/createproject/icon/ModufyIcon.png"
 
 type UploadImageType ={
     name : string,
-    file : string
+    file?: string,
+    type : string,
     onClickDelete : (file : string) => void
 }
 
-export default function UploadItem({name, file, onClickDelete} : UploadImageType)
+export default function UploadItem({name, file, type, onClickDelete} : UploadImageType)
 {
     return (
         <div className ="bg-white rounded-sm py-4 border-2 border-gray-200 flex justify-between rounded-lg my-4">
             <div className ="flex ml-1">
-                <Image src={threeDotIcon} alt="threedot"/>
-                <Image src={file} alt="fileimg" className="w-8 h-10" width={20} height={15}/> 
+                <Image src={threeDotIcon} alt="threedot"/> 
+                 { type === 'Image' && file  ? <Image src={file} alt="fileimg" className="w-8 h-10" width={20} height={15}/> : null}
                 <Image src={ModufyIcon} alt="ModufyIcon"/>
                 <p className ="my-auto ml-1 overflow-hidden text-elipsis">{name}</p>
             </div>

@@ -4,12 +4,14 @@ import CreateProjectFormComponent from "@/Components/CreateProject/CreateProject
 import CreateProjectSidebar from "@/Components/CreateProject/CreateProjectSidebar"
 import FundingScheduleForm from "@/Components/CreateProject/FundingScheduleForm/FundingScheduleForm"
 import ProjectDetailForm from "@/Components/CreateProject/ProjectDetailForm/ProjectDetailForm"
+import ProjectRewardForm from "@/Components/CreateProject/ProjectRewardForm/ProjectRewardForm"
+import DevelopNotePriodForm from "@/Components/CreateProject/DevelopNotePriodForm/DevelopNotePriodForm"
 
 export default function CreateProject() {
   return (
     <div className ="flex bg-slate-100"> 
         <CreateProjectSidebar/>
-        <ProjectDetailForm/>
+        <DevelopNotePriodForm/>
     </div>
   )
 }

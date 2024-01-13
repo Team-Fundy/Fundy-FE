@@ -24,6 +24,7 @@ export default function RewardItemAddForm({onAddItem} : RewardItemAddFormProps) 
       <div className="w-[19.5rem] mx-auto">
         <h3 className ="text-gray-500 mt-8">아이템 이름</h3>
         <input
+          value={itemName}
           onChange={(event)=>setItemName(event.target.value)}
           className ="border-2 border-slate-100 rounded-md px-2 my-2 h-14 w-full"
           placeholder ="  ex) 크레딧 추가"/>

@@ -1,7 +1,5 @@
 import Image from "next/image"
-import Reward from "@/public/createproject/icon/Frame 2089.png"
-import RewardItemAddForm from "./RewardItemAddForm"
-import RewardItem from "./RewardItem"
+import RewardItemSetting from "./RewardItemSetting"
 
 export default function ProjectRewarodForm()
 {
@@ -16,14 +14,8 @@ export default function ProjectRewarodForm()
             <h2 className ="text-[1.1rem] font-semibold">아이템 설정</h2>
             <p className = "text-[0.8rem] text-gray-500 my-2" >아이템 설정은 리워드에 포함되는 구성 품목을 설정합니다. <br/> 게임을 후원해준 사람들에게 고마운 마음을 담아서 의미있는 리워드를 만들어 보세요.</p>
         </div>
-        <Image src ={Reward} alt =""/>
-        <div className ="flex gap-4">
-            <RewardItemAddForm />
-            <div>
-                <RewardItem type = "Video" name ="1"/>
-                <RewardItem type = "Video" name ="1"/>
-            </div>
-        </div>
+       <RewardItemSetting/>
+       
         <div>
             <h2 className ="text-[1.1rem] font-semibold">리워드 설정</h2>
             <p className = "text-[0.8rem] text-gray-500 my-2">후원 아이템들을 모아서 하나의 리워드 구성을 만듭니다.<br/>얼리버드 구성품목이나 VIP구성품목등 여러 종류의 리워드들을 구성해보세요.</p>

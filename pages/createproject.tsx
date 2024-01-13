@@ -5,7 +5,7 @@ import CreateProjectSidebar from "@/Components/CreateProject/CreateProjectSideba
 import FundingScheduleForm from "@/Components/CreateProject/FundingScheduleForm/FundingScheduleForm"
 import ProjectDetailForm from "@/Components/CreateProject/ProjectDetailForm/ProjectDetailForm"
 import DevelopNotePriodForm from "@/Components/CreateProject/DevelopNotePriodForm/DevelopNotePriodForm"
-import ProjectRewarodForm from "@/Components/CreateProject/ProjectRewardForm/ProjectRewardForm"
+import ProjectRewarodForm from "@/Components/CreateProject/ProjectRewardForm"
 
 export default function CreateProject() {
   return (

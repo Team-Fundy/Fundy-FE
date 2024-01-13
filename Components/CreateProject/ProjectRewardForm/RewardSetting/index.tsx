@@ -1,7 +1,10 @@
 import RewardItem from "./RewardItem";
 import RewardItemAddForm from "./RewardItemAddForm";
+import { useState } from "react";
 
 export default function RewardItemSetting() {
+  
+  const [rewardItem,setRewardItem] = useState()
 
   return (
     <div className ="flex gap-4">

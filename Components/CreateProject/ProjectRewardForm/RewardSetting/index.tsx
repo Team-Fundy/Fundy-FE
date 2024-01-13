@@ -2,16 +2,27 @@ import RewardItem from "./RewardItem";
 import RewardItemAddForm from "./RewardItemAddForm";
 import { useState } from "react";
 
+interface RewardItemType {
+  name : string,
+  option : string
+}
+
 export default function RewardItemSetting() {
   
-  const [rewardItem,setRewardItem] = useState()
+  const [rewardItemList,setRewardItemList] = useState<RewardItemType[]>([])
+  
+  function addRewardItem(itemName : string, selectedItemCondition : string) 
+  {
+    setRewardItemList((items : RewardItemType[])=>[...items,{name : itemName, option : selectedItemCondition}])
+  }
 
   return (
     <div className ="flex gap-4">
-      <RewardItemAddForm />
+      <RewardItemAddForm onAddItem={addRewardItem}/>
        <div>
-           <RewardItem type = "Video" name ="1"/>
-           <RewardItem type = "Video" name ="1"/>
+        {rewardItemList.map((rewardItem, index) => (
+               <RewardItem type = {rewardItem.option} name = {rewardItem.name} key={index}/>
+           ))}
        </div>
     </div>
   )

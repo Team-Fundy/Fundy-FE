@@ -8,19 +8,16 @@ import ModufyIcon from"@/public/createproject/icon/ModufyIcon.png"
 
 type UploadImageType ={
     name : string,
-    file?: string,
     type : string,
-    onClickDelete ?: (file : string) => void
+    onClickDelete ?: () => void
 }
 
-export default function UploadItem({name, file, type, onClickDelete} : UploadImageType)
+export default function RewardItem({name, type, onClickDelete} : UploadImageType)
 {
     return (
-        <div className ="bg-white rounded-sm py-4 border-2 border-gray-200 flex justify-between rounded-lg my-4">
+        <div className ="bg-white min-w-[36rem] w-[36rem] rounded-sm py-4 border-2 border-gray-200 flex justify-between rounded-lg">
             <div className ="flex ml-1">
-                <Image src={threeDotIcon} alt="threedot"/> 
-                 { type === 'Image' && file  ? <Image src={file} alt="fileimg" className="w-8 h-10" width={20} height={15}/> : null}
-                <Image src={ModufyIcon} alt="ModufyIcon"/>
+                <div className ="w-1 h-1 rounded-full bg-gray-300 my-auto mx-4"/>
                 <p className ="my-auto ml-1 overflow-hidden text-elipsis">{name}</p>
             </div>
             <div className ="flex gap-2 mr-2">
@@ -28,7 +25,9 @@ export default function UploadItem({name, file, type, onClickDelete} : UploadIma
                     <Image className ="my-auto" src={renewIcon} alt="renewIcon"/>
                     변경
                 </button>
-                <button className ="border-2 border-gray-200 bg-purple-500 text-white flex  px-4 w-fit h-fit py-1 rounded-md">
+                <button 
+                  onClick ={onClickDelete}
+                  className ="border-2 border-gray-200 bg-purple-500 text-white flex  px-4 w-fit h-fit py-1 rounded-md">
                     <Image className ="my-auto" src={trashIcon} alt="trashIcon"/>
                     삭제
                 </button>

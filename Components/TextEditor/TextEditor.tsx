@@ -36,7 +36,6 @@ const TextEditor = ({setContents } :TextEditorType) => {
     return (
         <div>
             <ReactQuill onChange={onChangeText} modules={modules} placeholder="내용을 입력하세요." className="h-96 w-[51rem] min-h-[16rem] mb-[4.5rem]" />
-
         </div>
     );
     };

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import TextEditor from "@/Components/TextEditor/TextEditor";
 import Image from "next/image";
 
@@ -9,7 +9,9 @@ export default function ProjectDetailForm()
     const [projectCalander, setProjectCalander] = useState<string>("");
     const [projectTeamIntroduce, setProjectTeamIntroduce] = useState<string>("");
 
-
+    useEffect(()=>{
+        console.log(projectIntroduce);
+    },[projectIntroduce ])
     return (
         <div className ="h-fit bg-slate-100 ml-12 my-10">
             <h1 className = "my-3 font-bold text-4xl">프로젝트 계획 작성</h1>

@@ -1,3 +1,5 @@
+import RewardPackageAddForm from "./RewardPackageAddForm"
+
 export default function RewardSetting() {
   return (
     <div>
@@ -10,6 +12,7 @@ export default function RewardSetting() {
                 </div>
             </div>
         </div>
+      <RewardPackageAddForm/>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import RewardPackageAddForm from "./RewardPackageAddForm";
 import AddRewwardPakcageButton from "./AddRewadPackageButton";
+import RewardPackageItem from "./RewardPackageItem";
 import { useState } from "react";
 
 export default function RewardSetting() {
@@ -21,9 +22,12 @@ export default function RewardSetting() {
       </div>
       <div className="flex">
         <RewardPackageAddForm />
-        <AddRewwardPakcageButton
-          onClickBtn={() => setRewardPackagelist((item) => [...item, "a"])}
-        />
+        <div>
+          <RewardPackageItem />
+          <AddRewwardPakcageButton
+            onClickBtn={() => setRewardPackagelist((item) => [...item, "a"])}
+          />
+        </div>
       </div>
     </div>
   );

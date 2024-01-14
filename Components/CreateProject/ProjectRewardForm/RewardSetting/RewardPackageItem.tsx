@@ -23,7 +23,7 @@ export default function RewardPackageItem() {
     );
   }
   return (
-    <div className="w-[28rem] rounded-lg bg-white">
+    <div className="w-[28rem] rounded-lg bg-white my-4">
       <div className="w-[24rem] mx-auto py-6">
         <p>리워드 타이틀</p>
         <div className="flex gap-2">

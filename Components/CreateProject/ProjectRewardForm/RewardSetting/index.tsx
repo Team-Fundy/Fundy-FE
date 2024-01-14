@@ -23,7 +23,8 @@ export default function RewardSetting() {
       <div className="flex">
         <RewardPackageAddForm />
         <div>
-          <RewardPackageItem />
+          {rewardPackagelist.length &&
+            rewardPackagelist.map((_) => <RewardPackageItem />)}
           <AddRewwardPakcageButton
             onClickBtn={() => setRewardPackagelist((item) => [...item, "a"])}
           />

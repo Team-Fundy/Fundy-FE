@@ -1,6 +1,7 @@
 import { ReactNode, useState } from "react";
 import Image from "next/image";
 import onGetImageFile from "@/Components/Component/onGetImageFile";
+import CalendarButton from "@/Components/Component/CalendarButton";
 
 interface ColorButtonProps {
   item: string;
@@ -32,6 +33,7 @@ export default function RewardPackageAddForm() {
   const [isNumable, setIsNumable] = useState(false);
   const [isShip, setIsShip] = useState(false);
   const [rewardPackageImage, setRewardPackageImage] = useState<File>();
+  const [driveDay, setDriveDay] = useState<Date | null>();
 
   function ColorButton({
     width,
@@ -65,6 +67,7 @@ export default function RewardPackageAddForm() {
       </div>
     );
   }
+
 
   return (
     <div className="w-[22.5rem] h-full my-8 text-[#777879] bg-white border-2 border-gray-300 rounded-md">
@@ -152,7 +155,7 @@ export default function RewardPackageAddForm() {
         </div>
         <div>
           <h4 className="mt-12">예상 전달일</h4>
-          <button>날짜고르는거</button>
+          <CalendarButton day={driveDay} onSetDay={(day) => setDriveDay(day)} />
         </div>
         <div>
           <div className="flex gap-2">

@@ -1,5 +1,6 @@
 import { ReactNode, useState } from "react";
 import Image from "next/image";
+import ImageUploadButton from "@/Components/Component/ImageUploadButton";
 import onGetImageFile from "@/Components/Component/onGetImageFile";
 import CalendarButton from "@/Components/Component/CalendarButton";
 
@@ -76,14 +77,13 @@ export default function RewardPackageAddForm() {
           placeholder="  ex)슈퍼얼리버드"
           className="border-[0.1rem] border-gray-300 w-full h-12 mb-8"
         />
-        <h4>리워드 프로필(선택)</h4>
-        <button
-          onClick={() =>
-            onGetImageFile((newImage) => setRewardPackageImage(newImage))
-          }
-          className="w-full h-[4rem] bg-gray-300 mb-8"
-        ></button>
-        <h4>아이템 선택</h4>
+        <h4 className="mb-4">리워드 프로필(선택)</h4>
+        <ImageUploadButton
+          imageFile={rewardPackageImage}
+          className="w-[8rem] h-[8rem] mx-auto mb-8 my-8"
+          onChangeFile={(newImage) => setRewardPackageImage(newImage)}
+        />
+        <h4 className="mt-8">아이템 선택</h4>
         <div className="flex mb-2">
           <p className="text-purple-500 font-semibold">
             {selectedItemNum.length}개

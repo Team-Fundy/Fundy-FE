@@ -1,14 +1,17 @@
+import React from "react";
 import imageUploadImage from "@/public/createproject/imageUploadBtn.png";
 import Image from "next/image";
 
 interface ImageUploadButtonProps {
   onChangeFile: (file: File) => void;
+  imageFile?: File | null;
   className: string;
 }
 
 export default function ImageUploadButton({
   onChangeFile,
   className,
+  imageFile,
 }: ImageUploadButtonProps) {
   function onClickSetCreatorProfileImageButton() {
     const fileInput = document.createElement("input");
@@ -26,8 +29,21 @@ export default function ImageUploadButton({
   }
 
   return (
-    <button className={className} onClick={onClickSetCreatorProfileImageButton}>
-      <Image src={imageUploadImage} alt="nll" />
+    <button
+      className="w-full border-[0.1rem] rounded-md border-gray-200"
+      onClick={onClickSetCreatorProfileImageButton}
+    >
+      {imageFile ? (
+        <Image
+          width="1"
+          height="1"
+          src={URL.createObjectURL(imageFile)}
+          className="w-full h-full"
+          alt="Uploaded"
+        />
+      ) : (
+        <Image className={className} src={imageUploadImage} alt="Upload" />
+      )}
     </button>
   );
 }

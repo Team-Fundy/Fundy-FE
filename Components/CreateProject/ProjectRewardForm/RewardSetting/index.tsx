@@ -2,8 +2,10 @@ import RewardPackageAddForm from "./RewardPackageAddForm";
 import AddRewwardPakcageButton from "./AddRewadPackageButton";
 import RewardPackageItem from "./RewardPackageItem";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 interface RewardPackageItemType {
+  key: string;
   titleImage?: File;
   rewardItemList?: [];
   numLimit?: Number;
@@ -17,7 +19,7 @@ export default function RewardSetting() {
   >([]);
 
   function AddRewardPackage() {
-    setRewardPackagelist((packageList) => [...packageList, {}]);
+    setRewardPackagelist((packageList) => [...packageList, { key: uuidv4() }]);
   }
 
   return (
@@ -37,8 +39,11 @@ export default function RewardSetting() {
       <div className="flex">
         <RewardPackageAddForm />
         <div>
-          {rewardPackagelist.length &&
-            rewardPackagelist.map((_) => <RewardPackageItem />)}
+          <div className="flex flex-col">
+            {rewardPackagelist.map((item) => (
+              <RewardPackageItem rewardPackage={item} />
+            ))}
+          </div>
           <AddRewwardPakcageButton onClickBtn={AddRewardPackage} />
         </div>
       </div>

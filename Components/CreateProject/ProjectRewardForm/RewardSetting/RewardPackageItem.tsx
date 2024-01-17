@@ -1,20 +1,26 @@
-interface RewardPackageItemProps {
-  titleImage: File;
-  rewardItemList: [];
-  numLimit: number;
-  deriveDate: Date;
-  minimumPrice: number;
+interface RewardPackageItemType {
+  rewardPackage: {
+    key: string;
+    titleImage?: File;
+    rewardItemList?: [];
+    numLimit?: Number;
+    deriveDate?: Date;
+    minimumPrice?: Number;
+  };
 }
 
-interface RewardItemType {}
-
 export default function RewardPackageItem({
-  titleImage,
-  rewardItemList,
-  numLimit,
-  deriveDate,
-  minimumPrice,
-}: RewardPackageItemProps) {
+  rewardPackage,
+}: RewardPackageItemType) {
+  const {
+    key,
+    titleImage,
+    rewardItemList,
+    numLimit,
+    deriveDate,
+    minimumPrice,
+  } = rewardPackage;
+
   function RewardListItem() {
     return (
       <li className="flex gap-2">

@@ -3,8 +3,22 @@ import AddRewwardPakcageButton from "./AddRewadPackageButton";
 import RewardPackageItem from "./RewardPackageItem";
 import { useState } from "react";
 
+interface RewardPackageItemType {
+  titleImage?: File;
+  rewardItemList?: [];
+  numLimit?: Number;
+  deriveDate?: Date;
+  minimumPrice?: Number;
+}
+
 export default function RewardSetting() {
-  const [rewardPackagelist, setRewardPackagelist] = useState<string[]>([]);
+  const [rewardPackagelist, setRewardPackagelist] = useState<
+    RewardPackageItemType[]
+  >([]);
+
+  function AddRewardPackage() {
+    setRewardPackagelist((packageList) => [...packageList, {}]);
+  }
 
   return (
     <div>
@@ -25,9 +39,7 @@ export default function RewardSetting() {
         <div>
           {rewardPackagelist.length &&
             rewardPackagelist.map((_) => <RewardPackageItem />)}
-          <AddRewwardPakcageButton
-            onClickBtn={() => setRewardPackagelist((item) => [...item, "a"])}
-          />
+          <AddRewwardPakcageButton onClickBtn={AddRewardPackage} />
         </div>
       </div>
     </div>

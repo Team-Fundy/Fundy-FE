@@ -1,7 +1,20 @@
-export default function RewardPackageItem() {
-  const cost = "5,000";
-  const numLimit = 50;
+interface RewardPackageItemProps {
+  titleImage: File;
+  rewardItemList: [];
+  numLimit: number;
+  deriveDate: Date;
+  minimumPrice: number;
+}
 
+interface RewardItemType {}
+
+export default function RewardPackageItem({
+  titleImage,
+  rewardItemList,
+  numLimit,
+  deriveDate,
+  minimumPrice,
+}: RewardPackageItemProps) {
   function RewardListItem() {
     return (
       <li className="flex gap-2">
@@ -22,31 +35,40 @@ export default function RewardPackageItem() {
       </li>
     );
   }
+  function convertDateToString(date: Date) {
+    if (!date) return null;
+    return `${date.getFullYear}년 ${date.getMonth() + 1}월 ${date.getDay}일`;
+  }
+
+  function onClickRewardPackageContainer() {}
+
   return (
-    <div className="w-[28rem] rounded-lg bg-white my-4">
+    <button
+      onClick={onClickRewardPackageContainer}
+      className="w-[28rem] rounded-lg bg-white my-4"
+    >
       <div className="w-[24rem] mx-auto py-6">
         <p>리워드 타이틀</p>
         <div className="flex gap-2">
           <div className="flex gap-1">
             <p className="text-[1.5rem] font-semibold text-purple-600">
-              {cost}
+              {minimumPrice ? minimumPrice.toString() : "0"}
             </p>
             <p className="text-[0.9rem] mt-2">원</p>
           </div>
           <button>+</button>
         </div>
         <ul>
-          <RewardListItem />
-          <RewardListItem />
-          <RewardListItem />
+          {rewardItemList && rewardItemList.map((item) => <RewardListItem />)}
         </ul>
         <ul>
-          {OptionItem("수량제한", "50개")}
-          {OptionItem("예상 전달일", "2025년 4월 1일")}
-          {OptionItem("배송일", "3000원")}
+          {numLimit && OptionItem("수량제한", `${numLimit}개`)}
+          {deriveDate &&
+            OptionItem("예상 전달일", `${convertDateToString(deriveDate)}`)}
+          {OptionItem("배송비", "3000원")}
         </ul>
         <hr className="my-3" />
       </div>
-    </div>
+    </button>
   );
 }

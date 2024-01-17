@@ -68,10 +68,9 @@ export default function RewardPackageAddForm() {
     );
   }
 
-
   return (
     <div className="w-[22.5rem] h-full my-8 text-[#777879] bg-white border-2 border-gray-300 rounded-md">
-      <div className="w-[20rem] mx-auto mt-6">
+      <div className="w-[18rem] mx-auto mt-6">
         <h4 className="mb-2">리워드 이름</h4>
         <input
           placeholder="  ex)슈퍼얼리버드"
@@ -154,11 +153,15 @@ export default function RewardPackageAddForm() {
           <InputBox placeholder="개수를 입력해주세요." unitWord="개" />
         </div>
         <div>
-          <h4 className="mt-12">예상 전달일</h4>
-          <CalendarButton day={driveDay} onSetDay={(day) => setDriveDay(day)} />
+          <h4 className="mt-12 mb-2">예상 전달일</h4>
+          <CalendarButton
+            classname="w-[18rem]"
+            day={driveDay}
+            onSetDay={(day) => setDriveDay(day)}
+          />
         </div>
         <div>
-          <div className="flex gap-2">
+          <div className="mt-2 flex gap-2">
             <ColorButton
               width="14"
               height="2"

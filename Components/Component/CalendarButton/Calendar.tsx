@@ -114,28 +114,24 @@ const Calendar = ({ isPrevMonth, isNextMonth, onSetDay }: CalendarProps) => {
   const buildCalendarTag = (calendarDays: Date[]) => {
     return calendarDays.map((day: Date, i: number) => {
       if (day.getMonth() < currentMonth.getMonth()) {
-        return (
-          <td key={i} className="prevMonthDay">
-            {isPrevMonth ? day.getDate() : ""}
-          </td>
-        );
+        return <td key={i} className="prevMonthDay"></td>;
       }
       if (day.getMonth() > currentMonth.getMonth()) {
-        return (
-          <td key={i} className="nextMonthDay">
-            {isNextMonth ? day.getDate() : ""}
-          </td>
-        );
+        return <td key={i} className="nextMonthDay"></td>;
       }
       if (day < today) {
         return (
-          <td key={i} className="prevDay">
+          <td key={i} className="bg-gray-300 text-white">
             {day.getDate()}
           </td>
         );
       }
       return (
-        <td onClick={() => onClickDay(day)} key={i}>
+        <td
+          className="hover:bg-purple-500 hover:text-white"
+          onClick={() => onClickDay(day)}
+          key={i}
+        >
           {day.getDate()}
         </td>
       );
@@ -158,8 +154,8 @@ const Calendar = ({ isPrevMonth, isNextMonth, onSetDay }: CalendarProps) => {
   const calendarRows = divideWeek(calendarTags);
 
   return (
-    <div className="w-[20rem] bg-white px-4 py-6 border-2 border-slate-400 rounded-md">
-      <div className="w-[18rem] flex justify-between">
+    <div className="my-1 w-full bg-white px-4 py-6 border-2 border-slate-400 rounded-md">
+      <div className="w-full flex justify-between">
         <span className="font-bold text-slate-500">
           {currentMonth.getFullYear()}년 {currentMonth.getMonth() + 1}월
         </span>
@@ -176,7 +172,7 @@ const Calendar = ({ isPrevMonth, isNextMonth, onSetDay }: CalendarProps) => {
         <thead>
           <tr>
             {daysOfWeek.map((day, i) => (
-              <th key={i} className="w-16 h-8mx-4">
+              <th key={i} className="w-16 h-8 mx-4">
                 {day}
               </th>
             ))}

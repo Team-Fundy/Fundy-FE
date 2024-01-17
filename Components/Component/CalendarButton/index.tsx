@@ -33,10 +33,10 @@ export default function CalendarButton({
   }
 
   return (
-    <div className={`w-[24rem] h-fit ${classname}`}>
+    <div className={`h-fit ${classname}`}>
       <button
         onClick={() => setIsOpenCalendar((isOpenCalendar) => !isOpenCalendar)}
-        className="flex justify-between w-[20rem] h-[3.5rem] border-slate-400 border-2 border-md"
+        className={`flex justify-between ${classname} h-[3.5rem] border-slate-400 border-2 border-md`}
       >
         <div className="flex ml-2 gap-2">
           <Image className="my-auto" src={calandarIcon} alt="calandarIcon" />

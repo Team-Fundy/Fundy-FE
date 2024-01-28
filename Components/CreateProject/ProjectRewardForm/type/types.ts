@@ -7,6 +7,8 @@ export interface RewardPackageItemProps {
     numLimit?: Number;
     deriveDate?: Date;
     minimumPrice?: Number;
+    isShip?: boolean;
+    selectedItemNum?: string[];
   };
 }
 

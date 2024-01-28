@@ -1,8 +1,7 @@
 import { ReactNode, useState } from "react";
-import Image from "next/image";
 import ImageUploadButton from "@/Components/Component/ImageUploadButton";
-import onGetImageFile from "@/Components/Component/onGetImageFile";
 import CalendarButton from "@/Components/Component/CalendarButton";
+import { RewardPackageItemType } from "../type/types";
 
 interface ColorButtonProps {
   item: string;
@@ -18,7 +17,15 @@ interface InputBoxProps {
   unitWord: string;
 }
 
-export default function RewardPackageAddForm() {
+interface RewardPackageAddForm {
+  rewardPackage?: RewardPackageItemType;
+  onClickEnrollButon: (rewardPackage: RewardPackageItemType) => void;
+}
+
+export default function RewardPackageAddForm({
+  rewardPackage,
+  onClickEnrollButon,
+}: RewardPackageAddForm) {
   const temp = [
     "캐릭터 키링 14cm",
     "캐릭터 일러스트 카드",
@@ -30,11 +37,18 @@ export default function RewardPackageAddForm() {
     "머시꺵이3",
     "머시깽이4",
   ];
-  const [selectedItemNum, setSelectedItemNum] = useState<string[]>([]);
+  const [selectedItemNum, setSelectedItemNum] = useState<string[] | undefined>(
+    rewardPackage?.rewardItemList
+  );
   const [isNumable, setIsNumable] = useState(false);
+  const [minimumPrice, setMinimumPrice] = useState(0);
+  const [numLimit, setNumLimit] = useState(rewardPackage?.numLimit);
   const [isShip, setIsShip] = useState(false);
-  const [rewardPackageImage, setRewardPackageImage] = useState<File>();
-  const [driveDay, setDriveDay] = useState<Date | null>();
+  const [titleName, setTitleName] = useState("");
+  const [rewardPackageImage, setRewardPackageImage] = useState(
+    rewardPackage?.titleImage
+  );
+  const [deriveDate, setDriveDay] = useState(rewardPackage?.deriveDate);
 
   function ColorButton({
     width,
@@ -61,8 +75,12 @@ export default function RewardPackageAddForm() {
   function InputBox({ placeholder, unitWord }: InputBoxProps) {
     return (
       <div className="border-2 border-slate-600 h-14">
-        <div className="flex justify-">
-          <input className="my-auto h-8" placeholder={placeholder}></input>
+        <div className="flex">
+          <input
+            onChange={(e) => setNumLimit(e.target.value)}
+            className="my-auto h-8"
+            placeholder={placeholder}
+          />
           <p className="my-auto h-8">{unitWord}</p>
         </div>
       </div>
@@ -74,6 +92,7 @@ export default function RewardPackageAddForm() {
       <div className="w-[18rem] mx-auto mt-6">
         <h4 className="mb-2">리워드 이름</h4>
         <input
+          onChange={(e) => setTitleName(e.target.value)}
           placeholder="  ex)슈퍼얼리버드"
           className="border-[0.1rem] border-gray-300 w-full h-12 mb-8"
         />
@@ -86,13 +105,13 @@ export default function RewardPackageAddForm() {
         <h4 className="mt-8">아이템 선택</h4>
         <div className="flex mb-2">
           <p className="text-purple-500 font-semibold">
-            {selectedItemNum.length}개
+            {selectedItemNum?.length}개
           </p>
           <p>의 항목이 선택되었습니다.</p>
         </div>
         <ul className="border-[0.1rem] border-gray-300 px-4 py-4">
           {temp.map((rewardItem, index) => (
-            <li key={index + 1} className="flex gap-2 my-3">
+            <li key={index} className="flex gap-2 my-3">
               <p className="w-1 h-1 rounded-full bg-black my-auto"></p>
               <p className="w-[7rem] text-[0.9rem] ml-1 h-6 text-ellipsis overflow-hidden ">
                 {rewardItem}
@@ -101,12 +120,18 @@ export default function RewardPackageAddForm() {
                 type="checkbox"
                 onChange={(event) =>
                   event.target.checked
-                    ? setSelectedItemNum((items) => [...items, rewardItem])
-                    : setSelectedItemNum((selectedItems) => [
-                        ...selectedItems.filter(
-                          (filterItem) => filterItem !== rewardItem
-                        ),
-                      ])
+                    ? setSelectedItemNum((items) =>
+                        items ? [...items, rewardItem] : [rewardItem]
+                      )
+                    : setSelectedItemNum((selectedItems) =>
+                        selectedItems
+                          ? [
+                              ...selectedItems.filter(
+                                (filterItem) => filterItem !== rewardItem
+                              ),
+                            ]
+                          : []
+                      )
                 }
               />
             </li>
@@ -114,12 +139,12 @@ export default function RewardPackageAddForm() {
         </ul>
         <ul
           className={`${
-            selectedItemNum.length
+            selectedItemNum?.length
               ? "px-4 py-4 border-[0.1rem] border-gray-300 "
               : ""
           } w-full my-1`}
         >
-          {selectedItemNum.map((selectedItem, index) => (
+          {selectedItemNum?.map((selectedItem, index) => (
             <li className="flex gap-2 my-1" key={"s" + index}>
               <p className="w-1 h-1 rounded-full bg-black my-auto"></p>
               <p className="w-[10rem] text-[0.9rem] ml-1 h-6 text-ellipsis overflow-hidden">
@@ -150,13 +175,21 @@ export default function RewardPackageAddForm() {
               <p>있음</p>
             </ColorButton>
           </div>
-          <InputBox placeholder="개수를 입력해주세요." unitWord="개" />
+          {isNumable && (
+            <div className="border-2 border-slate-600 h-14 flex justify-end">
+              <input
+                onChange={(e) => setNumLimit(parseInt(e.target.value))}
+                className="my-auto"
+              />
+              <p className="my-auto">개</p>
+            </div>
+          )}
         </div>
         <div>
           <h4 className="mt-12 mb-2">예상 전달일</h4>
           <CalendarButton
             classname="w-[18rem]"
-            day={driveDay}
+            day={deriveDate}
             onSetDay={(day) => setDriveDay(day)}
           />
         </div>
@@ -166,7 +199,7 @@ export default function RewardPackageAddForm() {
               width="14"
               height="2"
               item={Number(isShip).toString()}
-              condition="0"
+              condition="1"
               onClick={() => setIsShip(true)}
             >
               <p>배송</p>
@@ -175,7 +208,7 @@ export default function RewardPackageAddForm() {
               width="14"
               height="2"
               item={Number(isShip).toString()}
-              condition="1"
+              condition="0"
               onClick={() => setIsShip(false)}
             >
               <p>배송 없음</p>
@@ -187,9 +220,33 @@ export default function RewardPackageAddForm() {
           <p className="my-1">
             배송이 있는 경우, 배송비를 포함하여 적어주세요.
           </p>
-          <input className="w-full border-2 border-gray-600 my-4 h-14" />
+          <div className="w-full border-2 border-gray-600 my-4 h-14 flex">
+            <input
+              className="align-right"
+              onChange={(event) =>
+                setMinimumPrice(parseInt(event.target.value))
+              }
+            />
+            <p className="my-auto text-right">원</p>
+          </div>
         </div>
-        <button className="w-full bg-purple-600 rounded-md h-12 my-8 text-white">
+        <button
+          onClick={() =>
+            rewardPackage
+              ? onClickEnrollButon({
+                  titleName,
+                  id: rewardPackage.id,
+                  titleImage: rewardPackageImage,
+                  deriveDate,
+                  isShip,
+                  numLimit,
+                  minimumPrice,
+                  selectedItemNum,
+                })
+              : null
+          }
+          className="w-full bg-purple-600 rounded-md h-12 my-8 text-white"
+        >
           저장하기
         </button>
       </div>

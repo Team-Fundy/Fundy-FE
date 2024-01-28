@@ -1,26 +1,38 @@
 import RewardPackageAddForm from "./RewardPackageAddForm";
 import AddRewwardPakcageButton from "./AddRewadPackageButton";
 import RewardPackageItem from "./RewardPackageItem";
-import { useState } from "react";
+import { RewardPackageItemType } from "../type/types";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-interface RewardPackageItemType {
-  key: string;
-  titleImage?: File;
-  rewardItemList?: [];
-  numLimit?: Number;
-  deriveDate?: Date;
-  minimumPrice?: Number;
-}
-
 export default function RewardSetting() {
+  const [id, setId] = useState<string | null>(null);
   const [rewardPackagelist, setRewardPackagelist] = useState<
     RewardPackageItemType[]
   >([]);
+  const [selectedRewardPackage, setSelectedRewardPackage] =
+    useState<RewardPackageItemType>();
 
   function AddRewardPackage() {
-    setRewardPackagelist((packageList) => [...packageList, { key: uuidv4() }]);
+    const id = uuidv4();
+    setRewardPackagelist((packageList) => [...packageList, { id }]);
+    setId(id);
   }
+
+  function upDateRewardPackage(item: RewardPackageItemType) {
+    let temp = rewardPackagelist;
+    for (let index in temp) {
+      if (item.id === temp[index].id) {
+        temp[index] = item;
+      }
+    }
+    setRewardPackagelist(temp);
+    console.log(temp);
+  }
+
+  useEffect(() => {
+    setSelectedRewardPackage(rewardPackagelist.find((item) => item.id === id));
+  }, [id]);
 
   return (
     <div>
@@ -37,7 +49,10 @@ export default function RewardSetting() {
         </div>
       </div>
       <div className="flex">
-        <RewardPackageAddForm />
+        <RewardPackageAddForm
+          rewardPackage={selectedRewardPackage}
+          onClickEnrollButon={upDateRewardPackage}
+        />
         <div>
           <div className="flex flex-col">
             {rewardPackagelist.map((item) => (

@@ -1,25 +1,9 @@
-interface RewardPackageItemType {
-  rewardPackage: {
-    key: string;
-    titleImage?: File;
-    rewardItemList?: [];
-    numLimit?: Number;
-    deriveDate?: Date;
-    minimumPrice?: Number;
-  };
-}
-
+import { RewardPackageItemProps } from "../type/types";
 export default function RewardPackageItem({
   rewardPackage,
-}: RewardPackageItemType) {
-  const {
-    key,
-    titleImage,
-    rewardItemList,
-    numLimit,
-    deriveDate,
-    minimumPrice,
-  } = rewardPackage;
+}: RewardPackageItemProps) {
+  const { id, titleImage, rewardItemList, numLimit, deriveDate, minimumPrice } =
+    rewardPackage;
 
   function RewardListItem() {
     return (

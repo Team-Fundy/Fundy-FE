@@ -3,7 +3,6 @@ import RewardSetting from "./RewardSetting";
 import { useState } from "react";
 
 export default function ProjectRewarodForm() {
-  const [id, setId] = useState<string | null>(null);
 
   return (
     <div className="mx-[8rem] my-[8rem]">

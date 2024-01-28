@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, useRef } from "react";
 import ImageUploadButton from "@/Components/Component/ImageUploadButton";
 import CalendarButton from "@/Components/Component/CalendarButton";
 import { RewardPackageItemType } from "../type/types";
@@ -40,6 +40,11 @@ export default function RewardPackageAddForm({
   const [selectedItemNum, setSelectedItemNum] = useState<string[] | undefined>(
     rewardPackage?.rewardItemList
   );
+  const titleInputRef = useRef(null);
+  const minimumPriceInputRef = useRef(null);
+  const rewardPackageImageInputRef = useRef(null);
+  const numLimitRef = useRef(null);
+
   const [isNumable, setIsNumable] = useState(false);
   const [minimumPrice, setMinimumPrice] = useState(0);
   const [numLimit, setNumLimit] = useState(rewardPackage?.numLimit);
@@ -87,11 +92,27 @@ export default function RewardPackageAddForm({
     );
   }
 
+  function clearInput() {
+    if (titleInputRef.current) titleInputRef.current.value = "";
+    if (minimumPriceInputRef.current) minimumPriceInputRef.current.value = "";
+    if (numLimitRef.current) numLimitRef.current.value = "";
+    setSelectedItemNum([]);
+    // const rewardPackageImageInputRef = useRef(null);
+    setIsNumable(false);
+    setMinimumPrice(0);
+    setDriveDay(undefined);
+    setNumLimit(undefined);
+    setIsShip(false);
+    setTitleName("");
+    setRewardPackageImage(undefined);
+  }
+
   return (
     <div className="w-[22.5rem] h-full my-8 text-[#777879] bg-white border-2 border-gray-300 rounded-md">
       <div className="w-[18rem] mx-auto mt-6">
         <h4 className="mb-2">리워드 이름</h4>
         <input
+          ref={titleInputRef}
           onChange={(e) => setTitleName(e.target.value)}
           placeholder="  ex)슈퍼얼리버드"
           className="border-[0.1rem] border-gray-300 w-full h-12 mb-8"
@@ -178,10 +199,13 @@ export default function RewardPackageAddForm({
           {isNumable && (
             <div className="border-2 border-slate-600 h-14 flex justify-end">
               <input
+                ref={numLimitRef}
                 onChange={(e) => setNumLimit(parseInt(e.target.value))}
-                className="my-auto"
+                className="my-auto text-right "
               />
-              <p className="my-auto">개</p>
+              <p className="my-auto text-xl mx-2 font-semibold text-black">
+                개
+              </p>
             </div>
           )}
         </div>
@@ -220,20 +244,23 @@ export default function RewardPackageAddForm({
           <p className="my-1">
             배송이 있는 경우, 배송비를 포함하여 적어주세요.
           </p>
-          <div className="w-full border-2 border-gray-600 my-4 h-14 flex">
+          <div className="w-full border-2 border-gray-600 my-4 h-14 flex justify-end">
             <input
-              className="align-right"
+              ref={minimumPriceInputRef}
+              className="text-right"
               onChange={(event) =>
                 setMinimumPrice(parseInt(event.target.value))
               }
             />
-            <p className="my-auto text-right">원</p>
+            <p className="my-auto text-right text-xl font-semibold text-black mx-2">
+              원
+            </p>
           </div>
         </div>
         <button
           onClick={() =>
             rewardPackage
-              ? onClickEnrollButon({
+              ? (onClickEnrollButon({
                   titleName,
                   id: rewardPackage.id,
                   titleImage: rewardPackageImage,
@@ -242,7 +269,8 @@ export default function RewardPackageAddForm({
                   numLimit,
                   minimumPrice,
                   selectedItemNum,
-                })
+                }),
+                clearInput())
               : null
           }
           className="w-full bg-purple-600 rounded-md h-12 my-8 text-white"

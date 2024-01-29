@@ -5,6 +5,7 @@ import successIcon from "@/public/createproject/icon/successIcon.png";
 import characterIcon from "@/public/createproject/icon/character.png";
 import chatBallon from "@/public/createproject/icon/speakballoon.png";
 import nameCard from "@/public/createproject/icon/fundyNamecard.png";
+import { useCreateProjectStore } from "@/store/createProjectStore";
 
 export default function CreateProjectSidebar() {
   const name = "땡땡땡";
@@ -17,8 +18,7 @@ export default function CreateProjectSidebar() {
     "개발노트 설정",
   ];
 
-  const process = ["yes", "yes", "yes", "doing"];
-
+  const { setPage, isFilled } = useCreateProjectStore();
   const position = 1;
 
   return (
@@ -37,14 +37,16 @@ export default function CreateProjectSidebar() {
       <div className="text-white  text-xl font-light">
         {stage.map((item, index) => (
           <div className="w-[15rem] mx-auto my-4 flex justify-between">
-            <p key={index}> {item}</p>
-            {process[index] ? (
-              process[index] === "yes" ? (
+            <button onClick={() => setPage(item)}>
+              <p key={index}> {item}</p>
+            </button>
+            {
+              isFilled[item] ? (
                 <Image className="w-6 h-6" src={successIcon} alt="success" />
               ) : (
                 <Image className="w-6 h-6" src={dooingIcon} alt="dooingIcon" />
               )
-            ) : null}
+            }
           </div>
         ))}
       </div>

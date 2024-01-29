@@ -8,7 +8,7 @@ import FundingScheduleForm from "@/Components/CreateProject/FundingScheduleForm/
 import ProjectDetailForm from "@/Components/CreateProject/ProjectDetailForm/ProjectDetailForm";
 import DevelopNotePriodForm from "@/Components/CreateProject/DevelopNotePriodForm/DevelopNotePriodForm";
 import ProjectRewarodForm from "@/Components/CreateProject/ProjectRewardForm";
-import CreatorInformFrom from "@/Components/CreateProject/CreateProjectForm/CreatorInformFrom";
+import CreatorInformFrom from "@/Components/CreateProject/CreatorProjectForm/CreatorInformFrom";
 
 import { useCreateProjectStore } from "@/store/createProjectStore";
 

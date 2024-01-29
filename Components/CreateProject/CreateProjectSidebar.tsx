@@ -40,13 +40,11 @@ export default function CreateProjectSidebar() {
             <button onClick={() => setPage(item)}>
               <p key={index}> {item}</p>
             </button>
-            {
-              isFilled[item] ? (
-                <Image className="w-6 h-6" src={successIcon} alt="success" />
-              ) : (
-                <Image className="w-6 h-6" src={dooingIcon} alt="dooingIcon" />
-              )
-            }
+            {isFilled[item] ? (
+              <Image className="w-6 h-6" src={successIcon} alt="success" />
+            ) : (
+              <Image className="w-6 h-6" src={dooingIcon} alt="dooingIcon" />
+            )}
           </div>
         ))}
       </div>

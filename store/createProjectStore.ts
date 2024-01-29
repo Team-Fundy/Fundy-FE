@@ -10,12 +10,12 @@ const stage = [
 ];
 
 export const useCreateProjectStore = create((set) => ({
-  page: "none",
+  page: "selectProjectType",
   isFilled: {
     "크리에이터 정보 작성": true,
     "프로젝트 정보 작성": false,
     "펀딩 일정": false,
-    "리워드": false,
+    리워드: false,
     "프로젝트 계획": false,
     "개발노트 설정": false,
   },

@@ -1,5 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
+
+import CalendarButton from "@/Components/Component/CalendarButton";
+
 import warningIconfrom from "@/public/createproject/waringIcon.png";
 import timeIcon from "@/public/createproject/icon/timeIcon.png";
 import uparrowIcon from "@/public/createproject/icon/uparrowIcon.png";
@@ -12,6 +15,8 @@ export default function FundingScheduleForm() {
   const [agentName, setAgentName] = useState<string>("");
   const [isIdentityVerification, setIsIdentityVerification] =
     useState<boolean>(false);
+  const [startDay, setStartDay] = useState<Date | undefined | null>();
+  const [endDay, setEndDay] = useState<Date | undefined | null>();
   const [account, setAccount] = useState<string>("");
   const [taxbill, setTaxbill] = useState<string>("");
 
@@ -95,28 +100,12 @@ export default function FundingScheduleForm() {
         펀딩을 시작하는 날짜 및 시간을 선택해 주세요.
       </p>
       <div className="flex gap-4 ">
-        <div className="w-[26rem] h-12 border-2 border-slate-300 bg-white">
-          <div className="flex justify-between h-fit my-[0.2rem]">
-            <div className="flex">
-              <Image
-                src={calandericon}
-                alt="clanander"
-                className="w-6 h-6 my-auto mx-3"
-              />
-              <div>
-                <p className="text-gray-300 text-[0.7rem]">Select a day</p>
-                <p className="text-gray-500 text-[0.9rem]">날짜 선택</p>
-              </div>
-            </div>
-            <button>
-              <Image
-                src={uparrowIcon}
-                alt="upbtn"
-                className="w-4 h-4 my-auto mx-3"
-              />
-            </button>
-          </div>
-        </div>
+        <CalendarButton
+          onSetDay={(day) => setStartDay(day)}
+          day={startDay}
+          classname="w-[18rem] bg-white"
+        />
+
         <div className="w-[14rem] h-12 border-2 border-slate-300 bg-white">
           <div className="flex justify-between h-fit my-[0.2rem]">
             <div className="flex">
@@ -146,34 +135,20 @@ export default function FundingScheduleForm() {
         <Image src={talkBallon} alt="talkBallon" />
         <div className="absolute left-8 top-4">
           <p className="font-bold text-[1.1rem]">펀딩기간</p>
-          <p className="text-[0.85rem] text-gray-400">총 98일</p>
+          <p className="text-[0.85rem] text-gray-400">
+            {endDay && startDay
+              ? endDay.getDay() - startDay.getDay() + 1 + "일"
+              : "0일"}
+          </p>
         </div>
       </div>
       <br />
       <br />
-      <h2 className="font-semibold text-lg my-2">펀딩 종료일</h2>
-      <div className="w-[26rem] h-12 border-2 border-slate-300 bg-white">
-        <div className="flex justify-between h-fit my-[0.2rem]">
-          <div className="flex">
-            <Image
-              src={calandericon}
-              alt="clanander"
-              className="w-6 h-6 my-auto mx-3"
-            />
-            <div>
-              <p className="text-gray-300 text-[0.7rem]">Select a day</p>
-              <p className="text-gray-500 text-[0.9rem]">날짜 선택</p>
-            </div>
-          </div>
-          <button>
-            <Image
-              src={uparrowIcon}
-              alt="upbtn"
-              className="w-4 h-4 my-auto mx-3"
-            />
-          </button>
-        </div>
-      </div>
+      <CalendarButton
+        onSetDay={(day) => setEndDay(day)}
+        day={endDay}
+        classname="w-[18rem] bg-white"
+      />
       <br />
       <br />
       <div className="w-96 my-14">
@@ -182,7 +157,7 @@ export default function FundingScheduleForm() {
           프로젝트를 성공시키기 위해 필요한 금액을 설정해주세요.
         </p>
         <input
-          className={`rounded-sm w-[20rem] h-12 border-2  border-slate-500 text-start`}
+          className={`rounded-sm w-[20rem] h-12 border-2 px-2  border-gray-300 text-start`}
           placeholder="나중에 이 부분에 들어 갈 텍스트 정해야함"
         />
         <p className="text-[0.8rem] my-2 text-gray-500">
@@ -197,7 +172,7 @@ export default function FundingScheduleForm() {
           프로젝트를 성공시키기 위해 필요한 금액을 설정해주세요.
         </p>
         <input
-          className={`rounded-sm w-[20rem] h-12 border-2  border-slate-500 text-start`}
+          className={`rounded-sm w-[20rem] h-12 border-2 px-2 border-gray-300 text-start`}
           placeholder="나중에 이 부분에 들어 갈 텍스트 정해야함"
         />
         <p className="text-[0.8rem] my-2 text-gray-500">

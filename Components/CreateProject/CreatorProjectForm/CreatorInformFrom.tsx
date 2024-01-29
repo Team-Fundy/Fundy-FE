@@ -2,6 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import warningIconfrom from "@/public/createproject/waringIcon.png";
 import ImageUploadButton from "@/Components/Component/ImageUploadButton";
+import UploadItem from "../ProjectionInformForm/UploadItem";
 
 export default function CreatorInformFrom() {
   const [creatorName, setCreatorName] = useState<string>("");
@@ -11,6 +12,7 @@ export default function CreatorInformFrom() {
     useState<boolean>(false);
   const [account, setAccount] = useState<string>("");
   const [taxbill, setTaxbill] = useState<string>("");
+  const [creatorProfileImage, setCreatorProfileImage] = useState<File>();
 
   function getInputBorderColor(str: string, lengthLimit: number) {
     if (str.length > 0 && str.length <= lengthLimit) {
@@ -80,8 +82,8 @@ export default function CreatorInformFrom() {
       </p>
       <div className="flex gap-2">
         <ImageUploadButton
-          className="bg-white px-20 py-16"
-          onChangeFile={(file) => console.log(file)}
+          className="w-[8rem] h-[8rem] bg-white mx-auto mb-8 my-8"
+          onChangeFile={(newImage) => setCreatorProfileImage(newImage)}
         />
         <div className="w-fit h-fit px-6 py-6 border-2 border-gray-200 bg-white ">
           <div className="flex">

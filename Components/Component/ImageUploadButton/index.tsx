@@ -30,7 +30,7 @@ export default function ImageUploadButton({
 
   return (
     <button
-      className="w-full border-[0.1rem] bg-white rounded-md border-gray-white"
+      className="w-full h-full border-[0.1rem] bg-white rounded-md border-gray-white"
       onClick={onClickSetCreatorProfileImageButton}
     >
       {imageFile ? (

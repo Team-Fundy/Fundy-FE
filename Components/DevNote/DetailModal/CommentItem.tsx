@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { useState } from "react";
+import CommentOption from "./CommentOption";
+
 import peopleIcon from "@/public/developnote/peopleIcon.png";
 import unLikeIcon from "@/public/home/icon/unlikeIcon.png";
 import LikeIcon from "@/public/home/icon/likeIcon.png";
@@ -16,23 +19,24 @@ export default function CommentItem({
   detail,
   likeNum,
 }: CommentItemProps) {
+  const [openOptiion, setOpenOption] = useState(false);
   return (
-    <div className="flex justify-between w-3/4">
-      <div className="flex gap-4">
+    <div className="flex justify-between my-4">
+      <div className="flex gap-8 text-white">
         <Image
           className="w-[4rem] h-[4rem]"
           src={peopleIcon}
           alt="profileImage"
         />
-        <div className="text-white">
+        <div>
           <div className="flex gap-2">
             <p className="font-bold">{owner}</p>
-            <p className="text-[0.5rem] text-end font-light">{createTime}</p>
+            <p className="text-[0.7rem] mt-1 font-light ">{createTime}</p>
           </div>
-          <p>{detail}</p>
-          <div className="flex">
+          <p className="font-light">{detail}</p>
+          <div className="flex gap-1">
             <Image
-              className="w-[1rem] h-[1rem]"
+              className="w-[1rem] h-[1rem] mt-1"
               src={unLikeIcon}
               alt="unlikeIcon"
             />
@@ -40,7 +44,15 @@ export default function CommentItem({
           </div>
         </div>
       </div>
-      <button className="rotate-90">...</button>
+      <div className="relative">
+        <button
+          onClick={() => setOpenOption(true)}
+          className="rotate-90 text-white text-[2rem]"
+        >
+          ...
+        </button>
+        {openOptiion && <CommentOption />}
+      </div>
     </div>
   );
 }

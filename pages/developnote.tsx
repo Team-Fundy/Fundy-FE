@@ -34,20 +34,24 @@ export default function DevelopNote() {
     setNowPage((i) => (i == 10 ? 1 : i + 1));
   }
   return (
-    <div className="relative z-1 w-full h-full">
+    <div className="relative z-1 h-full">
       <Image
         src={devnotebg}
         alt=""
         className="bg-cover relative z-0 -top-16 w-screen h-screen"
       />
       <DevNoteList />
-      <div className="relative z-5 bottom-72">
-        <div className="flex justify-around">
+      <div className="absolute w-3/4 left-[8rem] bottom-[24rem]">
+        <div className="flex  justify-between">
           <button onClick={onClickLeftBtn}>
-            <Image src={directionbtn} alt="" />
+            <Image className=" w-[3rem] h-[3rem]" src={directionbtn} alt="" />
           </button>
           <button onClick={onClickRightBtn}>
-            <Image src={directionbtn} alt="" className="rotate-180" />
+            <Image
+              className=" w-[3rem] h-[3rem] rotate-180"
+              src={directionbtn}
+              alt=""
+            />
           </button>
         </div>
       </div>

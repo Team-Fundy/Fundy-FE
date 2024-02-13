@@ -33,11 +33,17 @@ export default function DevNoteList() {
           </p>
         </div>
         <div className="flex gap-12 ">
-          <DevNoteItem img={temp} day="2023. 04. 08" />
-          <DevNoteItem img={temp} day="2023. 04. 08" />
-          <DevNoteItem img={temp} day="2023. 04. 08" />
-          <DevNoteItem img={temp} day="2023. 04. 08" />
-          <DevNoteItem img={temp} day="2023. 04. 08" />
+          {pageList.map((item, index) =>
+            item !== -1 ? (
+              <DevNoteItem
+                spotlight={item === nowPage}
+                img={temp}
+                day="2023. 04. 08"
+              />
+            ) : (
+              <div className="w-[18rem]"></div>
+            )
+          )}
         </div>
       </div>
     </div>

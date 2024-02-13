@@ -21,7 +21,7 @@ export default function CommentItem({
 }: CommentItemProps) {
   const [openOptiion, setOpenOption] = useState(false);
   return (
-    <div className="flex justify-between my-4">
+    <div className="flex justify-between my-6">
       <div className="flex gap-8 text-white">
         <Image
           className="w-[4rem] h-[4rem]"

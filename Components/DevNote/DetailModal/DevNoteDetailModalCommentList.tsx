@@ -28,6 +28,20 @@ export default function DevNoteDetailModalCommentList() {
           detail="우와 잘만들었다"
           likeNum={3}
         />
+
+        <CommentItem
+          owner="김동원"
+          createTime="1시간 전"
+          detail="Wow"
+          likeNum={23}
+        />
+
+        <CommentItem
+          owner="김준오"
+          createTime="1시간 전"
+          detail="우와 잘만들었다"
+          likeNum={13}
+        />
       </div>
       <CommentCreator />
     </div>

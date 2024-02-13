@@ -2,7 +2,7 @@ import devnotebg from "@/public/developnote/devnotebg.png";
 import directionbtn from "@/public/home/button/directionbutton.png";
 import Image from "next/image";
 import { useState } from "react";
-import DevNoteItem from "@/Components/DevNote/DevNoteItem";
+import DevNoteDetailModal from "@/Components/DevNote/DetailModal";
 import DevNoteList from "@/Components/DevNote/DevNoteList";
 
 export async function getServerSideProps() {
@@ -22,7 +22,7 @@ const Kor = [
   "열",
   "열한",
   "열두",
-];  
+];
 
 export default function DevelopNote() {
   const [nowPage, setNowPage] = useState<number>(1);
@@ -51,6 +51,7 @@ export default function DevelopNote() {
           </button>
         </div>
       </div>
+      <DevNoteDetailModal />
     </div>
   );
 }

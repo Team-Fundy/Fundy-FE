@@ -9,7 +9,7 @@ import Temp2 from "@/public/home/temp/image 39.png"
 export default function projectinform() {
 
     return (
-        <div className="bg-white">
+        <div className="bg-white text-black">
             <ProjectinformSummary />
             <ProjectinformMenuBar />
             <div className="flex gap-4 my-4 mx-auto justify-center">

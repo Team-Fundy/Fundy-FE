@@ -32,7 +32,8 @@ export default function HotProjectItem({ projectimg, itemdata, rank, highlight }
 
     return (
         <div className={classname}>
-            <Link href="/projectinform" >
+            <Link href="/fundingdetail" >
+            {/* <Link href="/projectinform" > */}
                 <div className="w-[20rem] h-[23rem] relative z-0">
                     <Image src={board} alt="" className="w-full h-full" />
                     <div className="absolute top-8 left-8">

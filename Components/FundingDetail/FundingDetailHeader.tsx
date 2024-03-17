@@ -27,11 +27,12 @@ const FundingDetailHeader: React.FC<FundingDetailHeaderProps> = ({ genres, title
 
         <div className="flex gap-2 mt-4 mb-4">
           {/* Todo: 버튼 내 세로 중앙정렬 안됨, 버튼 크기 조절 안됨 이슈 */}
-          <button onClick={onLike} className="flex items-center justify-center border-2 border-gray-300 p-2">
+          <button onClick={onLike} className="flex items-center justify-center border-2 border-gray-300 py-1 px-4">
             <Image src={likeIcon} alt="Like" width={24} height={24} />
             <span className="text-sm ml-2">{likeCount}</span>
           </button>
-          <button onClick={onShare} className="flex items-center justify-center border-2 border-gray-300 p-2 w-18 h-10 ">
+          {/* Todo: 세로 중앙정렬이 안되서 일단 grid로 임시방편 완료. 추후에 수정해야함. */}
+          <button onClick={onShare} className="grid place-items-center border-2 border-gray-300 px-6 ">
             <Image src={shareIcon} alt="Share" width={24} height={24} />
           </button>
         </div>

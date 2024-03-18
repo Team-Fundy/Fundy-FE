@@ -27,3 +27,37 @@ body {
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
+
+/* Swiper 스타일 */
+.swiper {
+  width: 100%;
+  height: 300px; /* 예시 높이, 필요에 따라 조정 */
+}
+
+/* 메인 Swiper 컨테이너 스타일 */
+.mySwiper2 {
+  height: 80vh; /* 뷰포트 높이의 80% */
+}
+
+/* 썸네일 Swiper 컨테이너 스타일 */
+.mySwiper {
+  height: 20vh; /* 뷰포트 높이의 20% */
+  padding: 10px 0;
+}
+
+.mySwiper .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

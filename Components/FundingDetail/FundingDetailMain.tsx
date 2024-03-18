@@ -1,7 +1,7 @@
 import React from 'react';
 import FundingDetailHeader from '@/Components/FundingDetail/FundingDetailHeader';
-import FundingDetailGallery from './FundingDetailGallery';
-import FundingDetailDescription from './FundingDetailDescription';
+import FundingDetailGallery from '@/Components/FundingDetail/FundingDetailGallery';
+import FundingDetailDescription from '@/Components/FundingDetail/FundingDetailDescription';
 
 import Temp from "@/public/home/temp/Frame 1145.png"
 import Temp2 from "@/public/home/temp/image 39.png"
@@ -25,12 +25,12 @@ const FundingDetailMain = () => {
 
   return (
     <div>
-      <div className="pt-24 pb-4">
+      <div className="pt-16">
       {/* Todo: 마진 값 적용 안됨, 패딩으로 수정해도 적용안됨 수정 필요 */}
         <FundingDetailHeader genres={genres} title={title} likeCount={likeCount} onLike={handleLike} onShare={handleShare} />
       </div>
       <div className="flex">
-        <div className="w-3/5 p-4">
+        <div className="w-3/5 py-4">
           <FundingDetailGallery images={images} />
         </div>
         <div className="w-2/5 p-4">

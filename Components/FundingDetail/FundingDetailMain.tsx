@@ -13,8 +13,14 @@ const FundingDetailMain = () => {
   const likeCount = 234;
 
   const images = [Temp.src, Temp2.src, Temp3.src];
-  const gameDetails = "게임에 대한 상세 설명...";
   
+  const details = "A physics-based co-op platformer about a guy i a raA physics-based co-op platformer about a guy in a rabbit costume! Team up with a friend or three (local or online) to beat levels, find hidden carrots and race against the clock. Experience bunny madness. ";
+  const fundingStartDate = "2023-03-10";
+  const updatePeriod = "2week";
+  const updateDay = "Tuesday";
+  const targetAmount = 5000000;
+  const currentAmount = 20294500;
+
   const handleLike = () => {
     console.log('Like button clicked');
   };
@@ -34,7 +40,13 @@ const FundingDetailMain = () => {
           <FundingDetailGallery images={images} />
         </div>
         <div className="w-2/5 p-4">
-          <FundingDetailDescription details={gameDetails} />
+          <FundingDetailDescription
+            details={details}
+            fundingStartDate={fundingStartDate}
+            updatePeriod={updatePeriod}
+            updateDay={updateDay}
+            targetAmount={targetAmount}
+            currentAmount={currentAmount}/>
         </div>
       </div>
     </div>

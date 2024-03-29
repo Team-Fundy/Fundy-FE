@@ -36,13 +36,14 @@ body {
 
 /* 메인 Swiper 컨테이너 스타일 */
 .mySwiper2 {
-  height: 80vh; /* 뷰포트 높이의 80% */
+  margin-bottom: 10px;
+  height: auto;
 }
 
 /* 썸네일 Swiper 컨테이너 스타일 */
 .mySwiper {
-  height: 20vh; /* 뷰포트 높이의 20% */
-  padding: 10px 0;
+  /* height: 20vh; */
+  padding-top: 2vh;
 }
 
 .mySwiper .swiper-slide {

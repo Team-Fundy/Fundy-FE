@@ -12,7 +12,7 @@ const FundingDetailMain = () => {
   const title = "카드 오브 던전 클래식";
   const likeCount = 234;
 
-  const images = [Temp.src, Temp2.src, Temp3.src];
+  const images = [Temp.src, Temp2.src, Temp3.src, Temp.src, Temp2.src, Temp3.src, Temp.src, Temp2.src, Temp3.src];
   
   const details = "A physics-based co-op platformer about a guy i a raA physics-based co-op platformer about a guy in a rabbit costume! Team up with a friend or three (local or online) to beat levels, find hidden carrots and race against the clock. Experience bunny madness. ";
   const fundingStartDate = "2023-03-10";

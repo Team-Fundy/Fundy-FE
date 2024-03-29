@@ -52,15 +52,35 @@ const FundingDetailDescription: React.FC<FundingDetailDescriptionProps> = ({
   const convertedWeek = convertWeek(updatePeriod);
   return (
     <div>
-      <p className="my-4 text-gray-500">{details}</p>
-      <p>펀딩 기간</p>
-      <p>{duration}일</p>
-      <p>개발 노트 업로드</p>
-      <p>{convertedWeek}마다 {convertedDay}에 업로드 예정</p>
-      <div className="my-4">
-        <p>
-          현재 펀딩 금액: {currentAmount.toLocaleString()}원 / 목표 금액: {targetAmount.toLocaleString()}원 ({fundingPercentage}% 달성)
+      <p className="my-4 text-gray-700 text-sm">{details}</p>
+      <div className="mb-6">
+        <p className="text-base font-bold">펀딩 기간</p>
+        <p className="text-xl text-gray-700">
+          <span className="text-3xl text-purpleblue font-bold">{duration}</span>
+          일
         </p>
+      </div>
+      <div className="mb-8">
+        <p className="text-base font-bold">개발 노트 업로드</p>
+        <p className="text-xl text-gray-700">
+          <span className="text-3xl text-purpleblue font-bold">{convertedWeek}</span>
+          마다
+          <span className="text-3xl text-purpleblue font-bold">{convertedDay}</span>
+          에 업로드 예정
+        </p>
+      </div>
+      
+      <div className="my-4">
+        <p className="text-base font-bold">총 펀딩 금액</p>
+        <span className="text-xl text-gray-700">
+          <span className="text-3xl text-purpleblue font-bold">{currentAmount.toLocaleString()}</span>
+          원
+        </span>
+        <span>({fundingPercentage}% 달성)</span>
+        <div className="mt-3">
+          <span className="text-sm text-[#232426]" >목표 금액:</span>
+          <span className="text-sm text-[#232426] text-opacity-60" >{targetAmount.toLocaleString()}원</span>
+        </div>
       </div>
       <button className="bg-black text-white py-2 px-4 rounded">개발 노트 확인하기</button>
     </div>

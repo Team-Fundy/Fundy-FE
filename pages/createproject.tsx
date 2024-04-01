@@ -41,7 +41,7 @@ export default function CreateProject() {
       ) : (
         <div className="flex w-full h-full bg-gray-100">
           <CreateProjectSidebar />
-          <div className="w-full">
+          <div className="w-full ml-[21%]">
             <Header mode={"Normal"} />
             <div className="ml-[8rem]">
               {page === "크리에이터 정보 작성" && <CreatorInformFrom />}

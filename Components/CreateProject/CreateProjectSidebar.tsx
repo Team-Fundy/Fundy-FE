@@ -22,7 +22,7 @@ export default function CreateProjectSidebar() {
   const position = 1;
 
   return (
-    <div className="w-[24rem] h-screen bg-black ">
+    <div className="w-[21%] min-w-[10rem] max-w[15rem] h-fit pb-8 bg-black fixed">
       <div className="grid w-full h-[9rem] mt-8">
         <div className="w-fit h-fit mx-auto my-auto align-middle">
           <Image className="mx-auto w-18 h-18" src={navLogo} alt="navLogo" />
@@ -48,7 +48,7 @@ export default function CreateProjectSidebar() {
           </div>
         ))}
       </div>
-      <div className="relative mt-12">
+      <div className="relative w-full mt-12">
         <Image
           className="mx-auto w-[18rem] h-[4rem]"
           src={chatBallon}
@@ -65,8 +65,8 @@ export default function CreateProjectSidebar() {
           src={characterIcon}
           alt="character"
         />
-        <button className="w-[13rem] h-12 ml-[3rem] my-6 bg-gray-100">
-          올리기
+        <button className="w-[14rem] h-12 mx-auto my-6 bg-gray-100 block">
+          {"올리기"}
         </button>
       </div>
     </div>

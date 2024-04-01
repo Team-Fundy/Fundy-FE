@@ -1,5 +1,5 @@
 import FundingDetailMain from "@/Components/FundingDetail/FundingDetailMain"
-import FundingDetailCard from "@/Components/FundingDetail/FundingDetailCard"
+import FundingDetailSecond from "@/Components/FundingDetail/FundingDetailSecond"
 
 export default function fundingDetail() {
   return (
@@ -14,7 +14,7 @@ export default function fundingDetail() {
       </div>
       <div className="snap-start h-[calc(100vh-3rem)] bg-black text-white">
         <div className="mx-[15%]">
-          <FundingDetailCard />
+          <FundingDetailSecond />
         </div>
       </div>
     </div>

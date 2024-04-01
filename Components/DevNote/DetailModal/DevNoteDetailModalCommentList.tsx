@@ -43,7 +43,6 @@ export default function DevNoteDetailModalCommentList() {
           likeNum={13}
         />
       </div>
-      <CommentCreator />
     </div>
   );
 

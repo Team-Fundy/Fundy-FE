@@ -25,12 +25,8 @@ export default function CreateProject() {
   const [stage, setStage] = useState("createNotice");
   const { page } = useCreateProjectStore();
 
-  useEffect(() => {
-    console.log(page);
-  }, [page]);
-
   return (
-    <div className="h-screen w-screen bg-gray-100">
+    <div className="h-svw w-svw bg-slate-150">
       {page === "selectProjectType" && <SelectProjectTypeComponent />}
       {page === "createNotice" && <CreateNoticeComponent />}
       {!(page === "selectProjectType" || page === "createNotice") && (

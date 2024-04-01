@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import warningIconfrom from "@/public/createproject/waringIcon.png";
 import ImageUploadButton from "@/Components/Component/ImageUploadButton";
@@ -7,11 +7,12 @@ export default function CreatorInformFrom() {
   const [creatorName, setCreatorName] = useState<string>("");
   const [creatorIntroduce, setCreatorIntroduce] = useState<string>("");
   const [agentName, setAgentName] = useState<string>("");
-  const [isIdentityVerification, setIsIdentityVerification] =
-    useState<boolean>(false);
+
   const [account, setAccount] = useState<string>("");
   const [taxbill, setTaxbill] = useState<string>("");
   const [creatorProfileImage, setCreatorProfileImage] = useState<File>();
+  const [isIdentityVerification, setIsIdentityVerification] =
+    useState<boolean>(false);
 
   function getInputBorderColor(str: string, lengthLimit: number) {
     if (str.length > 0 && str.length <= lengthLimit) {
@@ -32,6 +33,26 @@ export default function CreatorInformFrom() {
       return "text-gray-500";
     }
   }
+  useEffect(() => {
+    const createInformForm = localStorage.getItem("createInformForm");
+    if (!createInformForm) return;
+    const createInformFormData = JSON.parse(createInformForm);
+    if (createInformFormData.creatorName)
+      setCreatorName(createInformFormData.creatorName);
+    if (createInformFormData.creatorIntroduce)
+      setCreatorIntroduce(createInformFormData.creatorIntroduce);
+    if (createInformFormData.agentName)
+      setAgentName(createInformFormData.agentName);
+    if (createInformFormData.account) setAccount(createInformFormData.account);
+    if (createInformFormData.taxbill) setTaxbill(createInformFormData.taxbill);
+  }, []);
+
+  function setLocalStorage(data: string, value: string) {
+    const createInformForm: {} =
+      JSON.parse(localStorage.getItem("createInformForm") as string) || {};
+    createInformForm[data] = value;
+    localStorage.setItem("createInformForm", JSON.stringify(createInformForm));
+  }
 
   return (
     <div className=" my-[6rem] h-fit bg-slate-100">
@@ -47,12 +68,16 @@ export default function CreatorInformFrom() {
           크리에이터 혹은 크리에티 팀의 이름을 작성해주세요.
         </p>
         <input
+          value={creatorName}
           className={`rounded-sm w-96 h-12 border-[0.1rem] ${getInputBorderColor(
             creatorName,
             40
           )} text-start`}
           placeholder="   40자 이내의 이름을 작성해주세요."
-          onChange={(event) => setCreatorName(event.target.value)}
+          onChange={(event) => {
+            setLocalStorage("creatorName", event.target.value);
+            setCreatorName(event.target.value);
+          }}
         />
         <div className="flex justify-between">
           {creatorName.length === 0 ? (
@@ -119,9 +144,13 @@ export default function CreatorInformFrom() {
           크리에이터 혹은 크리에티 팀의 소개 글을 작성해주세요..
         </p>
         <input
+          value={creatorIntroduce}
           className={`rounded-sm w-[34rem] h-[7.5rem] border-[0.1rem] border-gray-500 text-start`}
-          placeholder=" 150자 이내의 이름을 작성해주세요."
-          onChange={(event) => setCreatorIntroduce(event.target.value)}
+          placeholder=" 150자 이내의 소개글을 작성해주세요."
+          onChange={(event) => {
+            setCreatorIntroduce(event.target.value);
+            setLocalStorage("creatorIntroduce", event.target.value);
+          }}
         />
         <div className="flex justify-between">
           <p></p>
@@ -147,15 +176,19 @@ export default function CreatorInformFrom() {
           크리에이터 혹은 크리에티 팀의 대표자 이름을 작성해주세요.
         </p>
         <input
+          value={agentName}
           className={`rounded-sm w-96 h-12 border-[0.1rem] ${getInputBorderColor(
             agentName,
             20
           )} text-start`}
           placeholder="   대표자 명을 작성해주세요."
-          onChange={(event) => setAgentName(event.target.value)}
+          onChange={(event) => {
+            setAgentName(event.target.value);
+            setLocalStorage("agentName", event.target.value);
+          }}
         />
         {agentName.length === 0 ? (
-          <p className="my-2 text-sm text-gray-600 text-red-600 font-medium">
+          <p className="my-2 text-sm text-red-600 font-medium">
             필수 항목 입니다.
           </p>
         ) : (
@@ -193,7 +226,7 @@ export default function CreatorInformFrom() {
           </button>
         </div>
         {isIdentityVerification === false ? (
-          <p className="my-2 text-sm text-gray-600 text-red-600 font-medium">
+          <p className="my-2 text-sm text-red-600 font-medium">
             필수 항목 입니다.
           </p>
         ) : (
@@ -212,12 +245,16 @@ export default function CreatorInformFrom() {
           대표자 본인 명의의 입금 계좌를 입력하세요.
         </p>
         <input
+          value={account}
           className={`rounded-sm w-96 h-12 border-[0.1rem] ${getInputBorderColor(
             account,
             40
           )} text-start`}
           placeholder="   입금 계좌를 입력하세요."
-          onChange={(event) => setAccount(event.target.value)}
+          onChange={(event) => {
+            setLocalStorage("account", event.target.value);
+            setAccount(event.target.value);
+          }}
         />
         <div className="flex justify-between">
           {account.length === 0 ? (
@@ -241,12 +278,16 @@ export default function CreatorInformFrom() {
           대표자 본인 명의의 세금 계산서를 발행해주세요.
         </p>
         <input
+          value={taxbill}
           className={`rounded-sm w-96 h-12 border-[0.1rem] ${getInputBorderColor(
             taxbill,
             40
           )} text-start`}
           placeholder="   세금 계산서를 발행해주세요."
-          onChange={(event) => setTaxbill(event.target.value)}
+          onChange={(event) => {
+            setLocalStorage("taxbill", event.target.value);
+            setTaxbill(event.target.value);
+          }}
         />
         <div className="flex justify-between">
           {taxbill.length === 0 ? (

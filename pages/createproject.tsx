@@ -30,7 +30,7 @@ export default function CreateProject() {
   }, [page]);
 
   return (
-    <div className="h-100 bg-gray-100">
+    <div className="h-screen w-screen bg-gray-100">
       {page === "selectProjectType" && <SelectProjectTypeComponent />}
       {page === "createNotice" && <CreateNoticeComponent />}
       {!(page === "selectProjectType" || page === "createNotice") && (

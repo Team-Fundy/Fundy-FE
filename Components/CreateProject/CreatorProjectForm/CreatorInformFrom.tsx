@@ -34,7 +34,7 @@ export default function CreatorInformFrom() {
   }
 
   return (
-    <div className="mx-16  my-12 h-fit bg-slate-100">
+    <div className=" my-[6rem] h-fit bg-slate-100">
       <h1 className="my-3 font-bold text-5xl">펀디에 어서오세요.</h1>
       <p>펀딩에 필요한 정보들을 작성해주세요.</p>
 

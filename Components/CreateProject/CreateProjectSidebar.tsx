@@ -22,21 +22,21 @@ export default function CreateProjectSidebar() {
   const position = 1;
 
   return (
-    <div className="w-[20rem] h-fit bg-black relative">
-      <div className="grid w-full h-60">
+    <div className="w-[24rem] h-screen bg-black ">
+      <div className="grid w-full h-[9rem] mt-8">
         <div className="w-fit h-fit mx-auto my-auto align-middle">
-          <Image className="mx-auto w-20 h-20" src={navLogo} alt="navLogo" />
-          <div className="w-fit flex text-white mx-auto">
-            <p className="text-3xl text-bold">{name}</p>
+          <Image className="mx-auto w-18 h-18" src={navLogo} alt="navLogo" />
+          <div className="w-fit flex text-white mx-auto mt-1">
+            <p className="text-xl text-bold">{name}</p>
             <p className="mt-2 ml-1">님의</p>
           </div>
-          <p className="text-gray-400 text-xl">펀딩 프로젝트 월드맵</p>
+          <p className="text-gray-400 text-lg">펀딩 프로젝트 월드맵</p>
         </div>
       </div>
-      <hr className="w-[16rem] mx-auto bg-gray-300 mb-12" />
-      <div className="text-white  text-xl font-light">
+      <hr className="w-[16rem] mx-auto bg-gray-300 mb-2" />
+      <div className="text-white  text-md font-light">
         {stage.map((item, index) => (
-          <div className="w-[15rem] mx-auto my-4 flex justify-between">
+          <div className="w-[15rem] mx-auto my-3 flex justify-between">
             <button onClick={() => setPage(item)}>
               <p key={index}> {item}</p>
             </button>
@@ -48,15 +48,23 @@ export default function CreateProjectSidebar() {
           </div>
         ))}
       </div>
-      <div className="relative mt-16">
-        <Image className="mx-auto" src={chatBallon} alt="chatballon" />
+      <div className="relative mt-12">
+        <Image
+          className="mx-auto w-[18rem] h-[4rem]"
+          src={chatBallon}
+          alt="chatballon"
+        />
         <Image
           className="absolute -top-6 left-4"
           src={nameCard}
           alt="nameCard"
         />
-        <p className="absolute top-8 left-28"> 도움말 도움말 </p>
-        <Image className="mx-auto" src={characterIcon} alt="character" />
+        <p className="absolute top-6 left-28"> 도움말 도움말 </p>
+        <Image
+          className="mx-auto w-[3rem] h-[7rem]"
+          src={characterIcon}
+          alt="character"
+        />
         <button className="w-[13rem] h-12 ml-[3rem] my-6 bg-gray-100">
           올리기
         </button>

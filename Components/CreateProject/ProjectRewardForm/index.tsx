@@ -3,9 +3,8 @@ import RewardSetting from "./RewardSetting";
 import { useState } from "react";
 
 export default function ProjectRewarodForm() {
-
   return (
-    <div className="mx-[8rem] my-[8rem]">
+    <div className="my-[6rem]">
       <div>
         <h1 className="my-3 font-bold text-4xl">리워드 작성</h1>
         <p className="text-[0.75rem] text-gray-700 mb-8">

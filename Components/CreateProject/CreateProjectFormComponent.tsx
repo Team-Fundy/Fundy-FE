@@ -1,13 +1,11 @@
-import Image from "next/image"
-import Link from "next/link"
-import ProjectInformForm from "./ProjectionInformForm/ProjectInformForm"
+import Image from "next/image";
+import Link from "next/link";
+import ProjectInformForm from "./ProjectionInformForm/ProjectInformForm";
 
-export default function CreateProjectFormComponent()
-{
-
-    return (
-        <div className ="mx-16 my-24">
-            <ProjectInformForm/>
-        </div>
-    )
+export default function CreateProjectFormComponent() {
+  return (
+    <div className="my-[8rem]">
+      <ProjectInformForm />
+    </div>
+  );
 }

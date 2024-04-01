@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import SelectProjectTypeComponent from "@/Components/CreateProject/SelectTypeComponent";
 import CreateNoticeComponent from "@/Components/CreateProject/CreateNoticeComponent";
@@ -9,8 +9,13 @@ import ProjectDetailForm from "@/Components/CreateProject/ProjectDetailForm/Proj
 import DevelopNotePriodForm from "@/Components/CreateProject/DevelopNotePriodForm/DevelopNotePriodForm";
 import ProjectRewarodForm from "@/Components/CreateProject/ProjectRewardForm";
 import CreatorInformFrom from "@/Components/CreateProject/CreatorProjectForm/CreatorInformFrom";
+import Header from "@/Components/Header/Header";
 
 import { useCreateProjectStore } from "@/store/createProjectStore";
+
+export async function getServerSideProps() {
+  return { props: { layout: "createProjectPage" } };
+}
 
 const stage = [
   "크리에이터 정보 작성",
@@ -27,16 +32,26 @@ export default function CreateProject() {
 
   return (
     <div className="h-svw w-svw bg-slate-150">
-      {page === "selectProjectType" && <SelectProjectTypeComponent />}
-      {page === "createNotice" && <CreateNoticeComponent />}
-      {!(page === "selectProjectType" || page === "createNotice") && (
-        <div className="flex h-full bg-gray-100">
+      {page === "selectProjectType" || page === "createNotice" ? (
+        <div>
+          <Header mode={"Normal"} />
+          {page === "selectProjectType" && <SelectProjectTypeComponent />}
+          {page === "createNotice" && <CreateNoticeComponent />}
+        </div>
+      ) : (
+        <div className="flex w-full h-full bg-gray-100">
           <CreateProjectSidebar />
-          {page === "크리에이터 정보 작성" && <CreatorInformFrom />}
-          {page === "프로젝트 정보 작성" && <ProjectDetailForm />}
-          {page === "펀딩 일정" && <FundingScheduleForm />}
-          {page === "리워드" && <ProjectRewarodForm />}
-          {page === "개발노트 설정" && <DevelopNotePriodForm />}
+          <div className="w-full">
+            <Header mode={"Normal"} />
+            <div className="ml-[8rem]">
+              {page === "크리에이터 정보 작성" && <CreatorInformFrom />}
+              {page === "프로젝트 계획" && <ProjectDetailForm />}
+              {page === "프로젝트 정보 작성" && <CreateProjectFormComponent />}
+              {page === "펀딩 일정" && <FundingScheduleForm />}
+              {page === "리워드" && <ProjectRewarodForm />}
+              {page === "개발노트 설정" && <DevelopNotePriodForm />}
+            </div>
+          </div>
         </div>
       )}
     </div>

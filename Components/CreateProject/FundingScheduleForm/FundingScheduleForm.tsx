@@ -41,8 +41,8 @@ export default function FundingScheduleForm() {
   }
 
   return (
-    <div className="h-fit bg-slate-100 mx-[8rem]">
-      <h1 className="my-3 font-bold text-4xl mt-[9rem]">펀딩 일정</h1>
+    <div className="h-fit bg-slate-100">
+      <h1 className="my-3 font-bold text-4xl mt-[6rem]">펀딩 일정</h1>
       <p>프로젝트를 펀딩받기 위한 자세한 정보를 입력해주세요</p>
 
       <div className="w-96 my-14">

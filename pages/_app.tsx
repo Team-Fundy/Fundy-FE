@@ -13,7 +13,7 @@ function getHeaderMode(page: string) {
     case "creatorpage":
       return "Opacity0";
     case "developnotepage":
-      return "Opacity0";
+      return "DevelopNote";
     default:
       return "Normal";
   }

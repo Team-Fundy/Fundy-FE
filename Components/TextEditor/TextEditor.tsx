@@ -3,9 +3,14 @@ import 'react-quill/dist/quill.snow.css';
 
 import dynamic from 'next/dynamic';
 
+type TextEditorType = {
+    setContents : React.Dispatch<React.SetStateAction<string>>
+}
+
 const ReactQuill = dynamic(() => import('react-quill'), {
     ssr: false
 })
+
 const modules = {
     toolbar: {
         container: [
@@ -22,7 +27,7 @@ const modules = {
 }
 
 
-const TextEditor = (setContents: React.Dispatch<React.SetStateAction<string>>) => {
+const TextEditor = ({setContents } :TextEditorType) => {
 
     const onChangeText = (content: string) => {
         setContents(content);
@@ -30,8 +35,7 @@ const TextEditor = (setContents: React.Dispatch<React.SetStateAction<string>>) =
     }
     return (
         <div>
-            <ReactQuill onChange={onChangeText} modules={modules} placeholder="내용을 입력하세요." className="h-96" />
-
+            <ReactQuill onChange={onChangeText} modules={modules} placeholder="내용을 입력하세요." className="h-96 w-[51rem] min-h-[16rem] mb-[4.5rem]" />
         </div>
     );
     };
